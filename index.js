@@ -56,7 +56,7 @@ app.get('/visitantes', (req, res) => {
 })
 
 app.get('/visitantes_crear', (req, res) => {
-    res.render('visitantes_crear', {
+    res.render('visitantes_crearD', {
 
         modelo: 'visitante',
         datagrid: 'visitantes',
@@ -85,7 +85,7 @@ app.get('/espacios_crear', (req, res) => {
 
 
 app.get('/visitas', (req, res) => {
-    res.render('visitas', {
+    res.render('visitas_crear', {
 
         title: 'Visitas 👨‍👦',
         registro: 'visitas'

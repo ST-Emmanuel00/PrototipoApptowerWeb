@@ -234,7 +234,7 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-11">
-            <h2 class="page-title">Crear Residentes</h2>
+            <h2 class="page-title">Crear {{modelo}}</h2>
             <div class="card shadow mb-4">
               {{!-- <div class="card-header">
                 <strong class="card-title">Registrar un nuevo propietario</strong>
@@ -242,61 +242,69 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
+                    {{!-- <h3>Datos personales</h3> --}}
                     <div class="form-group mb-3">
                       <label for="simpleinput">Tipo de Documento</label>
                       <select name="" id="tipo_documento_residente" class="form-control">
                         <option value="">Selecione un tipo de documento</option>
-                        <option value="CEDULA CIUDADANIA">Cedula ciudadania</option>
-                        <option value="CEDULA EXTRANJERIA">Cedula extranjeria</option>
+                        <option value="CC">Cedula ciudadania</option>
+                        <option value="CE">Cedula extranjeria</option>
                       </select>
                     </div>
+
                     <div class="form-group mb-3">
                       <label for="documento">Numero documento</label>
                       <input type="number" id="numero_documento_residente" class="form-control"
-                        onchange="ER_validacion_numero_documento()" required>
+                        onchange="" required>
                       <div id="FB_documento"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Nombre Residentes</label>
-                      <input type="text" id="nombre_residente" class="form-control" onchange="ER_validacion_nombre()"
+                      <input type="text" id="nombre_residente" class="form-control" onchange=""
                         required>
                       <div id="FB_nombre"></div>
                     </div>
+
                     <div class="form-group mb-3">
                       <label for="example-password">Apellido Residentes</label>
                       <input type="text" id="apellido_residente" class="form-control"
-                        onchange="ER_validacion_apellido()" required>
+                        onchange="" required>
                       <div id="FB_apellido"></div>
-                    </div>
-                    <div class="form-group mb-3">
-                      <label>Telefono</label>
-                      <input type="text" id="telefono_residente" class="form-control"
-                        onchange="ER_validacion_telefono()">
-                      <div id="FB_telefono"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Fecha nacimiento</label>
-                      <input type="number" id="fecha_nacimiento" class="form-control" onchange="ER_validacion_edad()"
-                        required>
+                      <input type="date" id="fecha_nacimiento" class="form-control" onchange="" required>
                       <div id="FB_edad"></div>
                     </div>
 
                     <div class="form-group mb-3">
-                      <label>Correo</label>
-                      <input type="email" id="correo" class="form-control" onchange="ER_validacion_correo()" required>
-                      <div id="FB_correo"></div>
+                      <label>Genero</label>
+                      <select name="" id="genero_residente" class="form-control">
+                        <option value="">Seleccione un genero</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenio</option>
+                        <option value="otro">Otro</option>
+                      </select>
                     </div>
 
                     <div class="form-group mb-3">
-                      <label>Correo</label>
-                      <select name="" id="genero_residente" class="form-control">
-                        <option value="M">Masculino</option>
-                        <option value="F">Femenio</option>
-                        <option value="OTRO">Otro</option>
-                      </select>
+                      <label>Telefono</label>
+                      <input type="text" id="telefono_residente" class="form-control"
+                        onchange="">
+                      <div id="FB_telefono"></div>
                     </div>
+
+
+
+                    <div class="form-group mb-3">
+                      <label>Correo</label>
+                      <input type="email" id="correo" class="form-control" onchange="" required>
+                      <div id="FB_correo"></div>
+                    </div>
+
+
 
 
 
@@ -304,24 +312,26 @@
                   </div> <!-- /.col -->
 
 
+
                   <div class="col-md-6">
+
+                    {{!-- <label>Datos de residencia</label> --}}
 
 
                     <div class="form-group mb-3">
                       <label for="simpleinput">Tipo residente</label>
                       <select name="" id="tipo_residente" class="form-control">
-                        <option value="ARRENDATARIO">ARRENDATARIO</option>
-                        <option value="PROPIETARIO">PROPIETARIO</option>
-                        <option value="COMPAÑERO">COMPAÑERO</option>
-                        <option value="FAMILIAR">FAMILIAR</option>
+                        <option value="">Seleccione un tipo de residente</option>
+                        <option value="ARRENDATARIO">Arrendatario</option>
+                        <option value="PROPIETARIO">Propietario</option>
                       </select>
                     </div>
 
                     <div class="form-group mb-3">
                       <label>Habita</label>
                       <select name="" id="habita" class="form-control">
-                        <option value="1">SI</option>
-                        <option value="0">NO</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
                       </select>
                     </div>
 
@@ -335,13 +345,13 @@
 
                     <div class="form-group mb-3">
                       <label>Fecha inicio</label>
-                      <input type="date" id="fecha_inicio" class="form-control" onchange="ER_fecha_inicio()">
+                      <input type="date" id="fecha_inicio" class="form-control" onchange="">
                       <div id="FB_fecha_inicio"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label>Fecha fin</label>
-                      <input type="date" id="fecha_fin" class="form-control" onchange="ER_fecha_fin()">
+                      <input type="date" id="fecha_fin" class="form-control" onchange="">
                       <div id="FB_fecha_fin"></div>
                     </div>
 
@@ -356,9 +366,9 @@
                   </div>
                   <div class="card-body">
                     <button id="boton_crear" type="button" class="btn mb-2 btn-primary btn-block"><span
-                        class="fe mr-2"></span>Crear</button>
-                    <button id="regresar" type="button" class="btn mb-2 btn-light btn-block"><span
-                        class="fe mr-2"></span>Regresar</button>
+                        class="fe mr-2"></span>{{boton_crear}} </button>
+                    <a href="{{datagrid}}"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block"><span
+                        class="fe mr-2"></span>Regresar</button></a> 
                   </div>
                 </div>
 
@@ -367,7 +377,7 @@
     </main> <!-- main -->
   </div> <!-- .wrapper -->
 
-  <script src="../js/funciones.js"></script>
+  <script src="../js/funciones_residentes.js"></script>
   <script src="../js/ER_validacion.js"></script>
 
   <script src="js/jquery.min.js"></script>

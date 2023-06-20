@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
-  <title> {{title}} </title>
+  <title>Visitantes</title>
   <!-- Simple bar CSS -->
   <link rel="stylesheet" href="css/simplebar.css">
   <!-- Fonts CSS -->
@@ -16,34 +16,14 @@
     rel="stylesheet">
   <!-- Icons CSS -->
   <link rel="stylesheet" href="css/feather.css">
-  <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
   <!-- Date Range Picker CSS -->
   <link rel="stylesheet" href="css/daterangepicker.css">
   <!-- App CSS -->
-  <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
-  <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
-
-
-
-
+  <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
+  <link rel="stylesheet" href="css/app-dark.css" id="darkTheme" disabled>
 </head>
 
-<body class="vertical  dark  ">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<body class="vertical  light  ">
   <div class="wrapper">
     <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
@@ -76,7 +56,6 @@
         </li>
       </ul>
     </nav>
-
 
 
 
@@ -246,137 +225,97 @@
 
 
 
-
-
     <main role="main" class="main-content">
       <div class="container-fluid">
         <div class="row justify-content-center">
-          <div class="col-12">
+          <div class="col-11">
+            <h2 class="page-title">Crear {{modelo}}</h2>
+            <div class="card shadow mb-4">
+              {{!-- <div class="card-header">
+                <strong class="card-title">Registrar un nuevo visitante</strong>
+              </div> --}}
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="simpleinput">Tipo de Documento</label>
+                      <select name="" id="simpleinput" class="form-control">
+                        <option value="CEDULA CIUDADANIA">Cedula ciudadania</option>
+                        <option value="CEDULA EXTRANJERIA">Cedula extranjeria</option>
+                      </select>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="documento">Numero documento</label>
+                      <input type="number" id="numero_documento" class="form-control"
+                        onchange="ER_validacion_numero_documento()" required>
+                      <div id="FB_documento"></div>
+                    </div>
 
-
-
-
-            <div class="row">
-              <!-- Striped rows -->
-              <div class="col-md-12 my-4">
-                <h2 class="h4 mb-1"> {{modulo}} </h2>
-                <p class="mb-4">Vista de los {{modulo}} existentes</p>
-                <div class="card shadow">
-                  <div class="card-body">
-                    <div class="toolbar row mb-3">
-                      <div class="col">
-
-
-
-                        <form class="form-inline">
-                          <div class="form-row">
-                            <div class="form-group col-auto">
-                              <label for="search" class="sr-only">Buscar</label>
-                              <input type="text" class="form-control" id="search" value="" placeholder="Buscar">
-                            </div>
-                          </div>
-                        </form>
-
-
-
-
-
-
-
-                      </div>
-
-
-                      <div class="col ml-auto">
-                        <div class="dropdown float-right">
-                          <a href="residentes_crear"><button class="btn btn-primary float-right ml-3"
-                              type="button">{{ir_boton_crear}} </button></a>
-
-                          <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Descargar</button>
-                          <div class="dropdown-menu" aria-labelledby="actionMenuButton">
-                            <a class="dropdown-item" href="#">EXCEL</a>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="form-group mb-3">
+                      <label for="example-password">Nombre visitante</label>
+                      <input type="text" id="nombre" class="form-control" onchange="ER_validacion_nombre()" required>
+                      <div id="FB_nombre"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="example-password">Apellido visitante</label>
+                      <input type="text" id="apellido" class="form-control" onchange="ER_validacion_apellido()"
+                        required>
+                      <div id="FB_apellido"></div>
                     </div>
 
 
-                    <!-- table -->
-                    <table class="table table-bordered">
-                      <thead>
 
-                        <tr role="row">
+                  </div> <!-- /.col -->
+                  <div class='col-md-6'>
+                    <div class="form-group mb-3">
+                      <label for="example-password">Edad</label>
+                      <input type="number" id="edad" class="form-control" onchange="ER_validacion_edad()" required>
+                      <div id="FB_edad"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="simpleinput">Genero</label>
+                      <select name="" id="simpleinput" class="form-control">
+                        <option value="M">MASCULINO</option>
+                        <option value="F">FEMENINO</option>
+                        {{!-- Aqui va codigo para listar espacios --}}
+                      </select>
+                    </div>
 
-
-                          <th>Tipo documento</th>
-                          <th>Numero documento</th>
-                          <th>Nombre</th>
-                          <th>Apellido</th>
-                          <th>Fecha nacimiento</th>
-                          <th>Genero</th>
-                          <th>Telefono</th>
-
-                          <th>Correo</th>
-
-
-
-                          <th>Tipo de residente</th>
-
-
-                          <th>Residencia</th>
-                          <th>Habita</th>
-
-
-                          <th>Fecha inicio</th>
-                          <th>Fecha salida</th>
-
-                          <th>Estado</th>
+                    <div class="form-group mb-3">
+                      <label for="simpleinput">Anfitrion</label>
+                      <select name="" id="simpleinput" class="form-control">
+                        <option value="null">SELECCIONE ANFITRIO</option>
+                        {{!-- Aqui va codigo para listar espacios --}}
+                      </select>
+                    </div>
 
 
-
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-
-
-                      <tbody id="contenido_residentes">
-
-
-
-                      </tbody>
-                    </table>
-                    <nav aria-label="Table Paging" class="mb-0 text-muted">
-                      <ul class="pagination justify-content-end mb-0">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                      </ul>
-                    </nav>
+                    <div class="form-group mb-3">
+                      <label>PERMISO</label>
+                      <select name="" id="simpleinput" class="form-control">
+                        <option value="PERMITIDO">PERMITIDO</option>
+                        <option value="NO PERMITIDO">NO PERMITIDO</option>
+                      </select>
+                    </div>
                   </div>
+
                 </div>
-              </div> <!-- simple table -->
-            </div> <!-- end section -->
 
+              </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              <div class="card-body">
+                <button id="boton_crear" type="button" class="btn mb-2 btn-primary btn-block"><span
+                    class="fe mr-2"></span>{{boton_crear}} </button>
+                <a href="{{datagrid}}"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block"><span
+                      class="fe mr-2"></span>Regresar</button></a>
+              </div>
+              <!-- / .card -->
     </main> <!-- main -->
   </div> <!-- .wrapper -->
-  <script src="../js/funciones_residentes.js"></script>
+
+
+  <script src="../js/ER_validacion.js"></script>
+
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/moment.min.js"></script>
@@ -386,18 +325,6 @@
   <script src='js/jquery.stickOnScroll.js'></script>
   <script src="js/tinycolor-min.js"></script>
   <script src="js/config.js"></script>
-  <script src='js/jquery.dataTables.min.js'></script>
-  <script src='js/dataTables.bootstrap4.min.js'></script>
-  <script>
-    $('#dataTable-1').DataTable(
-      {
-        autoWidth: true,
-        "lengthMenu": [
-          [16, 32, 64, -1],
-          [16, 32, 64, "All"]
-        ]
-      });
-  </script>
   <script src="js/apps.js"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>

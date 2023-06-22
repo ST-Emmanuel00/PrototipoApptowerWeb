@@ -1,7 +1,7 @@
 
 const express = require('express')
 const app = express() 
-const port = 8080
+const port = 8081
 const path = require('path') 
 const hbs = require('hbs')
 app.use(express.static('public'))   
@@ -46,12 +46,12 @@ app.get('/residentes', (req, res) => {
     })
 })
 
-app.get('/visitantes', (req, res) => {
-    res.render('visitantes', {
+app.get('/visitantes_index', (req, res) => {
+    res.render('visitantes_listar', {
 
         title: 'Visitantes 👩🏼‍🤝‍🧑🏾',
         modulo: 'Visitantes',
-        ir_boton_crear: 'Crear residente'
+        boton_crear: 'Crear residente'
     })
 })
 

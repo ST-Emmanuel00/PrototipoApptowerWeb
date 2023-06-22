@@ -42,7 +42,8 @@ app.get('/residentes', (req, res) => {
 
         title: 'Residentes 👨‍👨‍👧‍👧',
         modulo: 'Residentes',
-        ir_boton_crear: 'Crear residente'
+        ir_boton_crear: 'Crear residente',
+        ir_boton_editar: 'Editar residente'
     })
 })
 
@@ -51,7 +52,8 @@ app.get('/visitantes', (req, res) => {
 
         title: 'Visitantes 👩🏼‍🤝‍🧑🏾',
         modulo: 'Visitantes',
-        ir_boton_crear: 'Crear residente'
+        ir_boton_crear: 'Crear visitante',
+        ir_boton_editar: 'Editar visitante'
     })
 })
 

@@ -246,6 +246,8 @@
 
 
 
+
+
     <main role="main" class="main-content">
       <div class="container-fluid">
         <div class="row justify-content-center">
@@ -305,24 +307,27 @@
 
                         <tr role="row">
 
-
+                          <th>Item</th>
                           <th>Tipo documento</th>
                           <th>Numero documento</th>
                           <th>Nombre</th>
                           <th>Apellido</th>
-                          <th>Fecha nacimiento</th>
                           <th>Genero</th>
 
-                          <th>Tipo de visitante</th>
+                          <th>Tipo visitante</th>
+
                           <th>Anfitrion</th>
+
                           <th>Permiso</th>
+
+
 
                           <th>Action</th>
                         </tr>
                       </thead>
 
 
-                      <tbody id="contenido_residentes">
+                      <tbody id="contenido_visitantes">
 
 
 
@@ -359,7 +364,7 @@
 
     </main> <!-- main -->
   </div> <!-- .wrapper -->
-  <script src="../js/funciones_residentes.js"></script>
+  <script src="../js/funciones_visitantes.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/moment.min.js"></script>
@@ -393,6 +398,162 @@
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
   </script>
+
+  <style>
+    .modal-dialog {
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      max-width: 2800px;
+      border: 1px solid black;
+    }
+
+    .modal-body {
+      padding: 25px
+    }
+  </style>
+  <div id="modal_editar" class="modal">
+    <div class="modal-dialog modal-xl"> <!-- Agregado: modal-xl para hacerlo más grande -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="varyModalLabel">{{ir_boton_editar}}</h5>
+          <button type="button" class="close" data-dismiss="modal" onclick="salir()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-md-6">
+
+
+              <div class="form-group mb-3">
+                <input id="_id" type="hidden">
+                <label for="simpleinput">Tipo de Documento</label>
+                <select name="" id="tipo_documento_visitante" class="form-control">
+                  <option value="">Selecione un tipo de documento</option>
+                  <option value="CC">Cedula ciudadania</option>
+                  <option value="CE">Cedula extranjeria</option>
+                </select>
+              </div>
+              <div class="form-group mb-3">
+                <label for="documento">Numero documento</label>
+                <input type="number" id="numero_documento_visitante" class="form-control" onchange="" required>
+                <div id="FB_documento"></div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="example-password">Nombre visitante</label>
+                <input type="text" id="nombre_visitante" class="form-control" onchange="" required>
+                <div id="FB_nombre"></div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="example-password">Apellido visitante</label>
+                <input type="text" id="apellido_visitante" class="form-control" onchange="" required>
+                <div id="FB_apellido"></div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Genero</label>
+                <select name="" id="genero_visitante" class="form-control">
+                  <option value="">Seleccione un genero</option>
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenio</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+
+            </div> <!-- /.col -->
+            <div class="col-md-6">
+
+              <div class="form-group mb-3">
+                <label>Tipo de visitante</label>
+                <select name="" id="tipo_visitante" class="form-control">
+                  <option value="OCASIONAL">OCASIONAL</option>
+                  <option value="FRECUENTE">FRECUENTE</option>
+                </select>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Permiso</label>
+                <select name="" id="anfitrion" class="form-control">
+
+                </select>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Permiso</label>
+                <select name="" id="permiso" class="form-control">
+                  <option value="NO PERMITIDO">NO PERMITIDO</option>
+                  <option value="PERMITIDO">PERMITIDO</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" id="salir"
+              onclick="salir()">Cancelar</button><br>
+            <button type="button" id="boton_actualizar" onclick="actualizar_visitante()"
+              class="btn mb-2 btn-primary">Actualizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <script>
+
+      const salir = () => {
+
+        window.location.href = 'visitantes'
+
+      }
+    </script>
+
+    <!-- Agrega los scripts de Bootstrap en tu archivo HTML -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        //var instances = M.Modal.init(elems, options);
+      });
+
+      // Or with jQuery
+
+      $(document).ready(function () {
+        $('.modal').modal();
+      });
+    </script>
+
+    <script src="../js/funciones_visitantes.js"></script>
+
 </body>
 
 </html>

@@ -280,14 +280,16 @@
                     <div class="form-group mb-3">
                       <label>Tipo de visitante</label>
                       <select name="" id="tipo_visitante" class="form-control">
+                        <option value="OCASIONAL">Escoge una opcion</option>
                         <option value="OCASIONAL">OCASIONAL</option>
                         <option value="FRECUENTE">FRECUENTE</option>
                       </select>
                     </div>
 
                     <div class="form-group mb-3">
-                      <label>Permiso</label>
+                      <label>Anfitrion</label>
                       <select name="" id="anfitrion" class="form-control">
+                        <option value="null">Seleccione un anfitrion</option>
 
                       </select>
                     </div>
@@ -304,9 +306,6 @@
                   </div>
 
 
-
-
-
                   <div class="card-body">
                     <button id="boton_crear" type="button" class="btn mb-2 btn-primary btn-block"><span
                         class="fe mr-2"></span>{{boton_crear}} </button>
@@ -319,6 +318,7 @@
 
 
   <script src="../js/ER_validacion.js"></script>
+  <script src="../js/funciones_visitantes.js"></script>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>

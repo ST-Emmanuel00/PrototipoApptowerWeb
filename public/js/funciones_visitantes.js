@@ -42,7 +42,7 @@ const listar_visitantes = async () => {
 
 
                     <a class="waves-effect waves-light btn modal-trigger" href="#modal_editar" onclick = 'editar_visitantes(${JSON.stringify(visitante)})'><i class = "fe fe-edit fe-24"></i></a>
-                    <a class="waves-effect waves-light btn modal-trigger red" href="#" onclick = "eliminar_residente('${visitante._id}')"><i class = "fe fe-delete fe-24"></i></a>
+                    <a class="waves-effect waves-light btn modal-trigger red" href="#" onclick = "eliminar_visitante('${visitante._id}')"><i class = "fe fe-delete fe-24"></i></a>
 
 
 
@@ -58,47 +58,44 @@ const listar_visitantes = async () => {
   }
 }
 
-const actualizar_propietario = async () => {
+const actualizar_visitante = async () => {
 
   console.log('lo intentaste bro')
   const _id = document.querySelector('#_id')
-  const tipo_documento_propietario = document.querySelector('#tipo_documento_propietario')
-  const numero_documento_propietario = document.querySelector('#numero_documento_propietario')
-  const nombre_propietario = document.querySelector('#nombre_propietario')
-  const apellido_propietario = document.querySelector('#apellido_propietario')
-  const fecha_nacimiento = document.querySelector('#fecha_nacimiento')
-  const genero_propietario = document.querySelector('#genero_propietario')
-  const telefono_propietario = document.querySelector('#telefono_propietario')
-  const correo = document.querySelector('#correo')
-  const propiedad = document.querySelector('#propiedad')
-  const estado = document.querySelector('#estado')
+  const tipo_documento_visitante = document.querySelector('#tipo_documento_visitante')
+  const numero_documento_visitante = document.querySelector('#numero_documento_visitante')
+  const nombre_visitante = document.querySelector('#nombre_visitante')
+  const apellido_visitante = document.querySelector('#apellido_visitante')
+  const genero_visitante = document.querySelector('#genero_visitante')
+  const tipo_visitante = document.querySelector('#tipo_visitante')
+  const anfitrion = document.querySelector('#anfitrion')
+  const permiso = document.querySelector('#permiso')
 
-  let propietarios = {
+  let visitantes = {
     _id: document.getElementById('_id').value,
-    tipo_documento_propietario: tipo_documento_propietario.value,
-    numero_documento_propietario: numero_documento_propietario.value,
-    nombre_propietario: nombre_propietario.value,
-    apellido_propietario: apellido_propietario.value,
-    fecha_nacimiento: fecha_nacimiento.value,
-    genero_propietario: genero_propietario.value,
-    telefono_propietario: telefono_propietario.value,
-    correo: correo.value,
-    propiedad: propiedad.value,
-    estado: estado.value
+    tipo_documento_visitante: tipo_documento_visitante.value,
+    numero_documento_visitante: numero_documento_visitante.value,
+    nombre_visitante: nombre_visitante.value,
+    apellido_visitante: apellido_visitante.value,
+    genero_visitante: genero_visitante.value,
+    tipo_visitante: tipo_visitante.value,
+    anfitrion: anfitrion.value,
+    permiso: permiso.value,
+    
   }
 
-  console.log(propietarios)
+  console.log(visitantes)
   fetch(url, {
     method: 'PUT',
     mode: 'cors',
-    body: JSON.stringify(propietarios),
+    body: JSON.stringify(visitantes),
     headers: { "Content-type": "application/json; charset=UTF-8" }
   })
 
     .then(response => response.json()) //La respuesta del método POST de la API
     .then(json => {
 
-      alert(json.propietarios)
+      alert(json.visitantes)
     })
 
   _id.value = ''
@@ -116,28 +113,27 @@ const actualizar_propietario = async () => {
 
 }
 
-const editar_visitantes = (propietarios) => {
+const editar_visitantes = (visitantes) => {
 
-  console.log(propietarios._id)
+  console.log(visitantes._id)
 
-  document.getElementById('_id').value = propietarios._id
-  document.getElementById('tipo_documento_propietario').value = propietarios.tipo_documento_propietario
-  document.getElementById('numero_documento_propietario').value = propietarios.numero_documento_propietario
-  document.getElementById('nombre_propietario').value = propietarios.nombre_propietario
-  document.getElementById('apellido_propietario').value = propietarios.apellido_propietario
-  document.getElementById('fecha_nacimiento').value = propietarios.fecha_nacimiento
-  document.getElementById('genero_propietario').value = propietarios.genero_propietario
-  document.getElementById('telefono_propietario').value = propietarios.telefono_propietario
-  document.getElementById('correo').value = propietarios.correo
-  document.querySelector('#propiedad').value = propietarios.propiedad
+  document.getElementById('_id').value = visitantes._id
+  document.getElementById('tipo_documento_visitante').value = visitantes.tipo_documento_visitante
+  document.getElementById('numero_documento_visitante').value = visitantes.numero_documento_visitante
+  document.getElementById('nombre_visitante').value = visitantes.nombre_visitante
+  document.getElementById('apellido_visitante').value = visitantes.apellido_visitante
+  document.getElementById('genero_visitante').value = visitantes.genero_visitante
+  document.getElementById('tipo_visitante').value = visitantes.tipo_visitante
+  document.getElementById('anfitrion').value = visitantes.anfitrion
+  document.querySelector('#permiso').value = visitantes.permiso
   
-  document.getElementById('estado').value = propietarios.estado
+  document.getElementById('estado').value = visitantes.estado
 
 }
 
 
 
-const eliminar_residente = (_id,) => {
+const eliminar_visitante = (_id,) => {
   console.log("si entro aqui")
   if (confirm(`¿Está seguro de que quieres eliminar?`) == true) {
 
@@ -174,43 +170,39 @@ const eliminar_residente = (_id,) => {
 
 
 
-const registrar_propietario = () => {
+const registrar_visitante = () => {
 
-  console.log('Si esta propietario')
+  console.log('Si esta crear propietario')
 
-  const tipo_documento_propietario = document.querySelector('#tipo_documento_propietario')
-  const numero_documento_propietario = document.querySelector('#numero_documento_propietario')
-  const nombre_propietario = document.querySelector('#nombre_propietario')
-  const apellido_propietario = document.querySelector('#apellido_propietario')
-  const fecha_nacimiento = document.querySelector('#fecha_nacimiento')
-  const genero_propietario = document.querySelector('#genero_propietario')
-  const telefono_propietario = document.querySelector('#telefono_propietario')
-  const correo = document.querySelector('#correo')
-  const propiedad = document.querySelector('#propiedad')
-  const estado = document.querySelector('#estado')
+  const tipo_documento_visitante = document.querySelector('#tipo_documento_visitante')
+  const numero_documento_visitante = document.querySelector('#numero_documento_visitante')
+  const nombre_visitante = document.querySelector('#nombre_visitante')
+  const apellido_visitante = document.querySelector('#apellido_visitante')
+  const genero_visitante = document.querySelector('#genero_visitante')
+  const tipo_visitante = document.querySelector('#tipo_visitante')
+  const anfitrion = document.querySelector('#anfitrion')
+  const permiso = document.querySelector('#permiso')
 
-  let propietarios = {
+  let visitantes = {
 
-    tipo_documento_propietario: tipo_documento_propietario.value,
-    numero_documento_propietario: numero_documento_propietario.value,
-    nombre_propietario: nombre_propietario.value,
-    apellido_propietario: apellido_propietario.value,
-    fecha_nacimiento: fecha_nacimiento.value,
-    genero_propietario: genero_propietario.value,
-    telefono_propietario: telefono_propietario.value,
-    correo: correo.value,
-    propiedad: propiedad.value,
-    estado: estado.value
+    tipo_documento_visitante: tipo_documento_visitante.value,
+    numero_documento_visitante: numero_documento_visitante.value,
+    nombre_visitante: nombre_visitante.value,
+    apellido_visitante: apellido_visitante.value,
+    genero_visitante: genero_visitante.value,
+    tipo_visitante: tipo_visitante.value,
+    anfitrion: anfitrion.value,
+    permiso: permiso.value,
 
   }
 
-  console.log(JSON.stringify(propietarios))
+  console.log(JSON.stringify(visitantes))
 
   fetch(url, {
 
     method: 'POST',
     mode: 'cors',
-    body: JSON.stringify(propietarios),
+    body: JSON.stringify(visitantes),
     headers: { "Content-type": "application/json; charset=UTF-8" }
 
   })
@@ -218,40 +210,36 @@ const registrar_propietario = () => {
     .then(response => response.json()) //La respuesta del método POST de la API
     .then(json => {
 
-      alert(json.propietarios)
+      alert(json.visitantes)
 
     })
 
-    tipo_documento_propietario.value = ''
-    numero_documento_propietario.value = ''
-    nombre_propietario.value = ''
-    apellido_propietario.value = ''
-    fecha_nacimiento.value = ''
-    genero_propietario.value = ''
-    telefono_propietario.value = ''
-    correo.value = ''
-    propiedad.value = ''
-    estado.value = ''
+    tipo_documento_visitante.value = ''
+    numero_documento_visitante.value = ''
+    nombre_visitante.value = ''
+    apellido_visitante.value = ''
+    genero_visitante.value = ''
+    tipo_visitante.value = ''
+    anfitrion.value = ''
+    permiso.value = ''
 
 }
 
 
-
-
 listar_visitantes()
 
-// const boton_crear = document.querySelector('#boton_crear').addEventListener('click', () => {
+const boton_crear = document.querySelector('#boton_crear').addEventListener('click', () => {
 
 
 
-//   registrar_propietario()
+  registrar_visitante()
 
 
-// })
+})
 
 // const boton_actualizar = document.querySelector('boton_actualizar').addEventListener('click', () => {
 
-//   actualizar_propietario();
+//   actualizar_visitante();
 
 // })
 

@@ -254,8 +254,6 @@
           <div class="col-12">
 
 
-
-
             <div class="row">
               <!-- Striped rows -->
               <div class="col-md-12 my-4">
@@ -307,7 +305,7 @@
 
                         <tr role="row">
 
-
+                          <th>Item</th>
                           <th>Tipo documento</th>
                           <th>Numero documento</th>
                           <th>Nombre</th>
@@ -342,7 +340,6 @@
                       <tbody id="contenido_residentes">
 
 
-
                       </tbody>
                     </table>
                     <nav aria-label="Table Paging" class="mb-0 text-muted">
@@ -361,21 +358,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     </main> <!-- main -->
   </div> <!-- .wrapper -->
+
+
+
+
+
   <script src="../js/funciones_residentes.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -410,6 +399,203 @@
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
   </script>
+
+
+
+  <style>
+    .modal-dialog {
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      max-width: 2800px;
+      border: 1px solid black;
+    }
+
+    .modal-body {
+      padding: 25px
+    }
+  </style>
+  <div id="modal_editar" class="modal">
+    <div class="modal-dialog modal-xl"> <!-- Agregado: modal-xl para hacerlo más grande -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="varyModalLabel">{{ir_boton_editar}}</h5>
+          <button type="button" class="close" data-dismiss="modal" onclick="salir()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-md-6">
+
+
+              <div class="form-group mb-3">
+                <input id="_id" type="hidden">
+                <label for="simpleinput">Tipo de Documento</label>
+                <select name="" id="tipo_documento_residente" class="form-control">
+                  <option value="">Selecione un tipo de documento</option>
+                  <option value="CC">Cedula ciudadania</option>
+                  <option value="CE">Cedula extranjeria</option>
+                </select>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="documento">Numero documento</label>
+                <input type="number" id="numero_documento_residente" class="form-control" onchange="" required>
+                <div id="FB_documento"></div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="example-password">Nombre Residentes</label>
+                <input type="text" id="nombre_residente" class="form-control" onchange="" required>
+                <div id="FB_nombre"></div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="example-password">Apellido Residentes</label>
+                <input type="text" id="apellido_residente" class="form-control" onchange="" required>
+                <div id="FB_apellido"></div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="example-password">Fecha nacimiento</label>
+                <input type="date" id="fecha_nacimiento" class="form-control" onchange="" required>
+                <div id="FB_edad"></div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Genero</label>
+                <select name="" id="genero_residente" class="form-control">
+                  <option value="">Seleccione un genero</option>
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenio</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Telefono</label>
+                <input type="text" id="telefono_residente" class="form-control" onchange="">
+                <div id="FB_telefono"></div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Correo</label>
+                <input type="email" id="correo" class="form-control" onchange="" required>
+                <div id="FB_correo"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+
+              <div class="form-group mb-3">
+                <label for="simpleinput">Tipo residente</label>
+
+                <select name="" id="tipo_residente" class="form-control">
+                  <option value="">Seleccione un tipo de residente</option>
+                  <option value="ARRENDATARIO">Arrendatario</option>
+                  <option value="PROPIETARIO">Propietario</option>
+                </select>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Habita</label>
+                <select name="" id="habita" class="form-control">
+                  <option value="true">Si</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="simpleinput">Resiodencia (Espacio)</label>
+                <select name="" id="residencia" class="form-control">
+                  <option value="null">Selecciona propiedad</option>
+                  {{!-- Aqui va codigo para listar espacios --}}
+                </select>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Fecha inicio</label>
+                <input type="date" id="fecha_inicio" class="form-control" onchange="">
+                <div id="FB_fecha_inicio"></div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Fecha fin</label>
+                <input type="date" id="fecha_fin" class="form-control" onchange="">
+                <div id="FB_fecha_fin"></div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Estado</label>
+                <select name="" id="estado" class="form-control">
+                  <option value="ACTIVO">ACTIVO</option>
+                  <option value="INACTIVO">INACTIVO</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" id="salir"
+            onclick="salir()">Cancelar</button><br>
+          <button type="button" id="boton_actualizar" onclick="actualizar_residente()"
+            class="btn mb-2 btn-primary">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <script>
+
+    const salir = () => {
+
+      window.location.href = 'residentes'
+
+    }
+  </script>
+
+  <!-- Agrega los scripts de Bootstrap en tu archivo HTML -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.modal');
+      //var instances = M.Modal.init(elems, options);
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+      $('.modal').modal();
+    });
+  </script>
+
+  <script src="../js/funciones_residentes.js"></script>
+
+
 </body>
 
 </html>

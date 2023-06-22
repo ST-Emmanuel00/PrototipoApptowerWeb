@@ -238,83 +238,87 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group mb-3">
+                      <input id="_id" type="hidden">
                       <label for="simpleinput">Tipo de Documento</label>
-                      <select name="" id="simpleinput" class="form-control">
-                        <option value="CEDULA CIUDADANIA">Cedula ciudadania</option>
-                        <option value="CEDULA EXTRANJERIA">Cedula extranjeria</option>
+                      <select name="" id="tipo_documento_visitante" class="form-control">
+                        <option value="">Selecione un tipo de documento</option>
+                        <option value="CC">Cedula ciudadania</option>
+                        <option value="CE">Cedula extranjeria</option>
                       </select>
                     </div>
                     <div class="form-group mb-3">
                       <label for="documento">Numero documento</label>
-                      <input type="number" id="numero_documento" class="form-control"
-                        onchange="ER_validacion_numero_documento()" required>
+                      <input type="number" id="numero_documento_visitante" class="form-control" onchange="" required>
                       <div id="FB_documento"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Nombre visitante</label>
-                      <input type="text" id="nombre" class="form-control" onchange="ER_validacion_nombre()" required>
+                      <input type="text" id="nombre_visitante" class="form-control" onchange="" required>
                       <div id="FB_nombre"></div>
                     </div>
                     <div class="form-group mb-3">
                       <label for="example-password">Apellido visitante</label>
-                      <input type="text" id="apellido" class="form-control" onchange="ER_validacion_apellido()"
-                        required>
+                      <input type="text" id="apellido_visitante" class="form-control" onchange="" required>
                       <div id="FB_apellido"></div>
                     </div>
 
+                    <div class="form-group mb-3">
+                      <label>Genero</label>
+                      <select name="" id="genero_visitante" class="form-control">
+                        <option value="">Seleccione un genero</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenio</option>
+                        <option value="otro">Otro</option>
+                      </select>
+                    </div>
 
 
                   </div> <!-- /.col -->
-                  <div class='col-md-6'>
+
+                  <div class="col-md-6">
                     <div class="form-group mb-3">
-                      <label for="example-password">Edad</label>
-                      <input type="number" id="edad" class="form-control" onchange="ER_validacion_edad()" required>
-                      <div id="FB_edad"></div>
-                    </div>
-                    <div class="form-group mb-3">
-                      <label for="simpleinput">Genero</label>
-                      <select name="" id="simpleinput" class="form-control">
-                        <option value="M">MASCULINO</option>
-                        <option value="F">FEMENINO</option>
-                        {{!-- Aqui va codigo para listar espacios --}}
+                      <label>Tipo de visitante</label>
+                      <select name="" id="tipo_visitante" class="form-control">
+                        <option value="OCASIONAL">Escoge una opcion</option>
+                        <option value="OCASIONAL">OCASIONAL</option>
+                        <option value="FRECUENTE">FRECUENTE</option>
                       </select>
                     </div>
 
                     <div class="form-group mb-3">
-                      <label for="simpleinput">Anfitrion</label>
-                      <select name="" id="simpleinput" class="form-control">
-                        <option value="null">SELECCIONE ANFITRIO</option>
-                        {{!-- Aqui va codigo para listar espacios --}}
+                      <label>Anfitrion</label>
+                      <select name="" id="anfitrion" class="form-control">
+                        <option value="null">Seleccione un anfitrion</option>
+
                       </select>
                     </div>
 
-
                     <div class="form-group mb-3">
-                      <label>PERMISO</label>
-                      <select name="" id="simpleinput" class="form-control">
-                        <option value="PERMITIDO">PERMITIDO</option>
+                      <label>Permiso</label>
+                      <select name="" id="permiso" class="form-control">
                         <option value="NO PERMITIDO">NO PERMITIDO</option>
+                        <option value="PERMITIDO">PERMITIDO</option>
                       </select>
                     </div>
+
+
                   </div>
 
-                </div>
 
-              </div>
-
-              <div class="card-body">
-                <button id="boton_crear" type="button" class="btn mb-2 btn-primary btn-block"><span
-                    class="fe mr-2"></span>{{boton_crear}} </button>
-                <a href="{{datagrid}}"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block"><span
-                      class="fe mr-2"></span>Regresar</button></a>
-              </div>
-              <!-- / .card -->
+                  <div class="card-body">
+                    <button id="boton_crear" type="button" class="btn mb-2 btn-primary btn-block"><span
+                        class="fe mr-2"></span>{{boton_crear}} </button>
+                    <a href="{{datagrid}}"><button id="regresar" type="button"
+                        class="btn mb-2 btn-light btn-block"><span class="fe mr-2"></span>Regresar</button></a>
+                  </div>
+                  <!-- / .card -->
     </main> <!-- main -->
   </div> <!-- .wrapper -->
 
 
   <script src="../js/ER_validacion.js"></script>
+  <script src="../js/funciones_visitantes.js"></script>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>

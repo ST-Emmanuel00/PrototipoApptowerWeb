@@ -21,3 +21,5 @@ const espacios = [
   $('#visitante').select2({
     data: visitantes
   });
+
+  validarFecha

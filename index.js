@@ -47,8 +47,10 @@ app.get('/residentes', (req, res) => {
     })
 })
 
-app.get('/visitantes_index', (req, res) => {
-    res.render('visitantes_listar', {
+
+
+app.get('/visitantes', (req, res) => {
+    res.render('visitantes', {
 
         title: 'Visitantes 👩🏼‍🤝‍🧑🏾',
         modulo: 'Visitantes',
@@ -58,13 +60,35 @@ app.get('/visitantes_index', (req, res) => {
 })
 
 app.get('/visitantes_crear', (req, res) => {
-    res.render('visitantes_crearD', {
+    res.render('visitantes_crear', {
 
-        modelo: 'visitante',
-        datagrid: 'visitantes',
-        boton_crear: 'Crear visitante'
+        title: 'Visitantes 👩🏼‍🤝‍🧑🏾',
+        modulo: 'Visitantes',
+        ir_boton_crear: 'Crear visitante',
+        ir_boton_editar: 'Editar visitante'
     })
 })
+
+app.get('/visitas', (req, res) => {
+    res.render('visitas', {
+
+        title: 'Visitas 👩🏼‍🤝‍🧑🏾',
+        modulo: 'Visitas',
+        ir_boton_crear: 'Crear visita',
+        ir_boton_editar: 'Editar visita'
+    })
+})
+
+app.get('/visitas_crear', (req, res) => {
+    res.render('visitas_crear', {
+
+        title: 'Visitas 👩🏼‍🤝‍🧑🏾',
+        modulo: 'Visitas',
+        datagrid: 'visitas',
+        boton_crear: 'Crear visita',
+    })
+})
+
 
 app.get('/espacios', (req, res) => {
     res.render('espacios', {
@@ -84,16 +108,6 @@ app.get('/espacios_crear', (req, res) => {
     })
 })
 
-
-
-app.get('/visitas', (req, res) => {
-    res.render('visitas_crear', {
-
-        title: 'Visitas 👨‍👦',
-        registro: 'visitas'
-
-    })
-})
 
 
 app.listen(port, () => {

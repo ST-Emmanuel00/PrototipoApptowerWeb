@@ -1,4 +1,4 @@
-const url = 'http://localhost:8087/api/visitantes'
+const url = 'https://apptower-bk.onrender.com/api/visitantes'
 
 const listar_visitantes = async () => {
 

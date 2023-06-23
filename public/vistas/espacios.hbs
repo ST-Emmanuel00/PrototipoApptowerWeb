@@ -306,22 +306,20 @@
 
                         <tr role="row">
 
-
+                          <th>Item</th>
                           <th>Tipo espacio</th>
                           <th>Nombre</th>
                           <th>Area</th>
                           <th>Capacidad</th>
-                          <th>Propietario</th>
-                          <th>Residente</th>
                           <th>Estado</th>
-                          
+
 
                           <th>Action</th>
                         </tr>
                       </thead>
 
 
-                      <tbody id="contenido_residentes">
+                      <tbody id="contenido_espacios">
 
 
 
@@ -358,7 +356,7 @@
 
     </main> <!-- main -->
   </div> <!-- .wrapper -->
-  <script src="../js/funciones_residentes.js"></script>
+  <script src="../js/funciones_espacios.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/moment.min.js"></script>
@@ -392,6 +390,136 @@
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
   </script>
+
+  <style>
+    .modal-dialog {
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      max-width: 2800px;
+      border: 1px solid black;
+    }
+
+    .modal-body {
+      padding: 25px
+    }
+  </style>
+  <div id="modal_editar" class="modal">
+    <div class="modal-dialog modal-L"> <!-- Agregado: modal-xl para hacerlo más grande -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="varyModalLabel">{{ir_boton_editar}}</h5>
+          <button type="button" class="close" data-dismiss="modal" onclick="salir()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-md-6">
+
+
+              <div class="form-group mb-3">
+                <input type="hidden" id="_id">
+                <label for="simpleinput">Tipo espacio</label>
+                <select name="" id="tipo_espacio" class="form-control">
+                  <option value="null">ESCOGE TIPO DE ESPACIO</option>
+                  <option value="APARTAMENTO">APARTAMENTO</option>
+                  <option value="PARQUEADERO">PARQUEADERO</option>
+                  <option value="SALON SOCIAL">SALON SOCIAL</option>
+                  <option value="ZONA HUMEDA">ZONA HUMEDA</option>
+
+                </select>
+              </div>
+
+
+              <div class="form-group mb-3">
+                <label for="example-password">Nombre espacio</label>
+                <input type="text" id="nombre_espacio" class="form-control" onchange="ER_nombre_espacio()" required>
+                <div id="FB_nombre_espacio"></div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Estado</label>
+                <select name="" id="estado" class="form-control">
+                  <option value="ACTIVO">ACTIVO</option>
+                  <option value="INACTIVO">INACTIVO</option>
+                </select>
+              </div>
+
+
+            </div> <!-- /.col -->
+            <div class="col-md-6">
+
+              <div class="form-group mb-3">
+                <label for="example-password">Area espacio</label>
+                <input type="number" id="area" class="form-control" onchange="ER_area()" required>
+                <div id="FB_area"></div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="example-password">Capacidad</label>
+                <input type="number" id="capacidad" class="form-control" onchange="ER_capacidad()" required>
+                <div id="FB_capacidad"></div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" id="salir"
+                onclick="salir()">Cancelar</button><br>
+              <button type="button" id="boton_actualizar" onclick="actualizar_espacio()"
+                class="btn mb-2 btn-primary">Actualizar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <script>
+
+        const salir = () => {
+
+          window.location.href = 'espacios'
+
+        }
+      </script>
+
+      <!-- Agrega los scripts de Bootstrap en tu archivo HTML -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+
+      <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+          var elems = document.querySelectorAll('.modal');
+          //var instances = M.Modal.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+          $('.modal').modal();
+        });
+      </script>
+
+      <script src="../js/funciones_espacios.js"></script>
 </body>
 
 </html>

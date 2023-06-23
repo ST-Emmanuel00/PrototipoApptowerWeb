@@ -21,6 +21,10 @@
   <!-- App CSS -->
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme" disabled>
+
+  <script src="../js/validaciones_residentes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 
@@ -245,60 +249,65 @@
                     {{!-- <h3>Datos personales</h3> --}}
                     <div class="form-group mb-3">
                       <label for="simpleinput">Tipo de Documento</label>
-                      <select name="" id="tipo_documento_residente" class="form-control">
+                      <select name="" id="tipo_documento_residente" class="form-control"
+                        onchange="validacion_tipo_documento_residente()">
                         <option value="">Selecione un tipo de documento</option>
-                        <option value="CC">Cedula ciudadania</option>
-                        <option value="CE">Cedula extranjeria</option>
+                        <option value="CC">CEDULA DE CIUDADANIA</option>
+                        <option value="CE">CEDULA EXTRANJERIA</option>
                       </select>
+                      <div id="FB_tipo_documento"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="documento">Numero documento</label>
                       <input type="number" id="numero_documento_residente" class="form-control"
-                        onchange="" required>
+                        onchange="validacion_numero_documento_residente()" required>
                       <div id="FB_documento"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Nombre Residentes</label>
-                      <input type="text" id="nombre_residente" class="form-control" onchange=""
-                        required>
+                      <input type="text" id="nombre_residente" class="form-control"
+                        onchange="validacion_nombre_residente()" required>
                       <div id="FB_nombre"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Apellido Residentes</label>
                       <input type="text" id="apellido_residente" class="form-control"
-                        onchange="" required>
+                        onchange="validacion_apellido_residente()" required>
                       <div id="FB_apellido"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Fecha nacimiento</label>
-                      <input type="date" id="fecha_nacimiento" class="form-control" onchange="" required>
-                      <div id="FB_edad"></div>
+                      <input type="date" id="fecha_nacimiento" class="form-control"
+                        onchange="validacion_fecha_nacimiento()" required>
+                      <div id="FB_fecha_nacimiento"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label>Genero</label>
-                      <select name="" id="genero_residente" class="form-control">
+                      <select name="" id="genero_residente" class="form-control"
+                        onchange="validacion_genero_residente()">
                         <option value="">Seleccione un genero</option>
-                        <option value="M">Masculino</option>
-                        <option value="F">Femenio</option>
-                        <option value="otro">Otro</option>
+                        <option value="M">MASCULINO</option>
+                        <option value="F">FEMENINO</option>
+                        <option value="otro">OTRO</option>
                       </select>
+                      <div id="FB_genero_residente"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label>Telefono</label>
                       <input type="text" id="telefono_residente" class="form-control"
-                        onchange="">
+                        onchange="validacion_telefono_residente()">
                       <div id="FB_telefono"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label>Correo</label>
-                      <input type="email" id="correo" class="form-control" onchange="" required>
+                      <input type="email" id="correo" class="form-control" onchange="validacion_correo()" required>
                       <div id="FB_correo"></div>
                     </div>
 
@@ -318,18 +327,20 @@
 
                     <div class="form-group mb-3">
                       <label for="simpleinput">Tipo residente</label>
-                      <select name="" id="tipo_residente" class="form-control">
+                      <select name="" id="tipo_residente" class="form-control" onchange="validacion_tipo_residente()">
                         <option value="">Seleccione un tipo de residente</option>
-                        <option value="ARRENDATARIO">Arrendatario</option>
-                        <option value="PROPIETARIO">Propietario</option>
+                        <option value="ARRENDATARIO">ARRENDATARIO</option>
+                        <option value="PROPIETARIO">PROPIETARIO</option>
                       </select>
+                      <div id="FB_tipo_residente"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label>Habita</label>
                       <select name="" id="habita" class="form-control">
-                        <option value="true">Si</option>
-                        <option value="false">No</option>
+                        <option value="">Selecione un estado</option>
+                        <option value="true">SI</option>
+                        <option value="false">NO</option>
                       </select>
                     </div>
 
@@ -343,11 +354,11 @@
 
                     <div class="form-group mb-3">
                       <label>Fecha inicio</label>
-                      <input type="date" id="fecha_inicio" class="form-control" onchange="">
+                      <input type="date" id="fecha_inicio" class="form-control" onchange="validacion_fecha_inicio()">
                       <div id="FB_fecha_inicio"></div>
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div id="div_fecha_fin" class="form-group mb-3">
                       <label>Fecha fin</label>
                       <input type="date" id="fecha_fin" class="form-control" onchange="">
                       <div id="FB_fecha_fin"></div>
@@ -365,8 +376,8 @@
                   <div class="card-body">
                     <button id="boton_crear" type="button" class="btn mb-2 btn-primary btn-block"><span
                         class="fe mr-2"></span>{{boton_crear}} </button>
-                    <a href="{{datagrid}}"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block"><span
-                        class="fe mr-2"></span>Regresar</button></a> 
+                    <a href="{{datagrid}}"><button id="regresar" type="button"
+                        class="btn mb-2 btn-light btn-block"><span class="fe mr-2"></span>Regresar</button></a>
                   </div>
                 </div>
 
@@ -376,7 +387,6 @@
   </div> <!-- .wrapper -->
 
   <script src="../js/funciones_residentes.js"></script>
-  <script src="../js/ER_validacion.js"></script>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>

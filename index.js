@@ -56,6 +56,7 @@ app.get('/visitantes', (req, res) => {
         modulo: 'Visitantes',
         ir_boton_crear: 'Crear visitante',
         ir_boton_editar: 'Editar visitante'
+        
     })
 })
 
@@ -65,7 +66,8 @@ app.get('/visitantes_crear', (req, res) => {
         title: 'Visitantes 👩🏼‍🤝‍🧑🏾',
         modulo: 'Visitantes',
         boton_crear: 'Crear visitante',
-        ir_boton_editar: 'Editar visitante'
+        ir_boton_editar: 'Editar visitante',
+        datagrid: 'visitantes'
     })
 })
 

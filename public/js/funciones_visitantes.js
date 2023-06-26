@@ -2,6 +2,7 @@ $(document).ready(function () {
   console.log("llegue2");
 
   const numerodocu = /^\d{8,10}$/;
+  const telefonoRegex = /^\d{10}$/;
   const nombreRegex = /^[A-Za-z]+ ?[A-Za-z]+$/;
   const regexVehiculo = /^(N\/A|\b[A-Za-z]{3}-\d{3}\b)$/;
 
@@ -15,6 +16,7 @@ $(document).ready(function () {
   let documento = $("#documento_visitante");
   let fechas = $("#fechaN");
   let vehiculo = $("#vehiculo");
+  let telefono = $('#telefono')
 
   nombre.on("blur", function () {
     console.log("llegue2");
@@ -92,11 +94,25 @@ $(document).ready(function () {
       $(this).removeClass("border-success"); // Quitar clase de Bootstrap para input válido
     }
   });
+  telefono.on("blur", function () {
+    var telefonoh = $("#telefono").val();
+    var mensajen = $("#FB_telefono");
+    if (telefonoRegex.test(telefonoh)) {
+      mensajen.text("");
+      $(this).addClass("border-success"); // Agregar clase de Bootstrap para input válido
+      $(this).removeClass("border-danger"); // Quitar clase de Bootstrap para input inválido
+    } else {
+      mensajen.text("El campo no cumple con el formato."); // Mostrar mensaje si es inválido
+
+      $(this).addClass("border-danger"); // Agregar clase de Bootstrap para input inválido
+      $(this).removeClass("border-success"); // Quitar clase de Bootstrap para input válido
+    }
+  });
   $('#boton_crear').on('click', function(e){
     e.preventDefault();
     console.log('boton exitos')
     try {
-      if (!$('#nombre_visitante').val() || !$('#apellido_visitante').val() || !$('#documento_visitante').val() || !$('#fechaN').val() || !$('#vehiculo').val()){
+      if (!$('#nombre_visitante').val() || !$('#apellido_visitante').val() || !$('#documento_visitante').val() || !$('#fechaN').val() || !$('#vehiculo').val() || !$('#telefono').val()){
         throw new Error('Aun hay campos sin llenar')
       }
       Swal.fire({

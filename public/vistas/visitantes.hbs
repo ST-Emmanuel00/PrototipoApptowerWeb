@@ -29,7 +29,23 @@
 </head>
 
 <body class="vertical  dark  ">
+  <style>
+    .modal-dialog {
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
+    .modal-content {
+      max-width: 2800px;
+      border: 1px solid black;
+    }
+
+    .modal-body {
+      padding: 25px
+    }
+  </style>
 
 
 
@@ -314,11 +330,7 @@
                           <th>Apellido</th>
                           <th>Genero</th>
 
-                          <th>Tipo visitante</th>
-
-                          <th>Anfitrion</th>
-
-                          <th>Permiso</th>
+                          <th>Acceso</th>
 
 
 
@@ -328,6 +340,16 @@
 
 
                       <tbody id="contenido_visitantes">
+                        <tr>
+                          <td>1</td>
+                          <td>CC</td>
+                          <td>12345678</td>
+                          <td>Geraldin</td>
+                          <td>Gomez</td>
+                          <td>F</td>
+                          <td>Permitido</td>
+                          <td><a href="#" class="button-success editar-enlace">Editar</a></td>
+                        </tr>
 
 
 
@@ -364,7 +386,7 @@
 
     </main> <!-- main -->
   </div> <!-- .wrapper -->
-  <script src="../js/funciones_visitantes.js"></script>
+  
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/moment.min.js"></script>
@@ -376,7 +398,11 @@
   <script src="js/config.js"></script>
   <script src='js/jquery.dataTables.min.js'></script>
   <script src='js/dataTables.bootstrap4.min.js'></script>
+  <script src="../js/funciones_visitantes.js"></script>
+
+  
   <script>
+
     $('#dataTable-1').DataTable(
       {
         autoWidth: true,
@@ -399,23 +425,7 @@
     gtag('config', 'UA-56159088-1');
   </script>
 
-  <style>
-    .modal-dialog {
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
 
-    .modal-content {
-      max-width: 2800px;
-      border: 1px solid black;
-    }
-
-    .modal-body {
-      padding: 25px
-    }
-  </style>
   <div id="modal_editar" class="modal">
     <div class="modal-dialog modal-xl"> <!-- Agregado: modal-xl para hacerlo más grande -->
       <div class="modal-content">
@@ -434,15 +444,11 @@
               <div class="form-group mb-3">
                 <input id="_id" type="hidden">
                 <label for="simpleinput">Tipo de Documento</label>
-                <select name="" id="tipo_documento_visitante" class="form-control">
-                  <option value="">Selecione un tipo de documento</option>
-                  <option value="CC">Cedula ciudadania</option>
-                  <option value="CE">Cedula extranjeria</option>
-                </select>
+                <input name="" id="documento_visitante" class="form-control" readonly>
               </div>
               <div class="form-group mb-3">
                 <label for="documento">Numero documento</label>
-                <input type="number" id="numero_documento_visitante" class="form-control" onchange="" required>
+                <input type="number" id="numero_documento_visitante" class="form-control" onchange="" readonly>
                 <div id="FB_documento"></div>
               </div>
 
@@ -459,48 +465,27 @@
 
               <div class="form-group mb-3">
                 <label>Genero</label>
-                <select name="" id="genero_visitante" class="form-control">
-                  <option value="">Seleccione un genero</option>
-                  <option value="M">Masculino</option>
-                  <option value="F">Femenio</option>
-                  <option value="otro">Otro</option>
-                </select>
+                <input name="" id="genero_visitante" class="form-control" readonly>
+                  
               </div>
-
 
             </div> <!-- /.col -->
             <div class="col-md-6">
 
-              <div class="form-group mb-3">
-                <label>Tipo de visitante</label>
-                <select name="" id="tipo_visitante" class="form-control">
-                  <option value="OCASIONAL">Escoge una opcion</option>
-                  <option value="OCASIONAL">OCASIONAL</option>
-                  <option value="FRECUENTE">FRECUENTE</option>
-                </select>
-              </div>
 
               <div class="form-group mb-3">
-                <label>Anfitrion</label>
-                <select name="" id="anfitrion" class="form-control">
-                  <option value="null">Seleccione un anfitrion</option>
-
-                </select>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Permiso</label>
+                <label>Acceso</label>
                 <select name="" id="permiso" class="form-control">
-                  <option value="NO PERMITIDO">NO PERMITIDO</option>
-                  <option value="PERMITIDO">PERMITIDO</option>
+                  <option value="Permitido">Permitido</option>
+                  <option value="Denegado">Denegado</option>
                 </select>
               </div>
             </div>
-
-
-
-
-
+            <div class="form-group mb-3">
+              <label>Vehiculo</label>
+                <input type="text" name="" id="vehiculo" value="N/A" class="form-control">
+                <span id="FB_vehiculo"></span>
+            </div>
 
           </div>
           <div class="modal-footer">
@@ -512,6 +497,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <script>
+ 
 
 
 
@@ -551,10 +539,31 @@
 
       $(document).ready(function () {
         $('.modal').modal();
+        $('.editar-enlace').on('click', function(e) {
+  e.preventDefault(); // Prevenir comportamiento predeterminado del enlace
+
+  // Obtener la fila padre
+  var fila = $(this).closest('tr');
+
+  // Obtener los valores de las celdas de la fila
+  var tipoDocumento = fila.find('td:eq(1)').text();
+  var numeroDocumento = fila.find('td:eq(2)').text();
+  var nombre = fila.find('td:eq(3)').text();
+  var apellido = fila.find('td:eq(4)').text();
+  var genero = fila.find('td:eq(5)').text();
+
+  // Asignar los valores a los inputs del modal
+  $('#tipo_documento_visitante').val(tipoDocumento);
+  $('#numero_documento_visitante').val(numeroDocumento);
+  $('#nombre_visitante').val(nombre);
+  $('#apellido_visitante').val(apellido);
+  $('#genero_visitante').val(genero);
+
+  // Abrir el modal utilizando el atributo de Bootstrap
+  $('#modal_editar').modal('show');
+});
       });
     </script>
-
-    <script src="../js/funciones_visitantes.js"></script>
 
 </body>
 

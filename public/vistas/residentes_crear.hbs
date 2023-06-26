@@ -22,7 +22,6 @@
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme" disabled>
 
-  <script src="../js/validaciones_residentes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -249,8 +248,7 @@
                     {{!-- <h3>Datos personales</h3> --}}
                     <div class="form-group mb-3">
                       <label for="simpleinput">Tipo de Documento</label>
-                      <select name="" id="tipo_documento_residente" class="form-control"
-                        onchange="validacion_tipo_documento_residente()">
+                      <select name="" id="tipo_documento_residente" class="form-control">
                         <option value="">Selecione un tipo de documento</option>
                         <option value="CC">CEDULA DE CIUDADANIA</option>
                         <option value="CE">CEDULA EXTRANJERIA</option>
@@ -260,36 +258,31 @@
 
                     <div class="form-group mb-3">
                       <label for="documento">Numero documento</label>
-                      <input type="number" id="numero_documento_residente" class="form-control"
-                        onchange="validacion_numero_documento_residente()" required>
+                      <input type="number" id="numero_documento_residente" class="form-control" required>
                       <div id="FB_documento"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Nombre Residentes</label>
-                      <input type="text" id="nombre_residente" class="form-control"
-                        onchange="validacion_nombre_residente()" required>
+                      <input type="text" id="nombre_residente" class="form-control" required>
                       <div id="FB_nombre"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Apellido Residentes</label>
-                      <input type="text" id="apellido_residente" class="form-control"
-                        onchange="validacion_apellido_residente()" required>
+                      <input type="text" id="apellido_residente" class="form-control" required>
                       <div id="FB_apellido"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Fecha nacimiento</label>
-                      <input type="date" id="fecha_nacimiento" class="form-control"
-                        onchange="validacion_fecha_nacimiento()" required>
+                      <input type="date" id="fecha_nacimiento" class="form-control" required>
                       <div id="FB_fecha_nacimiento"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label>Genero</label>
-                      <select name="" id="genero_residente" class="form-control"
-                        onchange="validacion_genero_residente()">
+                      <select name="" id="genero_residente" class="form-control">
                         <option value="">Seleccione un genero</option>
                         <option value="M">MASCULINO</option>
                         <option value="F">FEMENINO</option>
@@ -300,14 +293,13 @@
 
                     <div class="form-group mb-3">
                       <label>Telefono</label>
-                      <input type="text" id="telefono_residente" class="form-control"
-                        onchange="validacion_telefono_residente()">
+                      <input type="text" id="telefono_residente" class="form-control">
                       <div id="FB_telefono"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label>Correo</label>
-                      <input type="email" id="correo" class="form-control" onchange="validacion_correo()" required>
+                      <input type="email" id="correo" class="form-control" required>
                       <div id="FB_correo"></div>
                     </div>
 
@@ -327,7 +319,7 @@
 
                     <div class="form-group mb-3">
                       <label for="simpleinput">Tipo residente</label>
-                      <select name="" id="tipo_residente" class="form-control" onchange="validacion_tipo_residente()">
+                      <select name="" id="tipo_residente" class="form-control">
                         <option value="">Seleccione un tipo de residente</option>
                         <option value="ARRENDATARIO">ARRENDATARIO</option>
                         <option value="PROPIETARIO">PROPIETARIO</option>
@@ -337,7 +329,7 @@
 
                     <div class="form-group mb-3">
                       <label>Habita</label>
-                      <select name="" id="habita" class="form-control">
+                      <select name="" id="habita" class="form-control" value="true">
                         <option value="">Selecione un estado</option>
                         <option value="true">SI</option>
                         <option value="false">NO</option>
@@ -354,13 +346,13 @@
 
                     <div class="form-group mb-3">
                       <label>Fecha inicio</label>
-                      <input type="date" id="fecha_inicio" class="form-control" onchange="validacion_fecha_inicio()">
+                      <input type="date" id="fecha_inicio" class="form-control">
                       <div id="FB_fecha_inicio"></div>
                     </div>
 
                     <div id="div_fecha_fin" class="form-group mb-3">
                       <label>Fecha fin</label>
-                      <input type="date" id="fecha_fin" class="form-control" onchange="">
+                      <input type="date" id="fecha_fin" class="form-control">
                       <div id="FB_fecha_fin"></div>
                     </div>
 
@@ -386,7 +378,35 @@
     </main> <!-- main -->
   </div> <!-- .wrapper -->
 
+  {{!-- Modal notificaciones --}}
+
+  <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="defaultModalLabel">Notificaciones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group list-group-flush my-n3">
+          </div> <!-- / .list-group -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear
+            All</button>
+        </div>
+      </div>
+    </div>
+              
+  </div>
+
+  
+  <script src="../js/validaciones_residentes.js"></script>
   <script src="../js/funciones_residentes.js"></script>
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>

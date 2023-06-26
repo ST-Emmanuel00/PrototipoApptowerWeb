@@ -38,11 +38,20 @@ const listar_espacios = async () => {
 
                 <td>
 
+                  <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><i class = "fe fe-more-vertical fe-24"></i>
+                  </button>
 
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal_editar" onclick = 'editar_espacio(${JSON.stringify(espacio)})'><i class = "fe fe-edit fe-24"></i></a>
-                    <a class="waves-effect waves-light btn modal-trigger red" href="#" onclick = "eliminar_espacio('${espacio._id}')"><i class = "fe fe-delete fe-24"></i></a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="actionMenuButton">
 
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#eventModal"
+                    onclick="">Crear propietario</button>
 
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#eventModal"
+                    onclick='editar_espacio(${JSON.stringify(espacio)})'>Editar espacio</button>
+                    <a onclick="eliminar_espacio('${espacio._id}')" class="dropdown-item" href="#">Eliminar espacio</a>
+
+                  </div>
 
                 </td>
 
@@ -91,16 +100,9 @@ const actualizar_espacio = async () => {
     .then(json => {
 
       alert(json.espacios)
+      location.reload()
+
     })
-
-  _id.value = ''
-  tipo_espacio.value = ''
-  nombre_espacio.value = ''
-  area.value = ''
-  capacidad.value = ''
-  estado.value = ''
-
-
 
 }
 
@@ -147,15 +149,12 @@ const eliminar_espacio = (_id,) => {
       .then(json => {
 
         alert(json.espacios)
+        location.reload();
 
       })
   }
 
-  location.reload();
 }
-
-
-
 
 const registrar_espacio = () => {
 
@@ -195,14 +194,10 @@ const registrar_espacio = () => {
 
       alert(json.espacios)
 
+      window.location.href = 'espacios'
+
+
     })
-
-  tipo_espacio.value = ''
-  nombre_espacio.value = ''
-  area.value = ''
-  capacidad.value = ''
-  estado.value = ''
-
 
 }
 

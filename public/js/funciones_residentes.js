@@ -2,7 +2,7 @@ const url = 'https://apptower-bk.onrender.com/api/residentes'
 
 const listar_residentes = async () => {
 
-  // console.log('Si estas dentro')
+  console.log('Si estas dentro')
 
   let body = document.getElementById('contenido_residentes')
 
@@ -22,6 +22,20 @@ const listar_residentes = async () => {
           (residentes.estado == 'ACTIVO') ? resaltato = 'badge-success' : resaltato = 'badge-danger'
           // (residentes.habita == true)?respuesta = 'SI':respuesta = 'NO'
 
+          function formato_fecha(fecha_node) {
+
+            let fecha = new Date(fecha_node)
+
+            var dia = fecha.getDate();
+            var mes = fecha.getMonth() + 1;
+            var anio = fecha.getFullYear();
+
+            fecha_resultado = dia + '-' + mes + '-' + anio;
+
+            return fecha_resultado
+          }
+
+
 
           mensaje += `<tr>
 
@@ -31,7 +45,7 @@ const listar_residentes = async () => {
                 <td>${residentes.numero_documento_residente}</td>
                 <td>${residentes.nombre_residente}</td>
                 <td>${residentes.apellido_residente}</td>
-                <td>${residentes.fecha_nacimiento}</td>
+                <td>${formato_fecha(residentes.fecha_nacimiento)}</td>
                 <td>${residentes.genero_residente}</td>
                 <td>${residentes.telefono_residente}</td>
                 <td>${residentes.correo}</td>
@@ -41,19 +55,29 @@ const listar_residentes = async () => {
                 <td>${residentes.habita === true ? 'SI' : 'NO'}</td>
                 
 
-                <td>${residentes.fecha_inicio}</td>
-                <td>${residentes.fecha_fin}</td>
+                <td>${formato_fecha(residentes.fecha_inicio)}</td>
+                <td>${formato_fecha(residentes.fecha_fin)}</td>
 
 
                 <td><span class="badge ${resaltato}">${residentes.estado}</span></td>
 
                 <td>
 
+                <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenuButton" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false"><i class = "fe fe-more-vertical fe-24"></i>
+                </button>
 
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal_editar" onclick = 'editar_residente(${JSON.stringify(residentes)})'><i class = "fe fe-edit fe-24"></i></a>
-                    <a class="waves-effect waves-light btn modal-trigger red" href="#" onclick = "eliminar_residente('${residentes._id}')"><i class = "fe fe-delete fe-24"></i></a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="actionMenuButton">
 
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#eventModal"
+                    onclick="">Crear envio</button>
+                    
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#eventModal"
+                    onclick='editar_residente(${JSON.stringify(residentes)})'>Editar</button>
+                    <a onclick="eliminar_residente('${residentes._id}')" class="dropdown-item" href="#">Eliminar</a>
+                    <a class="dropdown-item" href="#"></a>
 
+                  </div>
 
                 </td>
 
@@ -116,28 +140,31 @@ const actualizar_residente = async () => {
     .then(json => {
 
       alert(json.residentes)
+
+      location.reload()
+
     })
 
-  _id.value = ''
-  tipo_documento_residente.value = ''
-  numero_documento_residente.value = ''
-  nombre_residente.value = ''
-  apellido_residente.value = ''
-  fecha_nacimiento.value = ''
-  genero_residente.value = ''
-  telefono_residente.value = ''
-  correo.value = ''
-  tipo_residente.value = ''
-  residencia.value = ''
-  habita.value = ''
-  fecha_inicio.value = ''
-  fecha_fin.value = ''
-  estado.value = ''
+  // _id.value = ''
+  // tipo_documento_residente.value = ''
+  // numero_documento_residente.value = ''
+  // nombre_residente.value = ''
+  // apellido_residente.value = ''
+  // fecha_nacimiento.value = ''
+  // genero_residente.value = ''
+  // telefono_residente.value = ''
+  // correo.value = ''
+  // tipo_residente.value = ''
+  // residencia.value = ''
+  // habita.value = ''
+  // fecha_inicio.value = ''
+  // fecha_fin.value = ''
+  // estado.value = ''
 
 
 }
 
-const editar_residente = (residentes) => {
+const editar_residente = async (residentes) => {
 
   console.log(residentes._id)
 
@@ -161,7 +188,7 @@ const editar_residente = (residentes) => {
 
 
 
-const eliminar_residente = (_id,) => {
+const eliminar_residente = async (_id) => {
   console.log("si entro aqui")
   if (confirm(`¿Está seguro de que quieres eliminar?`) == true) {
 
@@ -189,10 +216,15 @@ const eliminar_residente = (_id,) => {
 
         alert(json.residentes)
 
+        location.reload()
+
       })
+    // 
   }
 
-  location.reload();
+
+
+
 }
 
 
@@ -246,30 +278,11 @@ const registrar_residente = () => {
   })
     .then(response => response.json())
     .then(json => {
-      if (json.success == false) {
-        Swal.fire({
-          
-          icon: 'error',
-          title: 'Error al registrar el residente',
-          text: json.message
-        });
-      } else {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: json.residentes,
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }
+
+      alert(json.residentes)
+
     })
-    .catch(error => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Ocurrió un error al realizar la solicitud'
-      });
-    });
+
 
 
   tipo_documento_residente.value = ''
@@ -317,7 +330,9 @@ const boton_crear = document.querySelector('#boton_crear').addEventListener('cli
 
 const boton_actualizar = document.querySelector('boton_actualizar').addEventListener('click', () => {
 
+  console.log('hola puto')
   actualizar_residente();
+
 })
 
 

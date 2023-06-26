@@ -243,9 +243,10 @@
                       <label for="simpleinput">Tipo de Documento</label>
                       <select name="" id="tipo_documento_propietario" class="form-control">
                         <option value="">Selecione un tipo de documento</option>
-                        <option value="CC">Cedula ciudadania</option>
-                        <option value="CE">Cedula extranjeria</option>
+                        <option value="CC">CEDULA DE CIUDADANIA</option>
+                        <option value="CE">CEDULA EXTRANJERIA</option>
                       </select>
+                      <div id="FB_tipo_documento"></div>
                     </div>
                     <div class="form-group mb-3">
                       <label for="documento">Numero documento</label>
@@ -265,20 +266,22 @@
                         required>
                       <div id="FB_apellido"></div>
                     </div>
+
                     <div class="form-group mb-3">
                       <label for="example-password">Fecha nacimiento</label>
-                      <input type="date" id="fecha_nacimiento" class="form-control" onchange="" required>
-                      <div id="FB_edad"></div>
+                      <input type="date" id="fecha_nacimiento" class="form-control" required>
+                      <div id="FB_fecha_nacimiento"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label>Genero</label>
                       <select name="" id="genero_propietario" class="form-control">
                         <option value="">Seleccione un genero</option>
-                        <option value="M">Masculino</option>
-                        <option value="F">Femenio</option>
-                        <option value="otro">Otro</option>
+                        <option value="M">MASCULINO</option>
+                        <option value="F">FEMENINO</option>
+                        <option value="otro">OTRO</option>
                       </select>
+                      <div id="FB_genero_propietario"></div>
                     </div>
 
 
@@ -330,8 +333,35 @@
     </main> <!-- main -->
   </div> <!-- .wrapper -->
 
+  {{!-- Modal notificaciones --}}
+
+  <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="defaultModalLabel">Notificaciones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group list-group-flush my-n3">
+          </div> <!-- / .list-group -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear
+            All</button>
+        </div>
+      </div>
+    </div>
+              
+  </div>
+
+  {{!-- Funciones backend --}}
   <script src="../js/funciones_propietarios.js"></script>
-  <script src="../js/ER_validacion.js"></script>
+  {{!-- Validaciones formulario --}}
+  <script src="../js/validaciones_propietarios.js"></script>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>

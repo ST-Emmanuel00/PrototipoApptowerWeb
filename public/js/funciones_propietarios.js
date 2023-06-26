@@ -22,6 +22,18 @@ const listar_propietarios = async () => {
           (propietarios.estado == 'ACTIVO') ? resaltato = 'badge-success' : resaltato = 'badge-danger'
           // (residentes.habita == true)?respuesta = 'SI':respuesta = 'NO'
 
+          function formato_fecha (fecha_node) {
+
+            let fecha = new Date(fecha_node)
+
+            var dia = fecha.getDate();
+            var mes = fecha.getMonth() + 1;
+            var anio = fecha.getFullYear();
+  
+            fecha_resultado = dia + '-' + mes + '-' + anio;
+
+            return fecha_resultado
+          }
 
           mensaje += `<tr>
 
@@ -31,7 +43,7 @@ const listar_propietarios = async () => {
                 <td>${propietarios.numero_documento_propietario}</td>
                 <td>${propietarios.nombre_propietario}</td>
                 <td>${propietarios.apellido_propietario}</td>
-                <td>${propietarios.fecha_nacimiento}</td>
+                <td>${formato_fecha(propietarios.fecha_nacimiento)}</td>
                 <td>${propietarios.genero_propietario}</td>
                 <td>${propietarios.telefono_propietario}</td>
                 <td>${propietarios.correo}</td>
@@ -44,11 +56,21 @@ const listar_propietarios = async () => {
 
                 <td>
 
+                <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenuButton" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false"><i class = "fe fe-more-vertical fe-24"></i>
+                </button>
 
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal_editar" onclick = 'editar_propietario(${JSON.stringify(propietarios)})'><i class = "fe fe-edit fe-24"></i></a>
-                    <a class="waves-effect waves-light btn modal-trigger red" href="#" onclick = "eliminar_residente('${propietarios._id}')"><i class = "fe fe-delete fe-24"></i></a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="actionMenuButton"
 
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#eventModal"
+                    onclick="">Crear envio</button>
 
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#eventModal"
+                    onclick='editar_propietario(${JSON.stringify(propietarios)})'>Editar propietario</button>
+                    <a onclick="eliminar_propietario('${propietarios._id}')" class="dropdown-item" href="#">Eliminar</a>
+                    
+
+                  </div>
 
                 </td>
 
@@ -103,19 +125,9 @@ const actualizar_propietario = async () => {
     .then(json => {
 
       alert(json.propietarios)
+      location.reload()
     })
 
-  _id.value = ''
-  tipo_documento_propietario.value = ''
-  numero_documento_propietario.value = ''
-  nombre_propietario.value = ''
-  apellido_propietario.value = ''
-  fecha_nacimiento.value = ''
-  genero_propietario.value = ''
-  telefono_propietario.value = ''
-  correo.value = ''
-  propiedad.value = ''
-  estado.value = ''
 
 
 }
@@ -141,7 +153,7 @@ const editar_propietario = (propietarios) => {
 
 
 
-const eliminar_residente = (_id,) => {
+const eliminar_propietario = (_id,) => {
   console.log("si entro aqui")
   if (confirm(`¿Está seguro de que quieres eliminar?`) == true) {
 
@@ -168,11 +180,11 @@ const eliminar_residente = (_id,) => {
       .then(json => {
 
         alert(json.residentes)
+        location.reload();
 
       })
   }
 
-  location.reload();
 }
 
 
@@ -223,19 +235,9 @@ const registrar_propietario = () => {
     .then(json => {
 
       alert(json.propietarios)
-
+      window.location.href = 'propietarios'
     })
 
-    tipo_documento_propietario.value = ''
-    numero_documento_propietario.value = ''
-    nombre_propietario.value = ''
-    apellido_propietario.value = ''
-    fecha_nacimiento.value = ''
-    genero_propietario.value = ''
-    telefono_propietario.value = ''
-    correo.value = ''
-    propiedad.value = ''
-    estado.value = ''
 
 }
 

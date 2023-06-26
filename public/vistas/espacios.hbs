@@ -276,12 +276,6 @@
                           </div>
                         </form>
 
-
-
-
-
-
-
                       </div>
 
 
@@ -290,11 +284,18 @@
                           <a href="espacios_crear"><button class="btn btn-primary float-right ml-3"
                               type="button">{{ir_boton_crear}} </button></a>
 
+
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                              class="fe fe-download fe-16"></i></button>
+                          <div class="dropdown-menu" aria-labelledby="actionMenuButton">
+                            <a class="dropdown-item" href="#">Excel</a>
+                          </div>
+                          {{!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Descargar</button>
                           <div class="dropdown-menu" aria-labelledby="actionMenuButton">
                             <a class="dropdown-item" href="#">EXCEL</a>
-                          </div>
+                          </div> --}}
                         </div>
                       </div>
                     </div>
@@ -307,7 +308,7 @@
                         <tr role="row">
 
                           <th>Item</th>
-                          <th>Tipo espacio</th>
+                          <th>Tipo <br> espacio</th>
                           <th>Nombre</th>
                           <th>Area</th>
                           <th>Capacidad</th>
@@ -338,25 +339,8 @@
                 </div>
               </div> <!-- simple table -->
             </div> <!-- end section -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </main> <!-- main -->
   </div> <!-- .wrapper -->
-  <script src="../js/funciones_espacios.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/moment.min.js"></script>
@@ -390,136 +374,107 @@
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
   </script>
+  {{!-- Modal notificaciones --}}
 
-  <style>
-    .modal-dialog {
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-content {
-      max-width: 2800px;
-      border: 1px solid black;
-    }
-
-    .modal-body {
-      padding: 25px
-    }
-  </style>
-  <div id="modal_editar" class="modal">
-    <div class="modal-dialog modal-L"> <!-- Agregado: modal-xl para hacerlo más grande -->
+  <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="varyModalLabel">{{ir_boton_editar}}</h5>
-          <button type="button" class="close" data-dismiss="modal" onclick="salir()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <h5 class="modal-title" id="defaultModalLabel">Notificaciones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">
-
-          <div class="row">
-            <div class="col-md-6">
-
-
-              <div class="form-group mb-3">
-                <input type="hidden" id="_id">
-                <label for="simpleinput">Tipo espacio</label>
-                <select name="" id="tipo_espacio" class="form-control">
-                  <option value="null">ESCOGE TIPO DE ESPACIO</option>
-                  <option value="APARTAMENTO">APARTAMENTO</option>
-                  <option value="PARQUEADERO">PARQUEADERO</option>
-                  <option value="SALON SOCIAL">SALON SOCIAL</option>
-                  <option value="ZONA HUMEDA">ZONA HUMEDA</option>
-
-                </select>
-              </div>
-
-
-              <div class="form-group mb-3">
-                <label for="example-password">Nombre espacio</label>
-                <input type="text" id="nombre_espacio" class="form-control" onchange="ER_nombre_espacio()" required>
-                <div id="FB_nombre_espacio"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Estado</label>
-                <select name="" id="estado" class="form-control">
-                  <option value="ACTIVO">ACTIVO</option>
-                  <option value="INACTIVO">INACTIVO</option>
-                </select>
-              </div>
-
-
-            </div> <!-- /.col -->
-            <div class="col-md-6">
-
-              <div class="form-group mb-3">
-                <label for="example-password">Area espacio</label>
-                <input type="number" id="area" class="form-control" onchange="ER_area()" required>
-                <div id="FB_area"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label for="example-password">Capacidad</label>
-                <input type="number" id="capacidad" class="form-control" onchange="ER_capacidad()" required>
-                <div id="FB_capacidad"></div>
-              </div>
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" id="salir"
-                onclick="salir()">Cancelar</button><br>
-              <button type="button" id="boton_actualizar" onclick="actualizar_espacio()"
-                class="btn mb-2 btn-primary">Actualizar</button>
-            </div>
-          </div>
+          <div class="list-group list-group-flush my-n3">
+          </div> <!-- / .list-group -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear
+            All</button>
         </div>
       </div>
+    </div>
+              
+  </div>
+
+  {{!-- Modal editar --}}
+
+
+  <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="varyModalLabel">Editar espacio</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body p-4">
+
+          <div class="form-group mb-3">
+            <input id="_id" type="hidden">
+            <label for="tipo_espacio">Tipo espacio</label>
+            <select name="" id="tipo_espacio" class="form-control">
+              <option value="null">ESCOGE TIPO DE ESPACIO</option>
+              <option value="APARTAMENTO">APARTAMENTO</option>
+              <option value="PARQUEADERO">PARQUEADERO</option>
+              <option value="SALON SOCIAL">SALON SOCIAL</option>
+              <option value="ZONA HUMEDA">ZONA HUMEDA</option>
+
+            </select>
+          </div>
+
+
+          <div class="form-group mb-3">
+            <label for="example-password">Nombre espacio</label>
+            <input type="text" id="nombre_espacio" class="form-control" onchange="" required>
+            <div id="FB_nombre_espacio"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Estado</label>
+            <select name="" id="estado" class="form-control">
+              <option value="ACTIVO">ACTIVO</option>
+              <option value="INACTIVO">INACTIVO</option>
+            </select>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="example-password">Area espacio</label>
+            <input type="number" id="area" class="form-control" onchange="" required>
+            <div id="FB_area"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="example-password">Capacidad</label>
+            <input type="number" id="capacidad" class="form-control" onchange="" required>
+            <div id="FB_capacidad"></div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer d-flex justify-content-between">
+          <button onclick="actualizar_espacio()" id="boton_actualizar" type="button" class="btn mb-2 btn-primary"><span
+              class="fe mr-2"></span>Actualizar
+            visitante</button>
+          <a href="espacios"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block">
+              <spana class="fe mr-2"></spana>Regresar
+            </button></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
 
-
-
-
-      <script>
-
-        const salir = () => {
-
-          window.location.href = 'espacios'
-
-        }
-      </script>
-
-      <!-- Agrega los scripts de Bootstrap en tu archivo HTML -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-      <!-- Compiled and minified JavaScript -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-
-      <script>
-
-        document.addEventListener('DOMContentLoaded', function () {
-          var elems = document.querySelectorAll('.modal');
-          //var instances = M.Modal.init(elems, options);
-        });
-
-        // Or with jQuery
-
-        $(document).ready(function () {
-          $('.modal').modal();
-        });
-      </script>
-
-      <script src="../js/funciones_espacios.js"></script>
+  {{!-- Funciones backend --}}
+  <script src="../js/funciones_espacios.js"></script>
+  {{!-- Validaciones formulario --}}
+  <script src="../js/validaciones_visitantes.js"></script>
 </body>
 
 </html>

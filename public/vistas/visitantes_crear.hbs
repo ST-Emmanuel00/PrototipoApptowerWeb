@@ -237,15 +237,18 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
+                    
                     <div class="form-group mb-3">
                       <input id="_id" type="hidden">
                       <label for="simpleinput">Tipo de Documento</label>
                       <select name="" id="tipo_documento_visitante" class="form-control">
                         <option value="">Selecione un tipo de documento</option>
-                        <option value="CC">Cedula ciudadania</option>
-                        <option value="CE">Cedula extranjeria</option>
+                        <option value="CC">CEDULA DE CIUDADANIA</option>
+                        <option value="CE">CEDULA EXTRANJERIA</option>
                       </select>
+                      <div id="FB_tipo_documento"></div>
                     </div>
+
                     <div class="form-group mb-3">
                       <label for="documento">Numero documento</label>
                       <input type="number" id="numero_documento_visitante" class="form-control" onchange="" required>
@@ -267,10 +270,11 @@
                       <label>Genero</label>
                       <select name="" id="genero_visitante" class="form-control">
                         <option value="">Seleccione un genero</option>
-                        <option value="M">Masculino</option>
-                        <option value="F">Femenio</option>
-                        <option value="otro">Otro</option>
+                        <option value="M">MASCULINO</option>
+                        <option value="F">FEMENINO</option>
+                        <option value="otro">OTRO</option>
                       </select>
+                      <div id="FB_genero_visitante"></div>
                     </div>
 
 
@@ -302,9 +306,7 @@
                       </select>
                     </div>
 
-
                   </div>
-
 
                   <div class="card-body">
                     <button id="boton_crear" type="button" class="btn mb-2 btn-primary btn-block"><span
@@ -316,9 +318,37 @@
     </main> <!-- main -->
   </div> <!-- .wrapper -->
 
+  {{!-- Modal notificaciones --}}
 
-  <script src="../js/validaciones_residentes.js"></script>
+  <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="defaultModalLabel">Notificaciones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group list-group-flush my-n3">
+          </div> <!-- / .list-group -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear
+            All</button>
+        </div>
+      </div>
+    </div>
+              
+  </div>
+
+
+  {{!-- Funciones backend --}}
   <script src="../js/funciones_visitantes.js"></script>
+  {{!-- Validaciones formulario --}}
+  <script src="../js/validaciones_visitantes.js"></script>
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>

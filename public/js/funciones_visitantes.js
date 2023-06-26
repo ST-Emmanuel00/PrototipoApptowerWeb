@@ -40,11 +40,20 @@ const listar_visitantes = async () => {
 
                 <td>
 
+                    <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenuButton" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false"><i class = "fe fe-more-vertical fe-24"></i>
+                    </button>
 
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal_editar" onclick = 'editar_visitantes(${JSON.stringify(visitante)})'><i class = "fe fe-edit fe-24"></i></a>
-                    <a class="waves-effect waves-light btn modal-trigger red" href="#" onclick = "eliminar_visitante('${visitante._id}')"><i class = "fe fe-delete fe-24"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="actionMenuButton">
 
+                      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#eventModal"
+                      onclick="">rRegistrar ingreso</button>
 
+                      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#eventModal"
+                      onclick='editar_visitantes(${JSON.stringify(visitante)})'>Editar visitante</button>
+                      <a onclick="eliminar_visitante('${visitante._id}')" class="dropdown-item" href="#">Eliminar visitante</a>
+
+                    </div>
 
                 </td>
 
@@ -96,19 +105,10 @@ const actualizar_visitante = async () => {
     .then(json => {
 
       alert(json.visitantes)
+      location.reload();
+
     })
 
-  _id.value = ''
-  tipo_documento_propietario.value = ''
-  numero_documento_propietario.value = ''
-  nombre_propietario.value = ''
-  apellido_propietario.value = ''
-  fecha_nacimiento.value = ''
-  genero_propietario.value = ''
-  telefono_propietario.value = ''
-  correo.value = ''
-  propiedad.value = ''
-  estado.value = ''
 
 
 }
@@ -160,11 +160,12 @@ const eliminar_visitante = (_id,) => {
       .then(json => {
 
         alert(json.visitante)
+        location.reload();
 
       })
   }
 
-  location.reload();
+  
 }
 
 
@@ -212,28 +213,21 @@ const registrar_visitante = () => {
 
       alert(json.visitantes)
 
+      window.location.href = 'visitantes'
     })
 
-    tipo_documento_visitante.value = ''
-    numero_documento_visitante.value = ''
-    nombre_visitante.value = ''
-    apellido_visitante.value = ''
-    genero_visitante.value = ''
-    tipo_visitante.value = ''
-    anfitrion.value = ''
-    permiso.value = ''
 
 }
 
 
+
 listar_visitantes()
+
+
 
 const boton_crear = document.querySelector('#boton_crear').addEventListener('click', () => {
 
-
-
   registrar_visitante()
-
 
 })
 

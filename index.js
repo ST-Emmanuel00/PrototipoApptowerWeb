@@ -64,7 +64,7 @@ app.get('/visitantes_crear', (req, res) => {
 
         title: 'Visitantes 👩🏼‍🤝‍🧑🏾',
         modulo: 'Visitantes',
-        ir_boton_crear: 'Crear visitante',
+        boton_crear: 'Crear visitante',
         ir_boton_editar: 'Editar visitante'
     })
 })

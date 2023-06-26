@@ -1,12 +1,12 @@
 
 const express = require('express')
-const app = express() 
-const port = 8080
-const path = require('path') 
+const app = express()
+const port = 8082
+const path = require('path')
 const hbs = require('hbs')
-app.use(express.static('public'))   
+app.use(express.static('public'))
 
-app.set('views', path.join(__dirname+'/public/vistas'))
+app.set('views', path.join(__dirname + '/public/vistas'))
 app.set('view engine', 'hbs')//Motor de p<lantillas
 
 
@@ -45,9 +45,38 @@ app.get('/visitas', (req, res) => {
     })
 })
 
-
+app.get('/reservas', (req, res) => {
+    res.render('reservas', {
+        modulo: 'Reservas'
+    })
+})
+app.get('/agenda', (req, res) => {
+    res.render('agenda',{
+        modulo: 'Agenda'
+    })
+})
+app.get('/reserva_crear', (req, res) => {
+    res.render('reserva_crear', {
+        modulo: 'Reservas'
+    })
+})
+app.get('/notificaciones', (req, res) => {
+    res.render('notificacion_crear',{
+        modulo: 'notificaciones'
+    })
+})
+app.get('/vehiculos', (req, res) => {
+    res.render('vehiculos', {
+        modulo: 'Vehículos'
+    })
+})
+app.get('/vehiculos_crear', (req, res) => {
+    res.render('vehiculos_crear', {
+        modulo: 'Vehículos'
+    })
+})
 app.listen(port, () => {
 
     console.log(`Listening to  ${port}`)
-    
+
 })

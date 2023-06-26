@@ -288,13 +288,13 @@
 
                       <div class="col ml-auto">
                         <div class="dropdown float-right">
-                          <a href="visitas_crear"><button class="btn btn-primary float-right ml-3"
+                          <a href="ingresos_crear"><button class="btn btn-primary float-right ml-3"
                               type="button">{{ir_boton_crear}} </button></a>
 
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Descargar</button>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Descargar</button>
                           <div class="dropdown-menu" aria-labelledby="actionMenuButton">
-                            <a class="dropdown-item" href="#">EXCEL</a>
+                            <a class="dropdown-item" onclick="descargarExcel()" href="#">EXCEL</a>
                           </div>
                         </div>
                       </div>
@@ -302,7 +302,7 @@
 
 
                     <!-- table -->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="tabla visitas">
                       <thead>
 
                         <tr role="row">
@@ -313,13 +313,8 @@
                           <th>Nombre</th>
                           <th>Apellido</th>
                           <th>Genero</th>
-
-                          <th>Tipo visitante</th>
-
-                          <th>Anfitrion</th>
-
-                          <th>Permiso</th>
-
+                          <th>Espacio Visitado</th>
+                          <th>Fecha de ingreso</th>
 
 
                           <th>Action</th>
@@ -328,6 +323,18 @@
 
 
                       <tbody id="contenido_visitantes">
+                        <tr>
+                          <td>1</td>
+                          <td>CC</td>
+                          <td>1323432100</td>
+                          <td>Luisa Ngela</td>
+                          <td>Correa Ramirez</td>
+                          <td>F</td>
+                          <td>Frecuente</td>
+                          <td>Laura Perez</td>
+                          <td>Autorizado</td>
+                          <td><a href="">Editar</a></td>
+                        </tr>
 
 
 
@@ -364,7 +371,7 @@
 
     </main> <!-- main -->
   </div> <!-- .wrapper -->
-  <script src="../js/funciones_visitantes.js"></script>
+
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/moment.min.js"></script>
@@ -376,6 +383,25 @@
   <script src="js/config.js"></script>
   <script src='js/jquery.dataTables.min.js'></script>
   <script src='js/dataTables.bootstrap4.min.js'></script>
+  <script>
+    function descargarExcel() { 
+      var datos = obtenerDatosTabla();
+      var libro = XLS.utils.book_new();
+      var hoja  = XLS.utils..json_to_sheet(datos);
+      XLSX.utils.book_append_sheet(libro, hoja, "Datos");
+      var archivoNombre = "tabla.xlsx";
+      XLSX.writeFile(libro, archivoNombre);
+    }
+    function obtenerDatosTabla(){
+      var datos = [];
+      var tabla = document.getElementById("tabla visitas");
+      for (var j = 0; < fila.cells.lenght; j++){
+        datosFila[celda.getAttribute("data-nombre")]= celda.innerHTML;
+        datos.push(datosFila);
+      }
+      return datos;
+    }
+  </script>
   <script>
     $('#dataTable-1').DataTable(
       {
@@ -537,6 +563,7 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 
 
 
@@ -554,7 +581,6 @@
       });
     </script>
 
-    <script src="../js/funciones_visitantes.js"></script>
 
 </body>
 

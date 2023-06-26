@@ -64,28 +64,29 @@ app.get('/visitantes_crear', (req, res) => {
 
         title: 'Visitantes 👩🏼‍🤝‍🧑🏾',
         modulo: 'Visitantes',
-        ir_boton_crear: 'Crear visitante',
+        datagrid: 'visitantes',
+        ir_boton_crear: 'visitantes',
         ir_boton_editar: 'Editar visitante'
     })
 })
 
-app.get('/visitas', (req, res) => {
-    res.render('visitas', {
+app.get('/ingresos', (req, res) => {
+    res.render('ingresos', {
 
-        title: 'Visitas 👩🏼‍🤝‍🧑🏾',
-        modulo: 'Visitas',
-        ir_boton_crear: 'Crear visita',
-        ir_boton_editar: 'Editar visita'
+        title: 'Ingresos 👩🏼‍🤝‍🧑🏾',
+        modulo: 'Ingresos',
+        ir_boton_crear: 'Crear ingreso',
+        ir_boton_editar: 'Editar ingreso'
     })
 })
 
-app.get('/visitas_crear', (req, res) => {
-    res.render('visitas_crear', {
+app.get('/ingresos_crear', (req, res) => {
+    res.render('ingresos_crear', {
 
-        title: 'Visitas 👩🏼‍🤝‍🧑🏾',
-        modulo: 'Visitas',
-        datagrid: 'visitas',
-        boton_crear: 'Crear visita',
+        title: 'Ingresos 👩🏼‍🤝‍🧑🏾',
+        modulo: 'Ingresos',
+        datagrid: 'ingresos',
+        boton_crear: 'Crear ingreso',
     })
 })
 

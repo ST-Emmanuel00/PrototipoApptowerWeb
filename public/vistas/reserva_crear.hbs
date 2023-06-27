@@ -21,6 +21,7 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="css/app-dark.css" id="darkTheme" disabled>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 
@@ -88,13 +89,8 @@
                     </p>
 
                     <ul class="navbar-nav flex-fill w-100 mb-2">
-                        <li class="nav-item w-100">
-                            <a class="nav-link" href="dashboard">
-                                <i class="fe fe-bar-chart fe-24"></i>
-                                <span class="ml-3 item-text">Desempeño</span>
-                            </a>
-                        </li>
-                        {{!-- <li class="nav-item dropdown">
+
+                        <li class="nav-item dropdown">
                             <a href="#dashboard" data-toggle="collapse" aria-expanded="false"
                                 class="dropdown-toggle nav-link">
                                 <i class="fe fe-bar-chart fe-24"></i>
@@ -107,14 +103,23 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> --}}
-                        <li class="nav-item w-100">
-                            <a class="nav-link" href="usuarios">
-                                <i class="fe fe-24 fe-user"></i>
-                                <span class="ml-3 item-text">Usuarios</span>
-                            </a>
                         </li>
-                        {{!-- <li class="nav-item dropdown">
+
+                        <li class="nav-item dropdown">
+                            <a href="#configuracion" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle nav-link">
+                                <i class="fe fe-24 fe-settings"></i>
+                                <span class="ml-3 item-text">Configuración</span>
+                            </a>
+                            <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="/roles"><span class="ml-1 item-text">Roles</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
                             <a href="#usuarios" data-toggle="collapse" aria-expanded="false"
                                 class="dropdown-toggle nav-link">
                                 <i class="fe fe-24 fe-user"></i>
@@ -127,7 +132,8 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> --}}
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a href="#espacios" data-toggle="collapse" aria-expanded="false"
                                 class="dropdown-toggle nav-link">
@@ -177,44 +183,62 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link pl-3" href="visitas"><span
-                                            class="ml-1 item-text">Ingresos</span></a>
+                                            class="ml-1 item-text">Visitas</span></a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item w-100">
-                            <a class="nav-link" href="multas">
+                        <li class="nav-item dropdown">
+                            <a href="#pagos" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle nav-link">
                                 <i class="fe fe-24 fe-dollar-sign"></i>
-                                <span class="ml-3 item-text">Multas</span>
+                                <span class="ml-3 item-text">Pagos</span>
                             </a>
+                            <ul class="collapse list-unstyled pl-4 w-100" id="pagos">
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="cuentas"><span class="ml-1 item-text">cuentas de
+                                            cobro</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="cobros"><span
+                                            class="ml-1 item-text">cobros</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="comprobantes"><span
+                                            class="ml-1 item-text">comprobantes</span></a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item w-100">
-                            <a class="nav-link" href="notificaciones">
+                        <li class="nav-item dropdown">
+                            <a href="#notificaciones" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle nav-link">
                                 <i class="fe fe-24 fe-message-square"></i>
                                 <span class="ml-3 item-text">Notificaciones</span>
                             </a>
-                        </li>
-                        <li class="nav-item w-100">
-                            <a class="nav-link" href="vigilantes">
-                                <i class="fe fe-24 fe-lock"></i>
-                                <span class="ml-3 item-text">Vigilantes</span>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#configuracion" data-toggle="collapse" aria-expanded="false"
-                                class="dropdown-toggle nav-link">
-                                <i class="fe fe-24 fe-settings"></i>
-                                <span class="ml-3 item-text">Configuración</span>
-                            </a>
-                            <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
+                            <ul class="collapse list-unstyled pl-4 w-100" id="notificaciones">
                                 <li class="nav-item">
-                                    <a class="nav-link pl-3" href="/roles"><span class="ml-1 item-text">Roles</span>
+                                    <a class="nav-link pl-3" href="notificaciones"><span
+                                            class="ml-1 item-text">Notificaciones</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <br>
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">
+                        <li class="nav-item dropdown">
+                            <a href="#seguridad" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle nav-link">
+                                <i class="fe fe-24 fe-lock"></i>
+                                <span class="ml-3 item-text">Seguridad</span>
+                            </a>
+                            <ul class="collapse list-unstyled pl-4 w-100" id="seguridad">
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="vigilantes"><span
+                                            class="ml-1 item-text">Vigilantes</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li><br>
+                        <li class="nav-item dropdown">
+                            <a href="/" class="dropdown-toggle nav-link">
                                 <i class="fe fe-24 fe-slack"></i>
                                 <span class="ml-3 item-text">Cerrar Sesión</span>
                             </a>
@@ -247,21 +271,21 @@
                                             <label for="simpleinput">Espacio de la zona humeda</label>
                                             <select name="" id="espacio" class="form-control">
                                                 <option value=""></option>
-                                                <option value="Piscina">Piscina</option>
-                                                <option value="Sauna">Sauna</option>
+                                                <option value="PISCINA">Piscina</option>
+                                                <option value="SAUNA">Sauna</option>
                                             </select>
                                         </div>
                                         <div id="espaciop" style="display: none;">
                                             <div class="form-group mb-3">
                                                 <label>Placa del vehiculo</label>
                                                 <input type="text" id="placa" class="form-control"
-                                                    onchange="validacion_placa()" required>
+                                                    onchange="validacion_placa()" value="N/A" required>
                                                 <p id="rplaca"></p>
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label>parqueadero a reservar</label>
                                                 <input type="text" id="parqueadero" class="form-control"
-                                                    onchange="validacion_parqueadero()" required>
+                                                    onchange="validacion_parqueadero()" value="N/A">
                                                 <p id="rparqueadero"></p>
                                             </div>
                                         </div>
@@ -288,7 +312,7 @@
                                                     <div class="input-group-text" id="button-addon-date"><span
                                                             class="fe fe-calendar fe-16"></span></div>
                                                 </div>
-                                                <input type="text" class="form-control drgpicker" id="fecha reserva"
+                                                <input type="date" class="form-control drgpicker" id="fecha reserva"
                                                     value="">
                                             </div>
                                         </div>
@@ -299,7 +323,8 @@
                                                     <div class="input-group-text" id="button-addon-time"><span
                                                             class="fe fe-clock fe-16"></span></div>
                                                 </div>
-                                                <input type="text" class="form-control time-input" id="hora">
+                                                <input type="text" class="form-control time-input" id="hora"
+                                                    placeholder="10:00 AM">
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
@@ -311,9 +336,8 @@
                                     </div> <!-- /.col -->
 
                                     <div class="card-body">
-                                        <button id="boton_crear" type="button"
-                                            class="btn mb-2 btn-primary btn-block" onclick="crear_reserva()"><span
-                                                class="fe mr-2"></span>Crear</button>
+                                        <button id="boton_crear" type="button" class="btn mb-2 btn-primary btn-block"
+                                            onclick="crearReserva()"><span class="fe mr-2"></span>Crear</button>
                                         <a href="reservas"><button id="regresar" type="button"
                                                 class="btn mb-2 btn-light btn-block">
                                                 <spana class="fe mr-2"></spana>Regresar
@@ -339,6 +363,17 @@
     <script src="js/tinycolor-min.js"></script>
     <script src="js/config.js"></script>
     <script src="js/apps.js"></script>
+    <script src="js/daterangepicker.js"></script>
+    <script src="js/jquery.mask.min.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script src="js/jquery.steps.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/dropzone.min.js"></script>
+    <script src="js/uppy.min.js"></script>
+    <script src="js/quill.min.js"></script>
+    <script src="js/apps.js"></script>
+    <script src="js/jquery.timepicker.js"></script>
+    
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
     <script>
@@ -350,6 +385,61 @@
         gtag('js', new Date());
         gtag('config', 'UA-56159088-1');
     </script>
+    <div class="ui-timepicker-container ui-timepicker-no-scrollbar ui-timepicker-standard"
+        style="top: 448.45px; left: 1004.2px; height: 210.6px; width: 179.6px; z-index: 9999; cursor: default;">
+        <div class="ui-timepicker ui-widget ui-widget-content ui-menu ui-corner-all" style="width: 172px;">
+            <ul class="ui-timepicker-viewport" style="padding-right: 40px; width: 172px;">
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">12:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">12:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">01:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">01:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">02:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">02:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">03:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">03:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">04:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">04:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">05:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">05:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">06:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">06:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">07:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">07:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">08:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">08:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">09:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">09:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">10:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">10:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">11:00 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">11:30 AM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">12:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">12:30 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">01:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">01:30 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">02:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">02:30 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">03:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">03:30 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">04:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">04:30 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">05:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">05:30 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">06:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">06:30 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">07:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">07:30 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">08:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">08:30 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">09:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">09:30 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">10:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">10:30 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">11:00 PM</a></li>
+                <li class="ui-menu-item" style="width: 172px;"><a class="ui-corner-all">11:30 PM</a></li>
+            </ul>
+        </div>
+    </div>
 </body>
 
 </html>'

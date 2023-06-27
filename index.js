@@ -101,7 +101,36 @@ app.get('/visitas', (req, res) => {
     })
 })
 
-
+app.get('/reservas', (req, res) => {
+    res.render('reservas', {
+        modulo: 'Reservas'
+    })
+})
+app.get('/agenda', (req, res) => {
+    res.render('agenda',{
+        modulo: 'Agenda'
+    })
+})
+app.get('/reserva_crear', (req, res) => {
+    res.render('reserva_crear', {
+        modulo: 'Reservas'
+    })
+})
+app.get('/notificaciones', (req, res) => {
+    res.render('notificacion_crear',{
+        modulo: 'notificaciones'
+    })
+})
+app.get('/vehiculos', (req, res) => {
+    res.render('vehiculos', {
+        modulo: 'Vehículos'
+    })
+})
+app.get('/vehiculos_crear', (req, res) => {
+    res.render('vehiculos_crear', {
+        modulo: 'Vehículos'
+    })
+})
 
 //FECHA
 let fecha = new Date();
@@ -463,7 +492,36 @@ app.get("/descargar_excel_espacios", function (req, res) {
 
 });
 
-
+app.get('/reservas', (req, res) => {
+    res.render('reservas', {
+        modulo: 'Reservas'
+    })
+})
+app.get('/agenda', (req, res) => {
+    res.render('agenda',{
+        modulo: 'Agenda'
+    })
+})
+app.get('/reserva_crear', (req, res) => {
+    res.render('reserva_crear', {
+        modulo: 'Reservas'
+    })
+})
+app.get('/notificaciones', (req, res) => {
+    res.render('notificacion_crear',{
+        modulo: 'notificaciones'
+    })
+})
+app.get('/vehiculos', (req, res) => {
+    res.render('vehiculos', {
+        modulo: 'Vehículos'
+    })
+})
+app.get('/vehiculos_crear', (req, res) => {
+    res.render('vehiculos_crear', {
+        modulo: 'Vehículos'
+    })
+})
 app.listen(port, () => {
 
     console.log(`Listening to  ${port}`)

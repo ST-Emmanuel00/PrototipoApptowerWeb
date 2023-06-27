@@ -86,6 +86,7 @@ app.get('/ingresos_crear', (req, res) => {
         title: 'Ingresos 👩🏼‍🤝‍🧑🏾',
         modulo: 'Ingresos',
         datagrid: 'ingresos',
+        registro: 'Ingreso',
         boton_crear: 'Crear ingreso',
     })
 })

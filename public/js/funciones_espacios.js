@@ -1,3 +1,16 @@
+// const { validacion_tipo_documento_residente,
+//   validacion_numero_documento_residente,
+//   validacion_nombre_residente,
+//   validacion_apellido_residente,
+//   validacion_fecha_nacimiento,
+//   validacion_genero_residente,
+//   validacion_telefono_residente,
+//   validacion_correo,
+//   validacion_tipo_residente,
+//   validacion_fecha_inicio,
+//   validacion_fecha_fin } = require('../js/validaciones_residentes')
+
+
 const url = 'https://apptower-bk.onrender.com/api/espacios'
 
 const listar_espacios = async () => {
@@ -76,7 +89,8 @@ const actualizar_espacio = async () => {
   const estado = document.querySelector('#estado')
 
 
-  let espacios = {
+  let espacio = {
+
     _id: document.getElementById('_id').value,
     tipo_espacio: tipo_espacio.value,
     tipo_espacio: tipo_espacio.value,
@@ -88,21 +102,82 @@ const actualizar_espacio = async () => {
 
   }
 
-  console.log(espacios)
-  fetch(url, {
-    method: 'PUT',
-    mode: 'cors',
-    body: JSON.stringify(espacios),
-    headers: { "Content-type": "application/json; charset=UTF-8" }
-  })
+  const ER_nombre_espacio = /^[A-Z0-9]+$/
 
-    .then(response => response.json()) //La respuesta del método POST de la API
-    .then(json => {
 
-      alert(json.espacios)
-      location.reload()
+  try {
 
-    })
+    if (tipo_espacio.value === '' || nombre_espacio.value === '' || estado.value === '') {
+
+      throw 'No puede haber campos vacíos';
+
+    } else if (!ER_nombre_espacio.test(nombre_espacio.value)) {
+
+      throw 'El nombre de espacio no es válido';
+
+    }  else {
+
+      fetch(url, {
+        method: 'PUT',
+        mode: 'cors',
+        body: JSON.stringify(espacio),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+
+      })
+
+        .then(response => response.json())
+        .then(json => {
+          Swal.fire({
+
+            icon: 'success',
+            title: '¡Éxito!',
+            text: json.espacio,
+            showCancelButton: false,
+            showConfirmButton: true,
+            allowOutsideClick: false
+
+          });
+
+          window.location.href = 'espacios'
+
+        })
+        .catch(error => {
+          Swal.fire({
+
+            icon: 'error',
+            title: 'Tienes un problema',
+            text: error
+
+          });
+        });
+    }
+  } catch (error) {
+
+    Swal.fire({
+
+      icon: 'error',
+      title: 'Tienes un problema',
+      text: error
+
+    });
+  }
+
+
+  // console.log(espacios)
+  // fetch(url, {
+  //   method: 'PUT',
+  //   mode: 'cors',
+  //   body: JSON.stringify(espacios),
+  //   headers: { "Content-type": "application/json; charset=UTF-8" }
+  // })
+
+  //   .then(response => response.json()) //La respuesta del método POST de la API
+  //   .then(json => {
+
+  //     alert(json.espacios)
+  //     location.reload()
+
+  //   })
 
 }
 
@@ -123,36 +198,61 @@ const editar_espacio = (espacios) => {
 
 
 const eliminar_espacio = (_id,) => {
-  console.log("si entro aqui")
-  if (confirm(`¿Está seguro de que quieres eliminar?`) == true) {
 
-    let espacios = {
+  Swal.fire({
 
-      _id: _id
+    title: '¿Está seguro que quieres eliminar este item?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí',
+    cancelButtonText: 'Cancelar'
 
-    }
+  }).then((result) => {
 
-    console.log(espacios)
+    if (result.isConfirmed) {
+      // Captura de valores de datos enviados desde el formulario
+      let espacio = {
 
-    console.log(espacios)
-    console.log(JSON.stringify(espacios))
+        _id: _id
 
-    fetch(url, {
+      };
 
-      method: 'DELETE',
-      mode: 'cors',
-      body: JSON.stringify(espacios),
-      headers: { "Content-type": "application/json; charset=UTF-8" }
+      fetch(url, {
 
-    })
-      .then(response => response.json()) //La respuesta del método POST de la API
-      .then(json => {
-
-        alert(json.espacios)
-        location.reload();
+        method: 'DELETE',
+        mode: 'cors',
+        body: JSON.stringify(espacio),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
 
       })
-  }
+        .then(response => response.json())
+        .then(json => {
+
+          if (json.espacio) {
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: json.mensaje
+            });
+
+          } else {
+
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminación Exitosa',
+              text: 'Se eliminó la reserva correctamente',
+            }).then(() => {
+
+              location.reload();
+
+            });
+
+          }
+        });
+    }
+  });
+
 
 }
 
@@ -178,26 +278,70 @@ const registrar_espacio = () => {
 
   }
 
-  console.log(JSON.stringify(espacio))
+  // Validaciones POST espacios 
 
-  fetch(url, {
+  const ER_nombre_espacio = /^[A-Z0-9\s]+$/;
 
-    method: 'POST',
-    mode: 'cors',
-    body: JSON.stringify(espacio),
-    headers: { "Content-type": "application/json; charset=UTF-8" }
+  try {
+    if (tipo_espacio.value === '' || nombre_espacio.value === '' || estado.value === '') {
 
-  })
+      throw 'No puede haber campos vacíos';
 
-    .then(response => response.json()) //La respuesta del método POST de la API
-    .then(json => {
+    } else if (!ER_nombre_espacio.test(nombre_espacio.value)) {
 
-      alert(json.espacios)
+      throw 'El nombre de espacio no es válido';
 
-      window.location.href = 'espacios'
+    } else {
 
+      fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(espacio),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
 
-    })
+      })
+
+        .then(response => response.json())
+        .then(json => {
+          Swal.fire({
+
+            icon: 'success',
+            title: '¡Éxito!',
+            text: json.espacios,
+            showCancelButton: false,
+            showConfirmButton: true,
+            allowOutsideClick: false
+
+          }).then(()=> {
+
+            window.location.href = 'espacios'
+            
+          })
+
+          
+
+        })
+        .catch(error => {
+          Swal.fire({
+
+            icon: 'error',
+            title: 'Tienes un problema',
+            text: error
+
+          });
+        });
+    }
+  } catch (error) {
+
+    Swal.fire({
+
+      icon: 'error',
+      title: 'Tienes un problema',
+      text: error
+
+    });
+  }
+
 
 }
 

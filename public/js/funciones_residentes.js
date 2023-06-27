@@ -25,13 +25,13 @@ const listar_residentes = async () => {
           function formato_fecha(fecha_node) {
 
             let fecha = new Date(fecha_node)
-
+        
             var dia = fecha.getDate();
             var mes = fecha.getMonth() + 1;
             var anio = fecha.getFullYear();
-
-            fecha_resultado = dia + '-' + mes + '-' + anio;
-
+        
+            fecha_resultado = anio + '-' + mes + '-' + dia;
+        
             return fecha_resultado
           }
 
@@ -110,6 +110,8 @@ const actualizar_residente = async () => {
   const fecha_fin = document.querySelector('#fecha_fin')
   const estado = document.querySelector('#estado')
 
+  
+
   let residentes = {
     _id: document.getElementById('_id').value,
     tipo_documento_residente: tipo_documento_residente.value,
@@ -128,38 +130,114 @@ const actualizar_residente = async () => {
     estado: estado.value,
   }
 
-  console.log(residentes)
-  fetch(url, {
-    method: 'PUT',
-    mode: 'cors',
-    body: JSON.stringify(residentes),
-    headers: { "Content-type": "application/json; charset=UTF-8" }
-  })
 
-    .then(response => response.json()) //La respuesta del método POST de la API
-    .then(json => {
+  // Validaciones POST espacios 
 
-      alert(json.residentes)
+  const ER_nombre = /^[A-Za-z\s]+$/
+  const ER_apellido = /^[A-Za-z\s]+$/
+  const fecha_actual = new Date()
+  const ER_telefono = /^[0-9]{10}$/
+  const ER_correo = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
 
-      location.reload()
 
-    })
 
-  // _id.value = ''
-  // tipo_documento_residente.value = ''
-  // numero_documento_residente.value = ''
-  // nombre_residente.value = ''
-  // apellido_residente.value = ''
-  // fecha_nacimiento.value = ''
-  // genero_residente.value = ''
-  // telefono_residente.value = ''
-  // correo.value = ''
-  // tipo_residente.value = ''
-  // residencia.value = ''
-  // habita.value = ''
-  // fecha_inicio.value = ''
-  // fecha_fin.value = ''
-  // estado.value = ''
+
+  try {
+    if (tipo_documento_residente.value === '' || numero_documento_residente.value === '' || nombre_residente.value === '' ||
+      apellido_residente.value === '' || fecha_nacimiento.value === '' || genero_residente.value === '' ||
+      telefono_residente.value === '' || correo.value === '' || tipo_residente.value === '' ||
+      residencia.value === '' || habita.value === '' || fecha_inicio.value === '' || estado.value === '') {
+
+      throw 'No puede haber campos vacíos';
+
+    } else if (!ER_nombre.test(nombre_residente.value)) {
+
+      throw 'El nombre de residente no es válido';
+
+
+    } else if (!ER_apellido.test(apellido_residente.value)) {
+
+      throw 'El apellido de residente no es válido';
+
+
+    } else if (new Date(fecha_nacimiento.value) > new Date(fecha_actual)) {
+
+      throw 'Fecha nacimiento no es valida';
+
+    } else if (isNaN(new Date(fecha_nacimiento.value))) {
+
+      throw 'Debes seleccionar la fecha de nacimiento';
+
+
+    } else if (!ER_telefono.test(telefono_residente.value)) {
+
+      throw 'El numero de telefono no es valido';
+
+    } else if (!ER_correo.test(correo.value)) {
+
+      throw 'El correo no es valido';
+
+    } else if (new Date(fecha_inicio.value) > new Date(fecha_fin.value)) {
+
+      throw 'La fecha de salida debe ser antes que la fecha de ingreso';
+
+    } else if (new Date(fecha_inicio.value) > new Date(fecha_fin.value)) {
+
+      throw 'La fecha de salida debe ser antes que la fecha de ingreso';
+
+    }
+    else if (isNaN(new Date(fecha_inicio.value))) {
+
+      throw 'La fecha de salida debe ser antes que la fecha de ingreso';
+
+    } else {
+
+      fetch(url, {
+        method: 'PUT',
+        mode: 'cors',
+        body: JSON.stringify(residentes),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+
+      })
+
+        .then(response => response.json())
+        .then(json => {
+          Swal.fire({
+
+            icon: 'success',
+            title: '¡Éxito!',
+            text: json.residentes,
+            showCancelButton: false,
+            showConfirmButton: true,
+            allowOutsideClick: false
+
+          }).then(() => {
+
+            window.location.href = 'residentes'
+
+          })
+        })
+        .catch(error => {
+          Swal.fire({
+
+            icon: 'error',
+            title: 'Tienes un problema',
+            text: error
+
+          });
+        });
+    }
+  } catch (error) {
+
+    Swal.fire({
+
+      icon: 'error',
+      title: 'Tienes un problema',
+      text: error
+
+    });
+  }
+
 
 
 }
@@ -189,39 +267,59 @@ const editar_residente = async (residentes) => {
 
 
 const eliminar_residente = async (_id) => {
-  console.log("si entro aqui")
-  if (confirm(`¿Está seguro de que quieres eliminar?`) == true) {
+  Swal.fire({
 
-    let residentes = {
+    title: '¿Está seguro que quieres eliminar este item?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí',
+    cancelButtonText: 'Cancelar'
 
-      _id: _id
+  }).then((result) => {
 
-    }
+    if (result.isConfirmed) {
+      // Captura de valores de datos enviados desde el formulario
+      let residente = {
 
-    console.log(residentes)
+        _id: _id
 
-    console.log(residentes)
-    console.log(JSON.stringify(residentes))
+      };
 
-    fetch(url, {
+      fetch(url, {
 
-      method: 'DELETE',
-      mode: 'cors',
-      body: JSON.stringify(residentes),
-      headers: { "Content-type": "application/json; charset=UTF-8" }
-
-    })
-      .then(response => response.json()) //La respuesta del método POST de la API
-      .then(json => {
-
-        alert(json.residentes)
-
-        location.reload()
+        method: 'DELETE',
+        mode: 'cors',
+        body: JSON.stringify(residente),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
 
       })
-    // 
-  }
+        .then(response => response.json())
+        .then(json => {
 
+          if (json.residente) {
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: json.mensaje
+            });
+
+          } else {
+
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminación Exitosa',
+              text: 'Se eliminó la reserva correctamente',
+            }).then(() => {
+
+              location.reload();
+
+            });
+
+          }
+        });
+    }
+  });
 
 
 
@@ -268,37 +366,112 @@ const registrar_residente = () => {
 
   }
 
-  console.log(JSON.stringify(residentes))
+  // Validaciones POST espacios 
 
-  fetch(url, {
-    method: 'POST',
-    mode: 'cors',
-    body: JSON.stringify(residentes),
-    headers: { "Content-type": "application/json; charset=UTF-8" }
-  })
-    .then(response => response.json())
-    .then(json => {
-
-      alert(json.residentes)
-
-    })
+  const ER_nombre = /^[A-Za-z\s]+$/
+  const ER_apellido = /^[A-Za-z\s]+$/
+  const fecha_actual = new Date()
+  const ER_telefono = /^[0-9]{10}$/
+  const ER_correo = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
 
 
 
-  tipo_documento_residente.value = ''
-  numero_documento_residente.value = ''
-  nombre_residente.value = ''
-  apellido_residente.value = ''
-  fecha_nacimiento.value = ''
-  genero_residente.value = ''
-  telefono_residente.value = ''
-  correo.value = ''
-  tipo_residente.value = ''
-  residencia.value = ''
-  habita.value = ''
-  fecha_inicio.value = ''
-  fecha_fin.value = ''
-  estado.value = ''
+
+  try {
+    if (tipo_documento_residente.value === '' || numero_documento_residente.value === '' || nombre_residente.value === '' ||
+      apellido_residente.value === '' || fecha_nacimiento.value === '' || genero_residente.value === '' ||
+      telefono_residente.value === '' || correo.value === '' || tipo_residente.value === '' ||
+      residencia.value === '' || habita.value === '' || fecha_inicio.value === '' || estado.value === '') {
+
+      throw 'No puede haber campos vacíos';
+
+    } else if (!ER_nombre.test(nombre_residente.value)) {
+
+      throw 'El nombre de residente no es válido';
+
+
+    } else if (!ER_apellido.test(apellido_residente.value)) {
+
+      throw 'El apellido de residente no es válido';
+
+
+    } else if (new Date(fecha_nacimiento.value) > new Date(fecha_actual)) {
+
+      throw 'Fecha nacimiento no es valida';
+
+    } else if (isNaN(new Date(fecha_nacimiento.value))) {
+
+      throw 'Debes seleccionar la fecha de nacimiento';
+
+
+    } else if (!ER_telefono.test(telefono_residente.value)) {
+
+      throw 'El numero de telefono no es valido';
+
+    } else if (!ER_correo.test(correo.value)) {
+
+      throw 'El correo no es valido';
+
+    } else if (new Date(fecha_inicio.value) > new Date(fecha_fin.value)) {
+
+      throw 'La fecha de salida debe ser antes que la fecha de ingreso';
+
+    } else if (new Date(fecha_inicio.value) > new Date(fecha_fin.value)) {
+
+      throw 'La fecha de salida debe ser antes que la fecha de ingreso';
+
+    }
+    else if (isNaN(new Date(fecha_inicio.value))) {
+
+      throw 'La fecha de salida debe ser antes que la fecha de ingreso';
+
+    } else {
+
+      fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(residentes),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+
+      })
+
+        .then(response => response.json())
+        .then(json => {
+          Swal.fire({
+
+            icon: 'success',
+            title: '¡Éxito!',
+            text: json.residentes,
+            showCancelButton: false,
+            showConfirmButton: true,
+            allowOutsideClick: false
+
+          }).then(() => {
+
+            window.location.href = 'residentes'
+
+          })
+        })
+        .catch(error => {
+          Swal.fire({
+
+            icon: 'error',
+            title: 'Tienes un problema',
+            text: error
+
+          });
+        });
+    }
+  } catch (error) {
+
+    Swal.fire({
+
+      icon: 'error',
+      title: 'Tienes un problema',
+      text: error
+
+    });
+  }
 
 }
 
@@ -309,22 +482,8 @@ listar_residentes()
 
 const boton_crear = document.querySelector('#boton_crear').addEventListener('click', () => {
 
-  try {
 
     registrar_residente()
-
-  } catch (error) {
-
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Salio mal',
-      footer: '<a href="">SALIO RE PAILA</a>'
-    })
-  }
-
-
-
 
 })
 
@@ -335,11 +494,4 @@ const boton_actualizar = document.querySelector('boton_actualizar').addEventList
 
 })
 
-
-// module.exports = {
-
-//   registrar_residente,
-//   actualizar_residente
-
-// }
 

@@ -23,6 +23,10 @@
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
 
+  {{!-- Sweet alert --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
 
 
@@ -374,6 +378,7 @@
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
   </script>
+
   {{!-- Modal notificaciones --}}
 
   <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
@@ -442,13 +447,13 @@
             </select>
           </div>
 
-          <div class="form-group mb-3">
+          <div id="div_area" class="form-group mb-3">
             <label for="example-password">Area espacio</label>
             <input type="number" id="area" class="form-control" onchange="" required>
             <div id="FB_area"></div>
           </div>
 
-          <div class="form-group mb-3">
+          <div id="div_capacidad" class="form-group mb-3">
             <label for="example-password">Capacidad</label>
             <input type="number" id="capacidad" class="form-control" onchange="" required>
             <div id="FB_capacidad"></div>
@@ -474,7 +479,7 @@
   {{!-- Funciones backend --}}
   <script src="../js/funciones_espacios.js"></script>
   {{!-- Validaciones formulario --}}
-  <script src="../js/validaciones_visitantes.js"></script>
+  <script src="../js/validaciones_espacios.js"></script>
 </body>
 
 </html>

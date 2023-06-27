@@ -23,6 +23,9 @@
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
 
+    {{!-- Sweet alert --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 
 
@@ -358,11 +361,6 @@
     </main> <!-- main -->
   </div> <!-- .wrapper -->
 
-
-
-
-
-  <script src="../js/funciones_residentes.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/moment.min.js"></script>
@@ -374,7 +372,9 @@
   <script src="js/config.js"></script>
   <script src='js/jquery.dataTables.min.js'></script>
   <script src='js/dataTables.bootstrap4.min.js'></script>
+  
   <script>
+
     $('#dataTable-1').DataTable(
       {
         autoWidth: true,
@@ -535,7 +535,7 @@
 
           <div class="form-group mb-3">
             <label>Fecha fin</label>
-            <input type="date" id="fecha_fin" class="form-control" onchange="validacion_fecha_fin()">
+            <input type="date" id="fecha_fin"  class="form-control" onchange="validacion_fecha_fin()">
             <div id="FB_fecha_fin"></div>
           </div>
 
@@ -560,10 +560,10 @@
 
 
 
-  {{!-- Funciones backend --}}
-  <script src="../js/funciones_residentes.js"></script>
   {{!-- Validaciones formulario --}}
   <script src="../js/validaciones_residentes.js"></script>
+  {{!-- Funciones backend --}}
+  <script src="../js/funciones_residentes.js"></script>
 
 
 </body>

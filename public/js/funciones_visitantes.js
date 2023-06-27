@@ -80,7 +80,7 @@ const actualizar_visitante = async () => {
   const anfitrion = document.querySelector('#anfitrion')
   const permiso = document.querySelector('#permiso')
 
-  let visitantes = {
+  let visitante = {
     _id: document.getElementById('_id').value,
     tipo_documento_visitante: tipo_documento_visitante.value,
     numero_documento_visitante: numero_documento_visitante.value,
@@ -90,24 +90,78 @@ const actualizar_visitante = async () => {
     tipo_visitante: tipo_visitante.value,
     anfitrion: anfitrion.value,
     permiso: permiso.value,
-    
+
   }
 
-  console.log(visitantes)
-  fetch(url, {
-    method: 'PUT',
-    mode: 'cors',
-    body: JSON.stringify(visitantes),
-    headers: { "Content-type": "application/json; charset=UTF-8" }
-  })
+  // Validaciones POST espacios 
 
-    .then(response => response.json()) //La respuesta del método POST de la API
-    .then(json => {
+  const ER_nombre = /^[A-Za-z\s]+$/
+  const ER_apellido = /^[A-Za-z\s]+$/
 
-      alert(json.visitantes)
-      location.reload();
+  try {
+    if (tipo_documento_visitante.value === '' || numero_documento_visitante.value === '' || nombre_visitante.value === '' ||
+      apellido_visitante.value === '' || genero_visitante.value === '' || tipo_visitante.value === '' ||
+      anfitrion.value === '' || permiso.value === '') {
 
-    })
+      throw 'No puede haber campos vacíos';
+
+    } else if (!ER_nombre.test(nombre_visitante.value)) {
+
+      throw 'El nombre de visitante no es válido';
+
+
+    } else if (!ER_apellido.test(apellido_visitante.value)) {
+
+      throw 'El apellido de visitante no es válido';
+
+
+    } else {
+
+      fetch(url, {
+        method: 'PUT',
+        mode: 'cors',
+        body: JSON.stringify(visitante),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+
+      })
+
+        .then(response => response.json())
+        .then(json => {
+          Swal.fire({
+
+            icon: 'success',
+            title: '¡Éxito!',
+            text: json.visitantes,
+            showCancelButton: false,
+            showConfirmButton: true,
+            allowOutsideClick: false
+
+          }).then(() => {
+
+            window.location.href = 'visitantes'
+
+          })
+        })
+        .catch(error => {
+          Swal.fire({
+
+            icon: 'error',
+            title: 'Tienes un problema',
+            text: error
+
+          });
+        });
+    }
+  } catch (error) {
+
+    Swal.fire({
+
+      icon: 'error',
+      title: 'Tienes un problema',
+      text: error
+
+    });
+  }
 
 
 
@@ -126,7 +180,7 @@ const editar_visitantes = (visitantes) => {
   document.getElementById('tipo_visitante').value = visitantes.tipo_visitante
   document.getElementById('anfitrion').value = visitantes.anfitrion
   document.querySelector('#permiso').value = visitantes.permiso
-  
+
   document.getElementById('estado').value = visitantes.estado
 
 }
@@ -134,38 +188,61 @@ const editar_visitantes = (visitantes) => {
 
 
 const eliminar_visitante = (_id,) => {
-  console.log("si entro aqui")
-  if (confirm(`¿Está seguro de que quieres eliminar?`) == true) {
+  Swal.fire({
 
-    let visitante = {
+    title: '¿Está seguro que quieres eliminar este item?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí',
+    cancelButtonText: 'Cancelar'
 
-      _id: _id
+  }).then((result) => {
 
-    }
+    if (result.isConfirmed) {
+      // Captura de valores de datos enviados desde el formulario
+      let visitante = {
 
-    console.log(visitante)
+        _id: _id
 
-    console.log(visitante)
-    console.log(JSON.stringify(visitante))
+      };
 
-    fetch(url, {
+      fetch(url, {
 
-      method: 'DELETE',
-      mode: 'cors',
-      body: JSON.stringify(visitante),
-      headers: { "Content-type": "application/json; charset=UTF-8" }
-
-    })
-      .then(response => response.json()) //La respuesta del método POST de la API
-      .then(json => {
-
-        alert(json.visitante)
-        location.reload();
+        method: 'DELETE',
+        mode: 'cors',
+        body: JSON.stringify(visitante),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
 
       })
-  }
+        .then(response => response.json())
+        .then(json => {
 
-  
+          if (json.visitante) {
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: json.mensaje
+            });
+
+          } else {
+
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminación Exitosa',
+              text: 'Se eliminó la reserva correctamente',
+            }).then(() => {
+
+              location.reload();
+
+            });
+
+          }
+        });
+    }
+  });
+
+
 }
 
 
@@ -184,7 +261,7 @@ const registrar_visitante = () => {
   const anfitrion = document.querySelector('#anfitrion')
   const permiso = document.querySelector('#permiso')
 
-  let visitantes = {
+  let visitante = {
 
     tipo_documento_visitante: tipo_documento_visitante.value,
     numero_documento_visitante: numero_documento_visitante.value,
@@ -197,24 +274,77 @@ const registrar_visitante = () => {
 
   }
 
-  console.log(JSON.stringify(visitantes))
+  // Validaciones POST espacios 
 
-  fetch(url, {
+  const ER_nombre = /^[A-Za-z\s]+$/
+  const ER_apellido = /^[A-Za-z\s]+$/
 
-    method: 'POST',
-    mode: 'cors',
-    body: JSON.stringify(visitantes),
-    headers: { "Content-type": "application/json; charset=UTF-8" }
+  try {
 
-  })
+    if (tipo_documento_visitante.value === '' || numero_documento_visitante.value === '' || nombre_visitante.value === '' ||
+      apellido_visitante.value === '' || genero_visitante.value === '' || tipo_visitante.value === '' ||
+      anfitrion.value === '' || permiso.value === '') {
 
-    .then(response => response.json()) //La respuesta del método POST de la API
-    .then(json => {
+      throw 'No puede haber campos vacíos';
 
-      alert(json.visitantes)
+    } else if (!ER_nombre.test(nombre_visitante.value)) {
 
-      window.location.href = 'visitantes'
-    })
+      throw 'El nombre de visitante no es válido';
+
+
+    } else if (!ER_apellido.test(apellido_visitante.value)) {
+
+      throw 'El apellido de visitante no es válido';
+
+
+    } else {
+
+      fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(visitante),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+
+      })
+
+        .then(response => response.json())
+        .then(json => {
+          Swal.fire({
+
+            icon: 'success',
+            title: '¡Éxito!',
+            text: json.visitantes,
+            showCancelButton: false,
+            showConfirmButton: true,
+            allowOutsideClick: false
+
+          }).then(() => {
+
+            window.location.href = 'visitantes'
+
+          })
+        })
+        .catch(error => {
+          Swal.fire({
+
+            icon: 'error',
+            title: 'Tienes un problema',
+            text: error
+
+          });
+        });
+    }
+  } catch (error) {
+
+    Swal.fire({
+
+      icon: 'error',
+      title: 'Tienes un problema',
+      text: error
+
+    });
+  }
+
 
 
 }

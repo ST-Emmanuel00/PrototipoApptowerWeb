@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme" disabled>
 
+  {{!-- Sweet alert --}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -329,9 +330,9 @@
 
                     <div class="form-group mb-3">
                       <label>Habita</label>
-                      <select name="" id="habita" class="form-control" value="true">
-                        <option value="">Selecione un estado</option>
-                        <option value="true">SI</option>
+                      <select id="habita" class="form-control">
+                        <option value="">Seleccione un estado</option>
+                        <option value="true" selected>SI</option>
                         <option value="false">NO</option>
                       </select>
                     </div>
@@ -404,9 +405,10 @@
   </div>
 
   
+  {{!-- Validaciones formulario --}}
   <script src="../js/validaciones_residentes.js"></script>
+  {{!-- Funciones backend --}}
   <script src="../js/funciones_residentes.js"></script>
-
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -429,6 +431,10 @@
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
   </script>
+
+
 </body>
+
+
 
 </html>

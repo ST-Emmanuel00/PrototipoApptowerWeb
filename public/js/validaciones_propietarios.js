@@ -7,14 +7,14 @@ const genero_propietario = document.querySelector('#genero_propietario')
 const telefono_propietario = document.querySelector('#telefono_propietario')
 const correo = document.querySelector('#correo')
 
-tipo_documento_propietario.addEventListener('change', validacion_tipo_documento_propietario)
-numero_documento.addEventListener('change', validacion_numero_documento_propietario)
-nombre_propietario.addEventListener('change', validacion_nombre_propietario)
-apellido_propietario.addEventListener('change', validacion_apellido_propietario )
-fecha_nacimiento.addEventListener('change', validacion_fecha_nacimiento)
-genero_propietario.addEventListener('change', validacion_genero_propietario)
-telefono_propietario.addEventListener('change', validacion_telefono_propietario)
-correo.addEventListener('change', validacion_correo)
+tipo_documento_propietario.addEventListener('input', validacion_tipo_documento_propietario)
+numero_documento.addEventListener('input', validacion_numero_documento_propietario)
+nombre_propietario.addEventListener('input', validacion_nombre_propietario)
+apellido_propietario.addEventListener('input', validacion_apellido_propietario )
+fecha_nacimiento.addEventListener('input', validacion_fecha_nacimiento)
+genero_propietario.addEventListener('input', validacion_genero_propietario)
+telefono_propietario.addEventListener('input', validacion_telefono_propietario)
+correo.addEventListener('input', validacion_correo)
 
 // const boton_crear = document.getElementById('#boton_crear').addEventListener('change', ()=> {
 
@@ -47,7 +47,7 @@ function validacion_tipo_documento_propietario() {
         else {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             tipo_documento_propietario.style.borderColor = ''
             FB_tipo_documento.innerHTML = '';
@@ -58,7 +58,7 @@ function validacion_tipo_documento_propietario() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const tipo_documento_propietario = document.querySelector('#tipo_documento_propietario');
         const FB_tipo_documento = document.querySelector('#FB_tipo_documento');
@@ -86,7 +86,7 @@ function validacion_genero_propietario() {
         else {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             genero_propietario.style.borderColor = ''
             FB_genero_propietario.innerHTML = '';
@@ -97,7 +97,7 @@ function validacion_genero_propietario() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const genero_propietario = document.querySelector('#genero_propietario')
         const FB_genero_propietario = document.querySelector('#FB_genero_propietario')
@@ -122,7 +122,7 @@ function validacion_numero_documento_propietario() {
         if (ER_numero_documento.test(numero_documento.value) == true) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             numero_documento.style.borderColor = ''
             FB_documento.innerHTML = '';
@@ -137,7 +137,7 @@ function validacion_numero_documento_propietario() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const numero_documento = document.querySelector('#numero_documento_propietario');
         const FB_documento = document.querySelector('#FB_documento');
@@ -166,7 +166,7 @@ function validacion_nombre_propietario() {
         if (ER_nombre.test(nombre.value)) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
 
             nombre.style.borderColor = ''
@@ -174,7 +174,7 @@ function validacion_nombre_propietario() {
             FB_nombre.innerHTML = '';
             FB_nombre.style.color = ''
 
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
         }
 
         else {
@@ -186,7 +186,7 @@ function validacion_nombre_propietario() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
         console.log(boton_crear)
 
         const nombre = document.querySelector('#nombre_propietario');
@@ -215,14 +215,14 @@ function validacion_apellido_propietario() {
         if (ER_apellido.test(apellido.value)) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             apellido.style.borderColor = ''
 
             FB_apellido.innerHTML = '';
             FB_apellido.style.color = ''
 
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
         }
 
         else {
@@ -232,7 +232,7 @@ function validacion_apellido_propietario() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const apellido = document.querySelector('#apellido_propietario');
         const FB_apellido = document.querySelector('#FB_apellido');
@@ -259,7 +259,7 @@ function validacion_correo() {
         if (ER_correo.test(correo.value)) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             correo.style.borderColor = ''
 
@@ -272,7 +272,7 @@ function validacion_correo() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const correo = document.querySelector('#correo');
         const FB_correo = document.querySelector('#FB_correo');
@@ -297,7 +297,7 @@ function validacion_telefono_propietario() {
         if (ER_telefono.test(telefono.value)) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             telefono.style.borderColor = ''
 
@@ -310,7 +310,7 @@ function validacion_telefono_propietario() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const telefono = document.querySelector('#telefono_propietario');
         const FB_telefono = document.querySelector('#FB_telefono');
@@ -352,7 +352,7 @@ function validacion_fecha_nacimiento() {
         else {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             // console.log('Continua viendo precios de vuelos');
             fecha_nacimiento.style.borderColor = '';
@@ -363,7 +363,7 @@ function validacion_fecha_nacimiento() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const fecha_nacimiento = document.querySelector('#fecha_nacimiento');
         const FB_fecha_nacimiento = document.querySelector('#FB_fecha_nacimiento');

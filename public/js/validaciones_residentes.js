@@ -1,3 +1,5 @@
+console.log('estas en validaciones de residentes')
+
 const tipo_documento_residente = document.querySelector('#tipo_documento_residente')
 const numero_documento = document.querySelector('#numero_documento_residente')
 const nombre_residente = document.querySelector('#nombre_residente')
@@ -7,35 +9,42 @@ const genero_residente = document.querySelector('#genero_residente')
 const telefono_residente = document.querySelector('#telefono_residente')
 const correo = document.querySelector('#correo')
 const tipo_residente = document.querySelector('tipo_residente')
+const habita = document.getElementById('habita')
+const fecha_inicio = document.querySelector('#fecha_inicio')
 const fecha_fin = document.querySelector('#fecha_fin')
 
-tipo_documento_residente.addEventListener('change', validacion_tipo_documento_residente)
-numero_documento.addEventListener('change', validacion_numero_documento_residente)
-nombre_residente.addEventListener('change', validacion_nombre_residente)
-apellido_residente.addEventListener('change', validacion_apellido_residente )
-fecha_nacimiento.addEventListener('change', validacion_fecha_nacimiento)
-genero_residente.addEventListener('change', validacion_genero_residente)
-telefono_residente.addEventListener('change', validacion_telefono_residente)
-correo.addEventListener('change', validacion_correo)
-tipo_residente.addEventListener('change', validacion_tipo_residente)
-fecha_fin.addEventListener('change', validacion_fecha_fin)
+tipo_documento_residente.addEventListener('input', validacion_tipo_documento_residente)
+numero_documento.addEventListener('input', validacion_numero_documento_residente)
+nombre_residente.addEventListener('input', validacion_nombre_residente)
+apellido_residente.addEventListener('input', validacion_apellido_residente)
+fecha_nacimiento.addEventListener('input', validacion_fecha_nacimiento)
+genero_residente.addEventListener('input', validacion_genero_residente)
+telefono_residente.addEventListener('input', validacion_telefono_residente)
+correo.addEventListener('input', validacion_correo)
+tipo_residente.addEventListener('input', validacion_tipo_residente)
+fecha_inicio.addEventListener('input', validacion_fecha_inicio)
+fecha_fin.addEventListener('input', validacion_fecha_fin)
 
-// const boton_crear = document.getElementById('#boton_crear').addEventListener('change', ()=> {
 
-//     console.log('le diste click')
-//     validacion_tipo_documento_residente()
-//     validacion_numero_documento_residente()
-//     validacion_nombre_residente()
-//     validacion_apellido_residente()
-//     validacion_fecha_nacimiento()
-//     validacion_genero_residente()
-//     validacion_telefono_residente()
-//     validacion_correo()
-//     validacion_tipo_residente()
-//     validacion_fecha_inicio()
-//     validacion_fecha_fin()
-// })
+habita.addEventListener('keyup', () => {
+    
+    console.log('hola pirobo');
 
+
+    const div_fecha_fin = document.querySelector('#div_fecha_fin');
+
+    console.log(div_fecha_fin);
+
+    if (habita.value === 'true') {
+
+        div_fecha_fin.style.display = 'none';
+
+    } else {
+
+        div_fecha_fin.style.display = 'block';
+
+    }
+});
 
 
 
@@ -47,11 +56,13 @@ function validacion_tipo_documento_residente() {
 
         const tipo_documento_residente = document.querySelector('#tipo_documento_residente')
         const FB_tipo_documento = document.querySelector('#FB_tipo_documento')
+
         if (tipo_documento_residente.value == '') throw 'Debes selecionar un tipo de documento'
+
         else {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             tipo_documento_residente.style.borderColor = ''
             FB_tipo_documento.innerHTML = '';
@@ -62,7 +73,7 @@ function validacion_tipo_documento_residente() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const tipo_documento_residente = document.querySelector('#tipo_documento_residente');
         const FB_tipo_documento = document.querySelector('#FB_tipo_documento');
@@ -75,25 +86,6 @@ function validacion_tipo_documento_residente() {
 }
 
 
-
-const habita = document.getElementById('habita').addEventListener('change', () => {
-    const habita = document.getElementById('habita');
-    console.log(habita.value);
-
-    const div_fecha_fin = document.querySelector('#div_fecha_fin');
-    console.log(div_fecha_fin);
-
-    if (habita.value === 'true') {
-        div_fecha_fin.style.display = 'none';
-    } else {
-        div_fecha_fin.style.display = 'block';
-    }
-});
-
-
-
-
-
 function validacion_genero_residente() {
 
     try {
@@ -104,7 +96,7 @@ function validacion_genero_residente() {
         else {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             genero_residente.style.borderColor = ''
             FB_genero_residente.innerHTML = '';
@@ -115,7 +107,7 @@ function validacion_genero_residente() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const genero_residente = document.querySelector('#genero_residente')
         const FB_genero_residente = document.querySelector('#FB_genero_residente')
@@ -133,11 +125,11 @@ function validacion_tipo_residente() {
 
         const tipo_residente = document.querySelector('#tipo_residente')
         const FB_tipo_residente = document.querySelector('#FB_tipo_residente')
-        if (tipo_residente.value == '') throw 'Debes selecionar un tipo de residente'
+        if (tipo_residente.value === '') throw 'Debes selecionar un tipo de residente'
         else {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             tipo_residente.style.borderColor = ''
             FB_tipo_residente.innerHTML = '';
@@ -148,7 +140,7 @@ function validacion_tipo_residente() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const tipo_residente = document.querySelector('#tipo_residente')
         const FB_tipo_residente = document.querySelector('#FB_tipo_residente')
@@ -174,7 +166,7 @@ function validacion_numero_documento_residente() {
         if (ER_numero_documento.test(numero_documento.value) == true) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             numero_documento.style.borderColor = ''
             FB_documento.innerHTML = '';
@@ -189,7 +181,7 @@ function validacion_numero_documento_residente() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const numero_documento = document.querySelector('#numero_documento_residente');
         const FB_documento = document.querySelector('#FB_documento');
@@ -218,7 +210,7 @@ function validacion_nombre_residente() {
         if (ER_nombre.test(nombre.value)) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
 
             nombre.style.borderColor = ''
@@ -226,7 +218,7 @@ function validacion_nombre_residente() {
             FB_nombre.innerHTML = '';
             FB_nombre.style.color = ''
 
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
         }
 
         else {
@@ -238,7 +230,7 @@ function validacion_nombre_residente() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
         console.log(boton_crear)
 
         const nombre = document.querySelector('#nombre_residente');
@@ -267,14 +259,14 @@ function validacion_apellido_residente() {
         if (ER_apellido.test(apellido.value)) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             apellido.style.borderColor = ''
 
             FB_apellido.innerHTML = '';
             FB_apellido.style.color = ''
 
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
         }
 
         else {
@@ -284,7 +276,7 @@ function validacion_apellido_residente() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const apellido = document.querySelector('#apellido_residente');
         const FB_apellido = document.querySelector('#FB_apellido');
@@ -311,7 +303,7 @@ function validacion_correo() {
         if (ER_correo.test(correo.value)) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             correo.style.borderColor = ''
 
@@ -324,7 +316,7 @@ function validacion_correo() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const correo = document.querySelector('#correo');
         const FB_correo = document.querySelector('#FB_correo');
@@ -349,7 +341,7 @@ function validacion_telefono_residente() {
         if (ER_telefono.test(telefono.value)) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             telefono.style.borderColor = ''
 
@@ -362,7 +354,7 @@ function validacion_telefono_residente() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const telefono = document.querySelector('#telefono_residente');
         const FB_telefono = document.querySelector('#FB_telefono');
@@ -414,7 +406,7 @@ function validacion_fecha_nacimiento() {
         else {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             // console.log('Continua viendo precios de vuelos');
             fecha_nacimiento.style.borderColor = '';
@@ -426,7 +418,7 @@ function validacion_fecha_nacimiento() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const fecha_nacimiento = document.querySelector('#fecha_nacimiento');
         const FB_fecha_nacimiento = document.querySelector('#FB_fecha_nacimiento');
@@ -479,7 +471,7 @@ function validacion_fecha_inicio() {
         else {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             // console.log('Continua viendo precios de vuelos');
             fecha_inicio.style.borderColor = '';
@@ -491,7 +483,7 @@ function validacion_fecha_inicio() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const fecha_inicio = document.querySelector('#fecha_inicio');
         const fecha_fin = document.querySelector('#fecha_fin');
@@ -538,7 +530,7 @@ function validacion_fecha_fin() {
         else {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             // console.log('Continua viendo precios de vuelos');
             // fecha_inicio.style.borderColor = 'green';
@@ -550,7 +542,7 @@ function validacion_fecha_fin() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const fecha_inicio = document.querySelector('#fecha_inicio');
         const fecha_fin = document.querySelector('#fecha_fin');
@@ -575,6 +567,7 @@ function validacion_fecha_fin() {
 
     }
 }
+
 
 
 

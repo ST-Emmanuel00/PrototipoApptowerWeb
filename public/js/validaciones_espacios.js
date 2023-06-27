@@ -3,9 +3,9 @@ const nombre_espacio = document.querySelector('#nombre_espacio')
 const area = document.querySelector('#area')
 const capacidad = document.querySelector('#capacidad')
 
-nombre_espacio.addEventListener('change', validacion_nombre_espacio)
-area.addEventListener('change', validacion_area)
-capacidad.addEventListener('change', validacion_capacidad)
+nombre_espacio.addEventListener('input', validacion_nombre_espacio)
+area.addEventListener('input', validacion_area)
+capacidad.addEventListener('input', validacion_capacidad)
 
 tipo_espacio.addEventListener('change', () => {
 
@@ -68,8 +68,7 @@ function validacion_nombre_espacio() {
 
     try {
 
-        const ER_nombre_espacio = /^[A-Z0-9]{3,4}$/
-
+        const ER_nombre_espacio = /^[A-Z0-9\s]+$/;
         const nombre_espacio = document.querySelector('#nombre_espacio');
         const FB_nombre_espacio = document.querySelector('#FB_nombre_espacio');
 
@@ -83,7 +82,7 @@ function validacion_nombre_espacio() {
             FB_nombre_espacio.style.color = ''
         }
 
-        else throw 'Lo siento, no es valido ' + nombre_espacio.value;;
+        else throw 'Nombre de espacio no valido';
 
     } catch (error) {
 

@@ -5,11 +5,11 @@ const apellido_visitante = document.querySelector('#apellido_visitante')
 const genero_visitante = document.querySelector('#genero_visitante')
 
 
-tipo_documento_visitante.addEventListener('change', validacion_tipo_documento_visitante)
-numero_documento.addEventListener('change', validacion_numero_documento_visitante)
-nombre_visitante.addEventListener('change', validacion_nombre_visitante)
-apellido_visitante.addEventListener('change', validacion_apellido_visitante)
-genero_visitante.addEventListener('change', validacion_genero_visitante)
+tipo_documento_visitante.addEventListener('input', validacion_tipo_documento_visitante)
+numero_documento.addEventListener('input', validacion_numero_documento_visitante)
+nombre_visitante.addEventListener('input', validacion_nombre_visitante)
+apellido_visitante.addEventListener('input', validacion_apellido_visitante)
+genero_visitante.addEventListener('input', validacion_genero_visitante)
 
 
 // const boton_crear = document.getElementById('#boton_crear').addEventListener('change', ()=> {
@@ -43,7 +43,7 @@ function validacion_tipo_documento_visitante() {
         else {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             tipo_documento_visitante.style.borderColor = ''
             FB_tipo_documento.innerHTML = '';
@@ -54,7 +54,7 @@ function validacion_tipo_documento_visitante() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const tipo_documento_visitante = document.querySelector('#tipo_documento_visitante');
         const FB_tipo_documento = document.querySelector('#FB_tipo_documento');
@@ -77,7 +77,7 @@ function validacion_genero_visitante() {
         else {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             genero_visitante.style.borderColor = ''
             FB_genero_visitante.innerHTML = '';
@@ -88,7 +88,7 @@ function validacion_genero_visitante() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const genero_visitante = document.querySelector('#genero_visitante')
         const FB_genero_visitante = document.querySelector('#FB_genero_visitante')
@@ -113,7 +113,7 @@ function validacion_numero_documento_visitante() {
         if (ER_numero_documento.test(numero_documento.value) == true) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             numero_documento.style.borderColor = ''
             FB_documento.innerHTML = '';
@@ -128,7 +128,7 @@ function validacion_numero_documento_visitante() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const numero_documento = document.querySelector('#numero_documento_visitante');
         const FB_documento = document.querySelector('#FB_documento');
@@ -157,7 +157,7 @@ function validacion_nombre_visitante() {
         if (ER_nombre.test(nombre.value)) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
 
             nombre.style.borderColor = ''
@@ -165,7 +165,7 @@ function validacion_nombre_visitante() {
             FB_nombre.innerHTML = '';
             FB_nombre.style.color = ''
 
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
         }
 
         else {
@@ -177,7 +177,7 @@ function validacion_nombre_visitante() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
         console.log(boton_crear)
 
         const nombre = document.querySelector('#nombre_visitante');
@@ -206,14 +206,14 @@ function validacion_apellido_visitante() {
         if (ER_apellido.test(apellido.value)) {
 
             const boton_crear = document.getElementById('boton_crear')
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
 
             apellido.style.borderColor = ''
 
             FB_apellido.innerHTML = '';
             FB_apellido.style.color = ''
 
-            boton_crear.disabled = false
+            // boton_crear.disabled = false
         }
 
         else {
@@ -223,7 +223,7 @@ function validacion_apellido_visitante() {
     } catch (error) {
 
         const boton_crear = document.getElementById('boton_crear')
-        boton_crear.disabled = true
+        // boton_crear.disabled = true
 
         const apellido = document.querySelector('#apellido_visitante');
         const FB_apellido = document.querySelector('#FB_apellido');

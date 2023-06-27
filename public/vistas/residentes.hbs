@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
 
-    {{!-- Sweet alert --}}
+  {{!-- Sweet alert --}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
@@ -114,8 +114,13 @@
           </p>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
-
-            <li class="nav-item dropdown">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="dashboard">
+                <i class="fe fe-bar-chart fe-24"></i>
+                <span class="ml-3 item-text">Desempeño</span>
+              </a>
+            </li>
+            {{!-- <li class="nav-item dropdown">
               <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-bar-chart fe-24"></i>
                 <span class="ml-3 item-text">Desempeño</span>
@@ -126,22 +131,14 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a href="#configuracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-settings"></i>
-                <span class="ml-3 item-text">Configuración</span>
+            </li> --}}
+            <li class="nav-item w-100">
+              <a class="nav-link" href="usuariosL">
+                <i class="fe fe-24 fe-user"></i>
+                <span class="ml-3 item-text">Usuarios</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/roles"><span class="ml-1 item-text">Roles</span>
-                  </a>
-                </li>
-              </ul>
             </li>
-
-            <li class="nav-item dropdown">
+            {{!-- <li class="nav-item dropdown">
               <a href="#usuarios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-24 fe-user"></i>
                 <span class="ml-3 item-text">Usuarios</span>
@@ -152,8 +149,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
+            </li> --}}
             <li class="nav-item dropdown">
               <a href="#espacios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-home fe-24"></i>
@@ -194,54 +190,43 @@
                   <a class="nav-link pl-3" href="visitantes"><span class="ml-1 item-text">Visitantes</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Visitas</span></a>
+                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Ingresos</span></a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#pagos" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="multas">
                 <i class="fe fe-24 fe-dollar-sign"></i>
-                <span class="ml-3 item-text">Pagos</span>
+                <span class="ml-3 item-text">Multas</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="pagos">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cuentas"><span class="ml-1 item-text">cuentas de cobro</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cobros"><span class="ml-1 item-text">cobros</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="comprobantes"><span class="ml-1 item-text">comprobantes</span></a>
-                </li>
-              </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#notificaciones" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="notificaciones">
                 <i class="fe fe-24 fe-message-square"></i>
                 <span class="ml-3 item-text">Notificaciones</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="notificaciones">
+            </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="vigilantesL">
+                <i class="fe fe-24 fe-lock"></i>
+                <span class="ml-3 item-text">Vigilantes</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#configuracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <i class="fe fe-24 fe-settings"></i>
+                <span class="ml-3 item-text">Configuración</span>
+              </a>
+              <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="notificaciones"><span class="ml-1 item-text">Notificaciones</span>
+                  <a class="nav-link pl-3" href="/rolesL"><span class="ml-1 item-text">Roles</span>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#seguridad" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-lock"></i>
-                <span class="ml-3 item-text">Seguridad</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="seguridad">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="vigilantes"><span class="ml-1 item-text">Vigilantes</span>
-                  </a>
-                </li>
-              </ul>
-            </li><br>
-            <li class="nav-item dropdown">
-              <a href="/" class="dropdown-toggle nav-link">
+            <br>
+            <li class="nav-item">
+              <a href="/" class="nav-link" id="salir">
                 <i class="fe fe-24 fe-slack"></i>
                 <span class="ml-3 item-text">Cerrar Sesión</span>
               </a>
@@ -287,9 +272,10 @@
                         <div class="dropdown float-right">
                           <a href="residentes_crear"><button class="btn btn-primary float-right ml-3"
                               type="button">{{ir_boton_crear}} </button></a>
-                          
+
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-download fe-16"></i>      
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                              class="fe fe-download fe-16"></i>
                           </button>
                           <div class="dropdown-menu" aria-labelledby="actionMenuButton">
                             <a class="dropdown-item" href="descargar_excel_residentes">Excel</a>
@@ -372,7 +358,7 @@
   <script src="js/config.js"></script>
   <script src='js/jquery.dataTables.min.js'></script>
   <script src='js/dataTables.bootstrap4.min.js'></script>
-  
+
   <script>
 
     $('#dataTable-1').DataTable(
@@ -535,7 +521,7 @@
 
           <div class="form-group mb-3">
             <label>Fecha fin</label>
-            <input type="date" id="fecha_fin"  class="form-control" onchange="validacion_fecha_fin()">
+            <input type="date" id="fecha_fin" class="form-control" onchange="validacion_fecha_fin()">
             <div id="FB_fecha_fin"></div>
           </div>
 
@@ -548,7 +534,8 @@
           </div>
         </div>
         <div class="modal-footer d-flex justify-content-between">
-          <button onclick="actualizar_residente()" id="boton_actualizar" type="button" class="btn mb-2 btn-primary"><span class="fe mr-2"></span>Actualizar
+          <button onclick="actualizar_residente()" id="boton_actualizar" type="button"
+            class="btn mb-2 btn-primary"><span class="fe mr-2"></span>Actualizar
             residente</button>
           <a href="residentes"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block">
               <spana class="fe mr-2"></spana>Regresar

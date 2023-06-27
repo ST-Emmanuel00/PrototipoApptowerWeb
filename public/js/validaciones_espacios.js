@@ -17,6 +17,10 @@ tipo_espacio.addEventListener('change', () => {
 
         div_area.style.display = 'none'
         div_capacidad.style.display = 'none'
+        area.value = null
+        capacidad.value = null
+
+        console.log(capacidad.value)
 
     }
 
@@ -24,6 +28,7 @@ tipo_espacio.addEventListener('change', () => {
 
         div_area.style.display = 'block'
         div_capacidad.style.display = 'none'
+        capacidad.value = null
 
     }
 
@@ -36,8 +41,9 @@ tipo_espacio.addEventListener('change', () => {
 
     else if (tipo_espacio.value === 'ZONA HUMEDA') {
 
-        div_area.style.display = 'block'
+        div_area.style.display = 'none'
         div_capacidad.style.display = 'block'
+        area.value = null 
 
     }
 

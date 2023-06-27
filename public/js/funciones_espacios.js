@@ -88,6 +88,9 @@ const actualizar_espacio = async () => {
   const capacidad = document.querySelector('#capacidad')
   const estado = document.querySelector('#estado')
 
+  area.value == 0 ? area.value = null: area.value
+  capacidad.value == 0 ? capacidad.value = null: capacidad.value
+
 
   let espacio = {
 
@@ -115,7 +118,15 @@ const actualizar_espacio = async () => {
 
       throw 'El nombre de espacio no es válido';
 
-    }  else {
+    } else if ( area.value < 0) {
+
+      throw 'El area debe ser mayor a cero';
+
+    }else if ( capacidad.value < 0) {
+
+      throw 'La capacidad debe ser mayor a cero';
+
+    } else {
 
       fetch(url, {
         method: 'PUT',
@@ -136,9 +147,13 @@ const actualizar_espacio = async () => {
             showConfirmButton: true,
             allowOutsideClick: false
 
-          });
+          }).then(()=>{
 
-          window.location.href = 'espacios'
+            window.location.href = 'espacios'
+            
+          })
+
+          
 
         })
         .catch(error => {
@@ -266,6 +281,9 @@ const registrar_espacio = () => {
   const capacidad = document.querySelector('#capacidad')
   const estado = document.querySelector('#estado')
 
+  area.value == 0 ? area.value = null: area.value
+  capacidad.value == 0 ? capacidad.value = null: capacidad.value
+
 
   let espacio = {
 
@@ -277,6 +295,8 @@ const registrar_espacio = () => {
 
 
   }
+  console.log(area.value + 'area')
+  console.log(capacidad.value + 'capacidad')
 
   // Validaciones POST espacios 
 
@@ -290,6 +310,14 @@ const registrar_espacio = () => {
     } else if (!ER_nombre_espacio.test(nombre_espacio.value)) {
 
       throw 'El nombre de espacio no es válido';
+
+    } else if ( area.value < 0) {
+
+      throw 'El area debe ser mayor a cero';
+
+    }else if ( capacidad.value < 0) {
+
+      throw 'La capacidad debe ser mayor a cero';
 
     } else {
 

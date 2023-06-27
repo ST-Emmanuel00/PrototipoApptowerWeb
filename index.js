@@ -15,7 +15,13 @@ app.use(express.static('public'))
 app.set('views', path.join(__dirname + '/public/vistas'))
 app.set('view engine', 'hbs')//Motor de p<lantillas
 
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard', {
 
+        title: 'Dashboard 📉',
+        modulo: 'Dashboard'
+    })
+})
 app.get('/propietarios', (req, res) => {
     res.render('propietarios', {
 
@@ -107,7 +113,7 @@ app.get('/reservas', (req, res) => {
     })
 })
 app.get('/agenda', (req, res) => {
-    res.render('agenda',{
+    res.render('agenda', {
         modulo: 'Agenda'
     })
 })
@@ -117,7 +123,7 @@ app.get('/reserva_crear', (req, res) => {
     })
 })
 app.get('/notificaciones', (req, res) => {
-    res.render('notificacion_crear',{
+    res.render('notificacion_crear', {
         modulo: 'notificaciones'
     })
 })
@@ -458,10 +464,10 @@ app.get("/descargar_excel_espacios", function (req, res) {
                 celda = fila + 2;
                 ws.cell(celda, 1).string(espacio.tipo_espacio).style(contenido_estilo);
                 ws.cell(celda, 2).string(espacio.nombre_espacio).style(contenido_estilo);
-                ws.cell(celda, 3).string(espacio.area + '' ).style(contenido_estilo);
+                ws.cell(celda, 3).string(espacio.area + '').style(contenido_estilo);
                 ws.cell(celda, 4).string(espacio.capacidad + '').style(contenido_estilo);
                 ws.cell(celda, 5).string(espacio.estado).style(contenido_estilo);
-                
+
 
             })
 
@@ -498,7 +504,7 @@ app.get('/reservas', (req, res) => {
     })
 })
 app.get('/agenda', (req, res) => {
-    res.render('agenda',{
+    res.render('agenda', {
         modulo: 'Agenda'
     })
 })
@@ -508,7 +514,7 @@ app.get('/reserva_crear', (req, res) => {
     })
 })
 app.get('/notificaciones', (req, res) => {
-    res.render('notificacion_crear',{
+    res.render('notificacion_crear', {
         modulo: 'notificaciones'
     })
 })

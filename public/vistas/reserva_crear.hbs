@@ -313,7 +313,7 @@
                                                             class="fe fe-calendar fe-16"></span></div>
                                                 </div>
                                                 <input type="date" class="form-control drgpicker" id="fecha reserva"
-                                                    value="">
+                                                    value="" onchange="validacion_fecha()">
                                             </div>
                                         </div>
                                         <div class="form-group md-3">
@@ -329,7 +329,7 @@
                                         </div>
                                         <div class="form-group mb-3">
                                             <label>cantidad de personas que participan en la reserva</label>
-                                            <input type="number" id="cantidad" class="form-control" onchange=""
+                                            <input type="number" id="cantidad" class="form-control" onchange="validacion_cantidad()"
                                                 required>
                                             <p id="rcantidad"></p>
                                         </div>

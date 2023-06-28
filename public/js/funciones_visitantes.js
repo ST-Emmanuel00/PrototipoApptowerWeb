@@ -1,6 +1,8 @@
 $(document).ready(function () {
   console.log("llegue2");
 
+
+  
   const numerodocu = /^\d{8,10}$/;
   const telefonoRegex = /^\d{10}$/;
   const nombreRegex = /^[A-Za-z]+ ?[A-Za-z]+$/;
@@ -110,10 +112,15 @@ $(document).ready(function () {
   });
   $('#boton_crear').on('click', function(e){
     e.preventDefault();
+    const inputs = document.querySelectorAll('input.border-danger');
+    console.log(inputs.length)
     console.log('boton exitos')
     try {
       if (!$('#nombre_visitante').val() || !$('#apellido_visitante').val() || !$('#documento_visitante').val() || !$('#fechaN').val() || !$('#vehiculo').val() || !$('#telefono').val()){
         throw new Error('Aun hay campos sin llenar')
+      }
+      if (inputs.length > 0){
+        throw new Error('Aun hay campos sin no validos');
       }
       Swal.fire({
         icon: 'success',

@@ -288,8 +288,8 @@
 
                       <div class="col ml-auto">
                         <div class="dropdown float-right">
-                          <a href="ingresos_crear"><button class="btn btn-primary float-right ml-3"
-                              type="button">{{ir_boton_crear}} </button></a>
+                          <button class="btn btn-primary float-right ml-3"
+                              type="button" data-toggle="modal" data-target="#defaultModal">{{ir_boton_crear}}</button>
 
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Descargar</button>
@@ -327,13 +327,12 @@
                           <td>1</td>
                           <td>CC</td>
                           <td>1323432100</td>
-                          <td>Luisa Ngela</td>
+                          <td>Luisa Angela</td>
                           <td>Correa Ramirez</td>
                           <td>F</td>
-                          <td>Frecuente</td>
-                          <td>Laura Perez</td>
-                          <td>Autorizado</td>
-                          <td><a href="">Editar</a></td>
+                          <td>405</td>
+                          <td>27/06/2023</td>
+                          <td><a href="#">Editar</a></td>
                         </tr>
 
 
@@ -356,6 +355,49 @@
 
 
 
+                      <!-- Modal -->
+          <div class="modal fade pt-3" id="defaultModal" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="defaultModalLabel">Crear Visita</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                  <div class="modal-body">
+                  <div class="card-body">
+                    <div>
+                      <form action="">
+                        <div class="form-group mb-3">
+                          <label for="simpleinput">Visitante a ingresar</label>
+                            <select name="" id="visitante" class="form-control">
+                              <option  class="form-control" value="null">SELECCIONE VISITANTE</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="simpleinput">Espacio a visitar</label>
+                            <select name="" id="espacio" class="form-control">
+                              <option value="null">SELECCIONE ESPACIO</option> 
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                                            <label>Fecha ingreso</label>
+                                            <input type="date" id="fechaI" class="form-control" readonly>
+                                            <div id="FB_fecha_inicio"></div>
+                        </div>
+                          <button type="button"  class="btn mb-2 btn-primary">Crear visitas</button>
+                          <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+                      </form>
+                    </div>
+                  </div>
+                </div> <!-- / .card -->            
+              </div>
+            </div>
+          </div>
+                      
+                  
+                  
 
 
 
@@ -381,27 +423,11 @@
   <script src='js/jquery.stickOnScroll.js'></script>
   <script src="js/tinycolor-min.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/apps.js"></script>
   <script src='js/jquery.dataTables.min.js'></script>
   <script src='js/dataTables.bootstrap4.min.js'></script>
-  <script>
-    function descargarExcel() { 
-      var datos = obtenerDatosTabla();
-      var libro = XLS.utils.book_new();
-      var hoja  = XLS.utils..json_to_sheet(datos);
-      XLSX.utils.book_append_sheet(libro, hoja, "Datos");
-      var archivoNombre = "tabla.xlsx";
-      XLSX.writeFile(libro, archivoNombre);
-    }
-    function obtenerDatosTabla(){
-      var datos = [];
-      var tabla = document.getElementById("tabla visitas");
-      for (var j = 0; < fila.cells.lenght; j++){
-        datosFila[celda.getAttribute("data-nombre")]= celda.innerHTML;
-        datos.push(datosFila);
-      }
-      return datos;
-    }
-  </script>
+  <script src="/js/validacionIngreso.js"></script>
+
   <script>
     $('#dataTable-1').DataTable(
       {
@@ -442,7 +468,7 @@
       padding: 25px
     }
   </style>
-  <div id="modal_editar" class="modal">
+  {{!-- <div id="modal_editar" class="modal">
     <div class="modal-dialog modal-xl"> <!-- Agregado: modal-xl para hacerlo más grande -->
       <div class="modal-content">
         <div class="modal-header">
@@ -537,21 +563,29 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
+      <div class="col-md-4 mb-4">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <p class="card-title"><strong>Default Modal</strong></p>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <!-- Button trigger modal -->
+                      
+                     
 
 
 
 
 
 
-    <script>
+    {{!-- <script>
 
       const salir = () => {
 
         window.location.href = 'visitantes'
 
       }
-    </script>
+    </script> --}}
 
     <!-- Agrega los scripts de Bootstrap en tu archivo HTML -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

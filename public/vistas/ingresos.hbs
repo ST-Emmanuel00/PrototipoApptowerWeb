@@ -289,7 +289,7 @@
                       <div class="col ml-auto">
                         <div class="dropdown float-right">
                           <button class="btn btn-primary float-right ml-3"
-                              type="button" data-toggle="modal" data-target="#defaultModal">{{ir_boton_crear}}</button>
+                              type="button" data-toggle="modal" data-target="#modalCrear">{{ir_boton_crear}}</button>
 
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Descargar</button>
@@ -356,7 +356,7 @@
 
 
                       <!-- Modal -->
-          <div class="modal fade pt-3" id="defaultModal" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+          <div class="modal fade pt-3" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -368,7 +368,13 @@
                   <div class="modal-body">
                   <div class="card-body">
                     <div>
+                      <div class="pb-2">
+                        <a href=""><button class="btn btn-primary float-right ml-3"
+                            type="button" data-toggle="modal" style="    width: 100%;
+    margin-bottom: 1rem;" >Agregar visitante</button></a>
+                      </div>
                       <form action="">
+                        
                         <div class="form-group mb-3">
                           <label for="simpleinput">Visitante a ingresar</label>
                             <select name="" id="visitante" class="form-control">
@@ -465,7 +471,7 @@
     }
 
     .modal-body {
-      padding: 25px
+      padding: 0;
     }
   </style>
   {{!-- <div id="modal_editar" class="modal">

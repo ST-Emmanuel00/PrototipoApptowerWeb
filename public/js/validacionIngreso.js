@@ -19,8 +19,8 @@
         'Pamela Bustamante',
     
       ];
-      visitantes.foreach((persona) => {
-        personas += `<option value="${persona}"> ${persona} </option>`
+      visitantes.foreach((visitante) => {
+        personas += `<option value="${visitante}"> ${visitante} </option>`
       })
     
       validarFecha

@@ -1,4 +1,4 @@
-const url = 'http://localhost:8087/api/residentes'
+const url = 'https://apptower-bk.onrender.com/api/residentes'
 
 const listar_residentes = async () => {
 
@@ -38,7 +38,7 @@ const listar_residentes = async () => {
 
                 <td>${residentes.tipo_residente}</td>
                 <td>${residentes.residencia}</td>
-                <td>${residentes.habita === true ? 'SI': 'NO'}</td>
+                <td>${residentes.habita === true ? 'SI' : 'NO'}</td>
                 
 
                 <td>${residentes.fecha_inicio}</td>
@@ -239,20 +239,38 @@ const registrar_residente = () => {
   console.log(JSON.stringify(residentes))
 
   fetch(url, {
-
     method: 'POST',
     mode: 'cors',
     body: JSON.stringify(residentes),
     headers: { "Content-type": "application/json; charset=UTF-8" }
-
   })
-
-    .then(response => response.json()) //La respuesta del método POST de la API
+    .then(response => response.json())
     .then(json => {
-
-      alert(json.residentes)
-
+      if (json.success == false) {
+        Swal.fire({
+          
+          icon: 'error',
+          title: 'Error al registrar el residente',
+          text: json.message
+        });
+      } else {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: json.residentes,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
     })
+    .catch(error => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Ocurrió un error al realizar la solicitud'
+      });
+    });
+
 
   tipo_documento_residente.value = ''
   numero_documento_residente.value = ''
@@ -278,9 +296,21 @@ listar_residentes()
 
 const boton_crear = document.querySelector('#boton_crear').addEventListener('click', () => {
 
+  try {
+
+    registrar_residente()
+
+  } catch (error) {
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Salio mal',
+      footer: '<a href="">SALIO RE PAILA</a>'
+    })
+  }
 
 
-  registrar_residente()
 
 
 })
@@ -291,5 +321,10 @@ const boton_actualizar = document.querySelector('boton_actualizar').addEventList
 })
 
 
+// module.exports = {
 
+//   registrar_residente,
+//   actualizar_residente
+
+// }
 

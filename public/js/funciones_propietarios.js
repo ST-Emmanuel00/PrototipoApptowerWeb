@@ -1,4 +1,4 @@
-const url = 'http://localhost:8087/api/propietarios'
+const url = 'https://apptower-bk.onrender.com/api/propietarios'
 
 const listar_propietarios = async () => {
 

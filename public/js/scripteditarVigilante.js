@@ -7,9 +7,8 @@ const expresionApellido = /^(?=.*[a-zA-ZáéíóúÁÉÍÓÚ])\s*[a-zA-Záéíó
 const nombre = document.getElementById('nombre');
 const apellido = document.getElementById('apellido');
 const telefono = document.getElementById('telefono');
-const documento = document.getElementById('numero');
+const documento = document.getElementById('documento');
 const email = document.getElementById('correo');
-
 
 const mensajeNombre = document.createElement('span');
 mensajeNombre.className = 'mensaje-error';
@@ -30,8 +29,6 @@ telefono.parentNode.appendChild(mensajeTelefono);
 const mensajeDocumento = document.createElement('span');
 mensajeDocumento.className = 'mensaje-error';
 documento.parentNode.appendChild(mensajeDocumento);
-
-
 
 nombre.addEventListener('input', () => {
   if (expresionNombre.test(nombre.value)) {
@@ -87,7 +84,6 @@ documento.addEventListener('input', () => {
     mensajeDocumento.style.color = '#900D09'
   }
 });
-
 const fechaNacimiento = document.getElementById('fechaNacimiento'); // Referencia al campo de fecha de nacimiento
 
 const mensajeFecha = document.createElement('span');

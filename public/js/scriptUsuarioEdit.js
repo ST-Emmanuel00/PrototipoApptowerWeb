@@ -11,13 +11,11 @@ const apellido = document.getElementById('apellido');
 const telefono = document.getElementById('telefono');
 const documento = document.getElementById('documento');
 const email = document.getElementById('correo');
-const passwords = document.getElementById('password');
-const Cpassword = document.getElementById('confirmarPassword');
+const rol = document.getElementById('nombrerol')
 
 
 const mensajeNombre = document.getElementById('mensajeNombre');
-const mensajeCpassword = document.getElementById('mensajeCpassword');
-const mensajePassword = document.getElementById('mensajePassword');
+const mensajeRol = document.getElementById('mensajeRol')
 const mensajeEmail = document.getElementById('mensajeEmail');
 const mensajeDocumento = document.getElementById('mensajeDocumento');
 const mensajeTelefono = document.getElementById('mensajeTelefono');
@@ -73,24 +71,12 @@ email.addEventListener('input', () => {
   }
 });
 
-passwords.addEventListener('input', () => {
-  if (expresionpassword.test(passwords.value)) {
-    passwords.style.borderColor = '';
+rol.addEventListener('input', () => {
+  if (expresionpassword.test(rol.value)) {
+    rol.style.borderColor = '';
     mensajePassword.textContent = '';
   } else {
-    passwords.style.borderColor = '#900D09';
+    rol.style.borderColor = '#900D09';
     mensajePassword.textContent = 'La contraseña es inválida';
   }
 });
-
-Cpassword.addEventListener('input', () => {
-  if (expresionCpassword.test(Cpassword.value)) {
-    Cpassword.style.borderColor = '';
-    mensajeCpassword.textContent = '';
-  } else {
-    Cpassword.style.borderColor = '#900D09';
-    mensajeCpassword.textContent = 'La confirmación de contraseña es inválida';
-  }
-});
-
-

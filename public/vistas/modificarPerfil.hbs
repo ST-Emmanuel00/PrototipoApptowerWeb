@@ -1,19 +1,17 @@
 <!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>{{modulo}}</title>
+    <title>Modificar Perfil</title>
     <!-- Simple bar CSS -->
+ 
     <link rel="stylesheet" href="css/simplebar.css">
     <!-- Fonts CSS -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Icons CSS -->
     <link rel="stylesheet" href="css/feather.css">
     <!-- Date Range Picker CSS -->
@@ -21,48 +19,45 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="css/app-dark.css" id="darkTheme" disabled>
-</head>
-
-
-
-
-<body class="vertical  light  ">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body class="vertical  light  ">
     <div class="wrapper">
-        <nav class="topnav navbar navbar-light">
-            <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
-                <i class="fe fe-menu navbar-toggler-icon"></i>
-            </button>
+      <nav class="topnav navbar navbar-light">
+      <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+        <i class="fe fe-menu navbar-toggler-icon"></i>
+      </button>
 
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="dark">
-                        <i class="fe fe-sun fe-24"></i>
-                    </a>
-                </li>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="dark">
+            <i class="fe fe-sun fe-24"></i>
+          </a>
+        </li>
 
-                <li class="nav-item nav-notif">
-                    <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
-                        <span class="fe fe-bell fe-24"></span>
-                        <span class="dot dot-md bg-success"></span>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="avatar avatar-sm mt-2">
-                            <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
-                        </span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Perfil</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+        <li class="nav-item nav-notif">
+          <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
+            <span class="fe fe-bell fe-24"></span>
+            <span class="dot dot-md bg-success"></span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="avatar avatar-sm mt-2">
+              <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+            </span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="modificarPerfil">Perfil</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
 
 
 
-        <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+<aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
             <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
                 <i class="fe fe-x"><span class="sr-only"></span></i>
             </a>
@@ -112,7 +107,7 @@
                             </ul>
                         </li> --}}
                         <li class="nav-item w-100">
-                            <a class="nav-link" href="usuarios">
+                            <a class="nav-link" href="usuariosL">
                                 <i class="fe fe-24 fe-user"></i>
                                 <span class="ml-3 item-text">Usuarios</span>
                             </a>
@@ -197,7 +192,7 @@
                             </a>
                         </li>
                         <li class="nav-item w-100">
-                            <a class="nav-link" href="vigilantes">
+                            <a class="nav-link" href="vigilantesL">
                                 <i class="fe fe-24 fe-lock"></i>
                                 <span class="ml-3 item-text">Vigilantes</span>
                             </a>
@@ -210,10 +205,16 @@
                             </a>
                             <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
                                 <li class="nav-item">
-                                    <a class="nav-link pl-3" href="/roles"><span class="ml-1 item-text">Roles</span>
+                                    <a class="nav-link pl-3" href="/rolesL"><span class="ml-1 item-text">Roles</span>
+                                    </a>
+                                </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link pl-3" href="modificarPerfil"><span
+                                            class="ml-1 item-text">Perfil</span>
                                     </a>
                                 </li>
                             </ul>
+                            
                         </li>
                         <br>
                         <li class="nav-item">
@@ -224,114 +225,93 @@
                         </li>
                     </ul>
         </aside>
-        '<main role="main" class="main-content">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-11">
-                        <h2 class="page-title">Crear {{modulo}}</h2>
-                        <div class="card shadow mb-4">
-                            {{!-- <div class="card-header">
-                                <strong class="card-title">Registrar un nuevo propietario</strong>
-                            </div> --}}
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="Apartamento">Apartamento</label>
-                                            <input id="Apartamento" name="Apartamento" type="text"
-                                                class="form-control required" onchange="ER_validacion_Apartamento()">
-                                            <div id="FB_documento" name="FB_documento"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="propietario">Propietario</label>
-                                            <input id="propietario" name="propietario" type="text"
-                                                class="form-control required" onchange="ER_validacion_Propietario()">
-                                            <div id="FB_nombre" name="FB_nombre"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="motivo">Motivo</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value=""></option>
-                                                <option value="">Aviso mal parqueado</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="descripcion">description</label>
-                                            <input id="descripcion" name="descripcion" type="text"
-                                                class="form-control required">
-                                        </div>
-                                        <div class="card shadow mb-4">
-                                            <div class="card-header">
-                                                <strong>Evidencia</strong>
-                                            </div>
-                                            <div class="card-body">
-                                                <form action="/file-upload"
-                                                    class="dropzone bg-light rounded-lg dz-clickable"
-                                                    id="tinydash-dropzone">
-                                                    <div class="dz-message needsclick">
-                                                        <div class="circle circle-lg bg-primary">
-                                                            <i class="fe fe-upload fe-24 text-white"></i>
-                                                        </div>
-                                                        <h5 class="text-muted mt-4">Deja caer la imagen o sube el
-                                                            archivo
-                                                        </h5>
-                                                    </div>
-                                                </form>
-                                                <!-- Preview -->
-                                                <!-- <div class="dropzone-previews mt-3" id="file-previews"></div> -->
-                                                <!-- file preview template -->
-                                                <div class="d-none" id="uploadPreviewTemplate">
-                                                    <div class="card mt-1 mb-0 shadow-none border">
-                                                        <div class="p-2">
-                                                            <div class="row align-items-center">
-                                                                <div class="col-auto">
-                                                                    <img data-dz-thumbnail="" src="#"
-                                                                        class="avatar-sm rounded bg-light" alt="">
-                                                                </div>
-                                                                <div class="col pl-0">
-                                                                    <a href="javascript:void(0);"
-                                                                        class="text-muted font-weight-bold"
-                                                                        data-dz-name=""></a>
-                                                                    <p class="mb-0" data-dz-size=""></p>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <!-- Button -->
-                                                                    <a href="" class="btn btn-link btn-lg text-muted"
-                                                                        data-dz-remove="">
-                                                                        <i class="dripicons-cross"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- .card-body -->
-                                        </div>
-                                    </div>
 
-                                    <div class="card-body">
-                                        <button id="boton_crear" type="button"
-                                            class="btn mb-2 btn-primary btn-block"><span
-                                                class="fe mr-2"></span>Crear</button>
-                                        <a href="reservas"><button id="regresar" type="button"
-                                                class="btn mb-2 btn-light btn-block">
-                                                <spana class="fe mr-2"></spana>Regresar
-                                            </button></a>
-                                    </div>
-                                </div>
 
-                            </div>
-                            <!-- / .card -->
-                        </div>
+      <main role="main" class="main-content"  >
+        <div class="container-fluid" >
+          <div class="row justify-content-center" >
+            <div class="col-12 col-lg-10 " >
+           <h2 class="h3 mb-4 page-title" >Modificar Perfil</h2>
+              <div class="my-4">
+               <ul class="nav nav-tabs mb-4 justify-content-center" id="myTab" role="tablist">
+    <a class="nav-link pl-3" href="modificarPerfil"><span class="ml-1">Información Personal</span></a>
+</ul>
+
+                <form>
+                  <div class="row mt-5 align-items-center">
+                    <div class="col-md-3 text-center mb-5">
+                      <div class="avatar avatar-xl">
+                        <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                       <a href="#" ><p>Actualizar Foto</p></a> 
+                      </div>
                     </div>
-                </div>
-            </div>
-        </main> <!-- main -->
-    </div> <!-- .wrapper -->
-        <script src="../JS/validacionCerrarSesion.js"></script>
-    <script src="../js/funciones_reservas.js"></script>
-    <script src="../js/reserva_validacion.js"></script>
+                    <div class="col">
+                      <div class="row align-items-center">
+                        
+                      </div>
+                      <div class="row mb-4">
+                        <div class="col-md-7">
+                           </div>
+                        <form action="" id="form">
+                         <div class="form-group col-md-6">
+                      <label for="firstname">Nombre</label>
+                      <input type="text" id="nombre" class="form-control" value="Carlos">
+                      <div id="mensajeNombre" style="color: #900D09;"></div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="lastname">Apellido</label>
+                      <input type="text" id="apellido" class="form-control" Value="Amaya">
+                       <div id="mensajeApellido" style="color: #900D09;"></div>
+                    </div>
+                  
+                  <div class="form-group col-md-6">
+                          <label for="simpleinput">Tipo de Documento</label>
+                          <select name="" id="tipoDocumento" class="form-control">
+                            <option value="CC">Cedula</option>
+                            <option value="CE">Cedula extranjeria</option>
+                          </select>
+                        </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputAddress5">Documento</label>
+                    <input type="number" class="form-control" id="documento" Value="1025110678">
+                     <div id="mensajeDocumento" style="color: #900D09;"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputAddress5">Correo</label>
+                    <input type="email" class="form-control" id="correo"Value="carlos@gmail.com">
+                     <div id="mensajeEmail" style="color: #900D09;"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputAddress5">Telefono</label>
+                    <input type="number" class="form-control" id="telefono" value="3156789034">
+                     <div id="mensajeTelefono" style="color: #900D09;"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputAddress5">Contraseña Actual</label>
+                    <input type="password" class="form-control" id="password" value="*********">
+                     <div id="mensajePassword" style="color: #900D09"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputAddress5">Nueva Contraseña</label>
+                    <input type="password" class="form-control" id="confirmarPassword" >
+                    <div id="mensajeCpassword" style="color: #900D09;"></div>
+                  </div>
+                 <div class="modal-footer">
+  <button type="button" class="btn btn-primary" id="btnActualizar" data-dismiss="modal">Actualizar</button>
+ <a href="dashboard" style="text-decoration: none;"> <button type="button" class="btn btn-secondary" id="btnCancelar" data-dismiss="modal">Cancelar</button></a>
+</div>
 
+                      </div>
+                      
+                    </div>
+                    </form>
+                  </div><br><br>
+                  <hr class="my-9">
+                  <div class="form-row">
+      </main> <!-- main -->
+    </div>
+        <script src="../JS/validacionCerrarSesion.js"></script>
+    <script src="../js/scriptModificarP.js"></script> <!-- .wrapper -->
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/moment.min.js"></script>
@@ -345,14 +325,14 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+      window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-56159088-1');
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-56159088-1');
     </script>
-</body>
-
+  </body>
 </html>

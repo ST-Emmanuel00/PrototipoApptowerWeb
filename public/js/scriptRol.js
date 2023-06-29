@@ -1,35 +1,35 @@
-const formul = document.getElementById('formulariorol');
-const message = document.querySelector('#registrorol');
-formul.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const expresionNombre = /^[a-zA-Z\s]+$/;
-  const nombre = document.getElementById('nombrerol').value;
-  const descripcion = document.getElementById('descripcion').value;
-  const permisos = document.getElementById('permisos');
-  const checkboxes = permisos.querySelectorAll('input[type="checkbox"]');
+const expresionNombre = /^(?=.*[a-zA-ZáéíóúÁÉÍÓÚ])\s*[a-zA-ZáéíóúÁÉÍÓÚ\s]*$/;
+const expresionDescripcion = /^[\s\S]*$/;
 
-  try {
-    if (nombre === '' || descripcion === '') {
-      throw 'No se pueden dejar campos vacíos';
-    }
-    if (!expresionNombre.test(nombre)) {
-      throw 'El nombre no cumple con la condición';
-    }
+const nombre = document.getElementById('nombrerol');
+const descripcion = document.getElementById('descripcion');
 
-    let permSeleccionado = false;
-    checkboxes.forEach(checkbox => {
-      if (checkbox.checked)//indica si el checkbox está seleccionado o no.
-      {
-        permSeleccionado = true;
-      }
-    });
+const mensajeNombre = document.getElementById('mensajeNombre');
+const mensajeDescripcion = document.getElementById('mensajeDescripcion');
 
-    if (!permSeleccionado) {
-      throw 'Debes seleccionar al menos un permiso';
-    }
+nombre.addEventListener('input', () => {
+  const valorNombre = nombre.value.trim(); // Eliminar espacios en blanco al inicio y final
 
-    message.innerHTML = 'Rol Registrado';
-  } catch (e) {
-    message.innerHTML = '<span style="color: red;">' + e + '</span>';
+  if (valorNombre === 'Administrador' || valorNombre === 'Vigilante' || valorNombre === 'Residente') {
+    nombre.style.borderColor = '';
+    mensajeNombre.textContent = '';
+  } else {
+    nombre.style.borderColor = '#900D09';
+    mensajeNombre.textContent = 'El nombre no es válido. Debe ser "Administrador", "Vigilante" o "Residente".';
   }
 });
+
+
+descripcion.addEventListener('input', () => {
+  if (expresionDescripcion.test(descripcion.value)) {
+    descripcion.style.borderColor = '';
+    mensajeDescripcion.textContent = '';
+  } else {
+    descripcion.style.borderColor = '#900D09';
+    mensajeDescripcion.textContent = 'La descripción es inválida';
+  }
+});
+
+
+
+

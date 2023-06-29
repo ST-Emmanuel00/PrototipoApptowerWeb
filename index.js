@@ -533,3 +533,138 @@ app.listen(port, () => {
     console.log(`Listening to  ${port}`)
 
 })
+
+
+
+
+app.get('/', (req, res)=>{
+    res.render ('login')
+})
+app.get('/usuariosC', (req, res)=>{
+    res.render('usuarios_crear')
+})
+app.get('/usuariosL', (req, res)=>{
+    res.render('usuarios_listar')
+})
+app.get('/rolesC', (req, res)=>{
+    res.render('roles_crear')
+})
+app.get('/rolesL', (req, res)=>{
+    res.render('roles_listar')
+})
+app.get('/rolesE', (req, res)=>{
+    res.render('roles_E')
+})
+
+app.get('/Registro', (req, res)=>{
+    res.render('registrarUsuario')
+})
+
+app.get('/vigilantesC', (req, res)=>{
+    res.render('vigilantes_crear')
+})
+app.get('/vigilantesL', (req, res)=>{
+    res.render('vigilantes_listar')
+})
+
+app.get('/modificarPerfil', (req, res)=>{
+    res.render('modificarPerfil')
+})
+app.get('/recuperarC', (req, res)=>{
+    res.render('recuperarC')
+})
+app.get('/restablecerC',(req, res)=>{
+    res.render('restablecerC')
+})
+
+
+// Rutas de excel
+
+app.get("/descargarExcel", function (req, res) {
+
+    // Configurar excel4node
+    // Create a new instance of a Workbook class
+    var wb = new xl.Workbook();
+    let nombre_archivo = "usuarios";
+    var ws = wb.addWorksheet(nombre_archivo);
+
+    // Crear estilos
+    var estilo_columna = wb.createStyle({
+        font: {
+            name: 'Arial',
+            color: '#000000',
+            size: 12,
+            bold: true,
+        }
+    });
+
+    var contenido_estilo = wb.createStyle({
+        font: {
+            name: 'Arial',
+            color: '#494949',
+            size: 11,
+        }
+    });
+
+
+    //Nombres de las columnas
+    ws.cell(1, 1).string("tipo_documento").style(estilo_columna);
+    ws.cell(1, 2).string("documento").style(estilo_columna);
+    ws.cell(1, 3).string("nombre").style(estilo_columna);
+    ws.cell(1, 4).string("apellido").style(estilo_columna);
+    ws.cell(1, 5).string("correo").style(estilo_columna);
+    ws.cell(1, 6).string("telefono").style(estilo_columna);
+    ws.cell(1, 7).string("rol").style(estilo_columna);
+    ws.cell(1, 8).string("estado").style(estilo_columna);
+    ws.cell(1, 9).string("fecha").style(estilo_columna);
+   
+
+    const url = 'https://backnodejs.onrender.com/api/usuarios/usuarios'
+
+    fetch(url)
+        .then(res => res.json())
+        .then(function (data) {
+            let listarUsuarios = data.usuario
+            console.log(listarUsuarios)
+            listarUsuarios.forEach((usuario, fila) => {
+
+                celda = fila + 2;
+                ws.cell(celda, 1).string(usuario.tipo_documento).style(contenido_estilo);
+                ws.cell(celda, 2).string(usuario.documento.toString()).style(contenido_estilo);
+                ws.cell(celda, 3).string(usuario.nombre).style(contenido_estilo);
+                ws.cell(celda, 4).string(usuario.apellido).style(contenido_estilo);
+                ws.cell(celda, 5).string(usuario.correo).style(contenido_estilo);
+                ws.cell(celda, 6).string(usuario.telefono.toString()).style(contenido_estilo);
+                ws.cell(celda, 7).string(usuario.rol).style(contenido_estilo);
+                ws.cell(celda, 8).string(usuario.estado ? 'activo' : 'inactivo').style(contenido_estilo);
+                ws.cell(celda, 9).date(new Date(usuario.fecha)).style(contenido_estilo);
+               
+
+            })
+
+            //Ruta del archivo
+            const path_excel = path.join(__dirname, 'excel', nombre_archivo + '.xlsx');
+
+            //Escribir o guardar
+            wb.write(path_excel, function (err, stats) {
+
+                if (err) console.log(err);
+
+                else {
+
+                    // Crear función y descargar archivo
+                    function downloadFile() { res.download(path_excel); }
+                    downloadFile();
+
+                    // Borrar archivo
+                    fs.rm(path_excel, function (err) {
+                        if (err) console.log(err);
+                        else console.log("Archivo descargado y borrado del servidor correctamente");
+                    });
+                }
+            });
+
+        })
+
+
+});

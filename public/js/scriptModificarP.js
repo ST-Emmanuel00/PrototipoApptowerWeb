@@ -89,8 +89,34 @@ Cpassword.addEventListener('input', () => {
     mensajeCpassword.textContent = '';
   } else {
     Cpassword.style.borderColor = '#900D09';
-    mensajeCpassword.textContent = 'La confirmación de contraseña es inválida';
+    mensajeCpassword.textContent = 'La contraseña es invalida';
   }
 });
 
 
+const btnActualizar = document.getElementById('btnActualizar');
+
+btnActualizar.addEventListener('click', ()=>{
+    
+const nombre = document.getElementById('nombre').value
+const apellido = document.getElementById('apellido').value
+const telefono = document.getElementById('telefono').value
+const documento = document.getElementById('documento').value
+const email = document.getElementById('correo').value
+const passwords = document.getElementById('password').value
+const Cpassword = document.getElementById('confirmarPassword').value
+
+    if(nombre == '' || apellido == '' || email == '' || password == '' || Cpassword == '' || telefono == '' || documento == '') {
+
+        Swal.fire({
+            title: 'Tienes los campos vacíos',
+            icon: 'error'
+          });
+    }
+    else{
+        Swal.fire({
+            title: 'La modificación ha sido exitosa',
+            icon: 'success',
+          });
+    }
+})

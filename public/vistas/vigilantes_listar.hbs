@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
-  <title> {{title}} </title>
+  <title> Vigilantes</title>
   <!-- Simple bar CSS -->
   <link rel="stylesheet" href="css/simplebar.css">
   <!-- Fonts CSS -->
@@ -25,6 +25,9 @@
 
   {{!-- Sweet alert --}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
 
 
 </head>
@@ -72,7 +75,7 @@
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Perfil</a>
+            <a class="dropdown-item" href="modificarPerfil">Perfil</a>
           </div>
         </li>
       </ul>
@@ -80,7 +83,9 @@
 
 
 
-    <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+
+
+<aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
             <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
                 <i class="fe fe-x"><span class="sr-only"></span></i>
             </a>
@@ -220,7 +225,7 @@
                                 <span class="ml-3 item-text">Vigilantes</span>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
+                          <li class="nav-item dropdown">
                             <a href="#configuracion" data-toggle="collapse" aria-expanded="false"
                                 class="dropdown-toggle nav-link">
                                 <i class="fe fe-24 fe-settings"></i>
@@ -231,7 +236,13 @@
                                     <a class="nav-link pl-3" href="/rolesL"><span class="ml-1 item-text">Roles</span>
                                     </a>
                                 </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link pl-3" href="modificarPerfil"><span
+                                            class="ml-1 item-text">Perfil</span>
+                                    </a>
+                                </li>
                             </ul>
+                            
                         </li>
                         <br>
                         <li class="nav-item">
@@ -242,6 +253,7 @@
                         </li>
                     </ul>
         </aside>
+
 
 
 
@@ -260,8 +272,8 @@
             <div class="row">
               <!-- Striped rows -->
               <div class="col-md-12 my-4">
-                <h2 class="h4 mb-1"> {{modulo}} </h2>
-                <p class="mb-4">Vista de los {{modulo}} existentes</p>
+                <h2 class="h4 mb-1">  </h2>
+                <h3 >Vigilantes</h3>
                 <div class="card shadow">
                   <div class="card-body">
                     <div class="toolbar row mb-3">
@@ -278,62 +290,45 @@
                           </div>
                         </form>
 
-
-
-
-
-
-
                       </div>
 
 
                       <div class="col ml-auto">
                         <div class="dropdown float-right">
-                          <a href="propietarios_crear"><button class="btn btn-primary float-right ml-3"
-                              type="button">{{ir_boton_crear}} </button></a>
+                          <a href="vigilantesC"><button class="btn btn-primary float-right ml-3"
+                              type="button">Crear</button></a>
 
-                          <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                              class="fe fe-download fe-16"></i></button>
+
+                          {{!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Descargar</button>
                           <div class="dropdown-menu" aria-labelledby="actionMenuButton">
-                            <a class="dropdown-item" href="descargar_excel_propietarios">Excel</a>
-                          </div>
+                            <a class="dropdown-item" href="#">EXCEL</a>
+                          </div> --}}
                         </div>
                       </div>
                     </div>
 
 
                     <!-- table -->
-                    <table class="table table-bordered">
+                           <table class="table table-bordered">
                       <thead>
 
                         <tr role="row">
-
-                          <th>Item</th>
-                          <th>Tipo <br> documento</th>
-                          <th>Numero<br> documento</th>
+                          <th>Tipo de Documento</th>
+                          <th>Documento</th>
                           <th>Nombre</th>
                           <th>Apellido</th>
-                          <th>Fecha<br> nacimiento</th>
-                          <th>Genero</th>
-                          <th>Telefono</th>
-
                           <th>Correo</th>
-
-                          <th>Propiedad</th>
-
+                          <th>Teléfono</th>
+                          <th>Edad</th>
                           <th>Estado</th>
-
-
-
-                          <th>Action</th>
+                          <th>Acciones</th>
                         </tr>
                       </thead>
 
 
-                      <tbody id="contenido_propietarios">
-
-
+                      <tbody id="contenido">
+                      
 
                       </tbody>
                     </table>
@@ -352,7 +347,6 @@
             </div> <!-- end section -->
     </main> <!-- main -->
   </div> <!-- .wrapper -->
-  <script src="../js/funciones_propietarios.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/moment.min.js"></script>
@@ -420,95 +414,73 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="varyModalLabel">Editar propietario</h5>
+          <h5 class="modal-title" id="varyModalLabel">Editar usuario</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body p-4">
-
-          <div class="form-group mb-3">
-            <input id="_id" type="hidden">
-            <label for="simpleinput">Tipo de Documento</label>
-            <select name="" id="tipo_documento_propietario" class="form-control">
-              <option value="">Selecione un tipo de documento</option>
-              <option value="CC">CEDULA DE CIUDADANIA</option>
-              <option value="CE">CEDULA EXTRANJERIA</option>
-            </select>
-            <div id="FB_tipo_documento"></div>
+ <div class="modal-body">
+       
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input id="_id" type="hidden">
+                <label for="tipoDocumento" class="col-form-label">Tipo de Documento</label>
+                <select class="form-control" id="tipoDocumento">
+                  <option value="CC">CC</option>
+                  <option value="CE">CE</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="nombre" class="col-form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre">
+              </div>
+               <div class="form-group">
+                <label for="correo" class="col-form-label">Correo</label>
+                <input type="text" class="form-control" id="correo">
+              </div>
+              
+             <div class="form-group">
+                    <label for="example-password">Fecha nacimiento</label>
+                      <input type="date" id="fechaNacimiento" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-6">
+               
+               <div class="form-group">
+                <label for="nombre" class="col-form-label">Documento</label>
+                <input type="text" class="form-control" id="documento">
+              </div>
+              <div class="form-group">
+                <label for="apellido" class="col-form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellido">
+              </div>
+             
+              <div class="form-group">
+                <label for="telefono" class="col-form-label">Teléfono</label>
+                <input type="text" class="form-control" id="telefono">
+              </div>
+              <div class="form-group">
+                <input id="_id" type="hidden">
+                <label for="tipoDocumento" class="col-form-label">Estado</label>
+                <select class="form-control" id="estado">
+                  <option value="true">Activo</option>
+                  <option value="false">Inactivo</option>
+                </select>
+              </div>
+            </div>
+             
           </div>
-
-          <div class="form-group mb-3">
-            <label for="documento">Numero documento</label>
-            <input type="number" id="numero_documento_propietario" class="form-control" required>
-            <div id="FB_documento"></div>
-          </div>
-
-          <div class="form-group mb-3">
-            <label for="example-password">Nombre propietarios</label>
-            <input type="text" id="nombre_propietario" class="form-control" required>
-            <div id="FB_nombre"></div>
-          </div>
-
-          <div class="form-group mb-3">
-            <label for="example-password">Apellido propietarios</label>
-            <input type="text" id="apellido_propietario" class="form-control" required>
-            <div id="FB_apellido"></div>
-          </div>
-
-          <div class="form-group mb-3">
-            <label for="example-password">Fecha nacimiento</label>
-            <input type="date" id="fecha_nacimiento" class="form-control" required>
-            <div id="FB_fecha_nacimiento"></div>
-          </div>
-
-          <div class="form-group mb-3">
-            <label>Genero</label>
-            <select name="" id="genero_propietario" class="form-control">
-              <option value="">Seleccione un genero</option>
-              <option value="M">MASCULINO</option>
-              <option value="F">FEMENINO</option>
-              <option value="otro">OTRO</option>
-            </select>
-            <div id="FB_genero_propietario"></div>
-          </div>
-
-          <div class="form-group mb-3">
-            <label>Telefono</label>
-            <input type="text" id="telefono_propietario" class="form-control">
-            <div id="FB_telefono"></div>
-          </div>
-
-          <div class="form-group mb-3">
-            <label>Correo</label>
-            <input type="email" id="correo" class="form-control" required>
-            <div id="FB_correo"></div>
-          </div>
-
-
-          <div class="form-group mb-3">
-            <label for="simpleinput">Propiedad</label>
-            <select name="" id="propiedad" class="form-control">
-              <option value="null">Selecciona propiedad</option>
-              {{!-- Aqui va codigo para listar espacios --}}
-            </select>
-          </div>
-
-          <div class="form-group mb-3">
-            <label>Estado</label>
-            <select name="" id="estado" class="form-control">
-              <option value="ACTIVO">ACTIVO</option>
-              <option value="INACTIVO">INACTIVO</option>
-            </select>
-          </div>
-
-        </div>
+      
+      </div>
 
         <div class="modal-footer d-flex justify-content-between">
-          <button onclick="actualizar_propietario()" id="boton_actualizar" type="button"
-            class="btn mb-2 btn-primary"><span class="fe mr-2"></span>Actualizar
-            propietario</button>
-          <a href="propietarios"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block">
+          <button id="btnActualizar" type="button" class="btn mb-2 btn-primary"><span
+              class="fe mr-2"></span>Actualizar
+            espacio</button>
+          <a href="vigilantesL" style="text-decoration: none;"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block">
               <spana class="fe mr-2"></spana>Regresar
             </button></a>
         </div>
@@ -516,14 +488,14 @@
       </div>
     </div>
   </div>
-      <script src="../JS/validacionCerrarSesion.js"></script>
-
-  {{!-- Funciones backend --}}
-  <script src="../js/funciones_propietarios.js"></script>
-  {{!-- Validaciones formulario --}}
-  <script src="../js/validaciones_propietarios.js"></script>
+ 
+  
 
 
+    <script src="../js/funcionesVigilantes.js"></script>
+     <script src="../JS/scripteditarVigilante.js"></script>
+   
+     <script src="../JS/validacionCerrarSesion.js"></script>
 </body>
 
 </html>

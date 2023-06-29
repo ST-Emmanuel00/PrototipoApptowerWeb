@@ -324,17 +324,14 @@
                         <tr role="row">
 
                           <th>Item</th>
-                          <th>Tipo documento</th>
-                          <th>Numero documento</th>
-                          <th>Nombre</th>
-                          <th>Apellido</th>
-                          <th>Genero</th>
+                          <th>Nro. Multa</th>
+                          <th>Residente</th>
+                          <th>Espacio</th>
+                          <th>Fecha de creacion</th>
+                          <th>Fecha Limite de Pago</th>
+                          <th>Estado</th>
 
-                          <th>Acceso</th>
-
-
-
-                          <th>Action</th>
+                          <th>Acciones</th>
                         </tr>
                       </thead>
 
@@ -342,13 +339,13 @@
                       <tbody id="contenido_visitantes">
                         <tr>
                           <td>1</td>
-                          <td>CC</td>
-                          <td>12345678</td>
-                          <td>Geraldin</td>
-                          <td>Gomez</td>
-                          <td>F</td>
-                          <td>Permitido</td>
-                          <td><a href="#" class="button-success editar-enlace">Editar</a></td>
+                          <td>2023112</td>
+                          <td>Angelica patiño</td>
+                          <td>404</td>
+                          <td>10/06/2023</td>
+                          <td>01/07/2023</td>
+                          <td>Pendiente</td>
+                          <td><a href="#" data-toggle="modal" data-target="#modalEditar">Editar  </a><a href="#">  Eliminar</a></td>
                         </tr>
 
 
@@ -443,23 +440,43 @@
 
               <div class="form-group mb-3">
                 <input id="_id" type="hidden">
-                <label for="simpleinput">Tipo de Documento</label>
+                <label for="simpleinput">Nro Multa</label>
                 <input name="" id="documento_visitante" class="form-control" readonly>
               </div>
               <div class="form-group mb-3">
-                <label for="documento">Numero documento</label>
+                <label for="documento">Nombre residente</label>
                 <input type="number" id="numero_documento_visitante" class="form-control" onchange="" readonly>
                 <div id="FB_documento"></div>
               </div>
 
               <div class="form-group mb-3">
-                <label for="example-password">Nombre visitante</label>
-                <input type="text" id="nombre_visitante" class="form-control" onchange="" required>
+                <label for="example-password">Apartamento</label>
+                <input type="text" id="nombre_visitante" class="form-control" onchange="" readonly>
                 <div id="FB_nombre"></div>
               </div>
               <div class="form-group mb-3">
-                <label for="example-password">Apellido visitante</label>
-                <input type="text" id="apellido_visitante" class="form-control" onchange="" required>
+                <label for="example-password">Fecha de creacion</label>
+                <input type="text" id="apellido_visitante" class="form-control" onchange="" readonly>
+                <div id="FB_apellido"></div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="example-password">Fecha limite</label>
+                <input type="text" id="apellido_visitante" class="form-control" onchange="" readonly>
+                <div id="FB_apellido"></div>
+              </div>
+              <div class="custom-file">
+                <label for="customFile">Evidencias</label>
+                <input type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Elige el archivo</label>
+              </div>
+              <div class="custom-file">
+                <label for="customFile">Voucher de pago</label>
+                <input type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Elige el archivo</label>
+              </div>
+              <div class="form-group mb-3">
+                <label for="example-password">Estado</label>
+                <input type="text" id="apellido_visitante" class="form-control" onchange="" readonly>
                 <div id="FB_apellido"></div>
               </div>
 
@@ -506,18 +523,12 @@
 
 
 
-    <script>
+  
 
-      const salir = () => {
-
-        window.location.href = 'visitantes'
-
-      }
-    </script>
 
     <!-- Agrega los scripts de Bootstrap en tu archivo HTML -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></scrip>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 

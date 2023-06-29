@@ -59,6 +59,26 @@ app.get('/visitantes', (req, res) => {
         
     })
 })
+app.get('/multas', (req, res) => {
+    res.render('multas', {
+
+        title: 'Multas 👩🏼‍🤝‍🧑🏾',
+        modulo: 'Multas',
+        ir_boton_crear: 'Crear Multa',
+        ir_boton_editar: 'Editar Multa'
+        
+    })
+})
+app.get('/visitantesD', (req, res) => {
+    res.render('visitantes_D', {
+
+        title: 'Visitantes 👩🏼‍🤝‍🧑🏾',
+        modulo: 'Visitantes',
+        ir_boton_crear: 'Crear visitante',
+        ir_boton_editar: 'Editar visitante'
+        
+    })
+})
 
 app.get('/visitantes_crear', (req, res) => {
     res.render('visitantes_crear', {
@@ -101,7 +121,14 @@ app.get('/espacios', (req, res) => {
         ir_boton_crear: 'Crear espacio'
     })
 })
+app.get('/multas', (req, res) => {
+    res.render('multas', {
 
+        title: 'Multas 🏤',
+        modulo: 'Multas',
+        ir_boton_crear: 'Crear espacio'
+    })
+})
 app.get('/espacios_crear', (req, res) => {
     res.render('espacios_crear', {
 

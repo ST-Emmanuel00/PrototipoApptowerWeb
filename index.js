@@ -69,6 +69,16 @@ app.get('/multas', (req, res) => {
         
     })
 })
+app.get('/multas_crear', (req, res) => {
+    res.render('multas_Crear', {
+
+        title: 'Multas 👩🏼‍🤝‍🧑🏾',
+        modulo: 'Multas',
+        ir_boton_crear: 'Crear Multa',
+        ir_boton_editar: 'Editar Multa'
+        
+    })
+})
 app.get('/visitantesD', (req, res) => {
     res.render('visitantes_D', {
 

@@ -288,14 +288,13 @@
 
                       <div class="col ml-auto">
                         <div class="dropdown float-right">
-                          <button class="btn btn-primary float-right ml-3"
-                              type="button" data-toggle="modal" data-target="#modalCrear">{{ir_boton_crear}}</button>
+                          <button class="btn btn-primary float-right ml-3" type="button" data-toggle="modal"
+                            data-target="#modalCrear">{{ir_boton_crear}}</button>
 
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><i
-                              class="fe fe-download fe-16"></i></button>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="exportTableToExcel('tabla-ingresos', 'ingresosExport')">Descargar</button>
                           <div class="dropdown-menu" aria-labelledby="actionMenuButton">
-                            <a class="dropdown-item" href="descargar_excel_propietarios">Excel</a>
+                            <a class="dropdown-item"  href="#">EXCEL</a>
                           </div>
                         </div>
                       </div>
@@ -303,7 +302,7 @@
 
 
                     <!-- table -->
-                    <table class="table table-bordered" id="tabla visitas">
+                    <table class="table table-bordered" id="tabla-ingresos">
                       <thead>
 
                         <tr role="row">
@@ -333,7 +332,10 @@
                           <td>F</td>
                           <td>405</td>
                           <td>26, junio 2023 10:30:45 AM</td>
-                          <td><a href="#" data-toggle="modal" data-target="#modalEditar">Editar</a></td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#modalEditar">Editar</a>
+                            <a href="#" data-toggle="modal" onclick="alertDelete()">Eliminar</a>
+                          </td>
                         </tr>
 
 
@@ -356,105 +358,109 @@
 
 
 
-                      <!-- Modal -->
-          <div class="modal fade pt-3" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="defaultModalLabel">Crear Ingreso</h5>
+            <!-- Modal -->
+            <div class="modal fade pt-3" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="defaultModalLabel">Crear Ingreso</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
+                  </div>
                   <div class="modal-body">
-                  <div class="card-body">
-                    <div>
-                      <div class="pb-2">
-                        <a href="visitantes_crear"><button class="btn btn-primary float-right ml-3"
-                            type="button" data-toggle="modal" style="    width: 100%;
-    margin-bottom: 1rem;" >Agregar visitante</button></a>
-                      </div>
-                      <form id="createFrom">
-                        
-                        <div class="form-group mb-3">
-                          <label for="simpleinput">Documento visitante</label>
+                    <div class="card-body">
+                      <div>
+                        <div class="pb-2">
+                          <a href="visitantes_crear"><button class="btn btn-primary float-right ml-3" type="button"
+                              data-toggle="modal" style="    width: 100%;
+    margin-bottom: 1rem;">Agregar visitante</button></a>
+                        </div>
+                        <form id="createFrom">
+
+                          <div class="form-group mb-3">
+                            <label for="simpleinput">Documento visitante</label>
                             <select name="" id="visitante" class="form-control">
-                              <option  class="form-control" value="null">Selecione documento</option>
+                              <option class="form-control" value="null">Selecione documento</option>
                               <option value="">1212343546</option>
                               <option value="">1234534213</option>
                             </select>
-                        </div>
-                        <div class="form-group mb-3">
-                          <label for="simpleinput">Espacio a visitar</label>
+                          </div>
+                          <div class="form-group mb-3">
+                            <label for="simpleinput">Espacio a visitar</label>
                             <select name="" id="espacio" class="form-control">
-                              <option value="null">SELECCIONE ESPACIO</option> 
+                              <option value="null">SELECCIONE ESPACIO</option>
                               <option value="404">404</option>
                               <option value="505">505</option>
                             </select>
-                        </div>
-                        <div class="form-group mb-3">
-                                            <label>Fecha ingreso</label>
-                                            <input type="date" id="fechaI" class="form-control" readonly>
-                                            <div id="FB_fecha_inicio"></div>
-                        </div>
-                          <button type="button"  class="btn mb-2 btn-primary">Crear visitas</button>
+                          </div>
+                          <div class="form-group mb-3">
+                            <label>Fecha ingreso</label>
+                            <input type="date" id="fechaI" class="form-control" readonly>
+                            <div id="FB_fecha_inicio"></div>
+                          </div>
+                          <button type="button" class="btn mb-2 btn-primary">Crear visitas</button>
                           <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                      </form>
+                        </form>
+                      </div>
                     </div>
-                  </div>
-                </div> <!-- / .card -->            
+                  </div> <!-- / .card -->
+                </div>
               </div>
             </div>
-          </div>
-                      <!-- Modal -->
-          <div class="modal fade pt-3" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="defaultModalLabel">Crear Ingreso</h5>
+            <!-- Modal -->
+            <div class="modal fade pt-3" id="modalEditar" tabindex="-1" role="dialog"
+              aria-labelledby="defaultModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="defaultModalLabel">Editar Ingreso</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                  <div class="modal-body">
-                  <div class="card-body">
-                    <div>
-                      <div class="pb-2">
-                        <a href="visitantes_crear"><button class="btn btn-primary float-right ml-3"
-                            type="button" data-toggle="modal" style="    width: 100%;
-    margin-bottom: 1rem;" >Agregar visitante</button></a>
-                      </div>
-                      <form action="">
-                        
-                        <div class="form-group mb-3">
-                          <label for="simpleinput">Visitante a ingresar</label>
-                            <select name="" id="visitante" class="form-control">
-                              <option  class="form-control" value="null">SELECCIONE VISITANTE</option>
-                            </select>
-                        </div>
-                        <div class="form-group mb-3">
-                          <label for="simpleinput">Espacio a visitar</label>
-                            <select name="" id="espacio" class="form-control">
-                              <option value="null">SELECCIONE ESPACIO</option> 
-                            </select>
-                        </div>
-                        <div class="form-group mb-3">
-                                            <label>Fecha ingreso</label>
-                                            <input type="date" id="fechaI" class="form-control" readonly>
-                                            <div id="FB_fecha_inicio"></div>
-                        </div>
-                          <button type="button"  class="btn mb-2 btn-primary">Crear visitas</button>
-                          <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                      </form>
-                    </div>
                   </div>
-                </div> <!-- / .card -->            
+                  <div class="modal-body">
+                    <div class="card-body">
+                      <div>
+
+                        <form action="">
+
+                          <div class="form-group mb-3">
+                            <label for="simpleinput">Visitante a ingresar</label>
+                            <select name="" id="visitante" class="form-control">
+                              <option value="null" disabled>SELECCIONE VISITANTE</option>
+                              <option value="null" selected>Luisa Angela</option>
+                              <option value="null">Jacinto</option>
+                              <option value="null">Jose</option>
+                            </select>
+                          </div>
+                          <div class="form-group mb-3">
+                            <label for="simpleinput">Espacio a visitar</label>
+                            <select name="" id="espacio" class="form-control">
+                              <option value="null" disabled>SELECCIONE ESPACIO</option>
+                              <option value="null" selected>405</option>
+                              <option value="null">430</option>
+                            </select>
+                          </div>
+                          <div class="form-group mb-3">
+                            <label>Fecha ingreso</label>
+                            <input type="date" id="fechaI" class="form-control" value="2023-06-26" readonly>
+                            <div id="FB_fecha_inicio"></div>
+                          </div>
+                          <button type="button" class="btn mb-2 btn-primary" onclick="alertSucces()">Actualizar
+                            visitas</button>
+                          <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div> <!-- / .card -->
+                </div>
               </div>
             </div>
-          </div>
-                      
-                  
-                  
+
+
+
 
 
     </main> <!-- main -->
@@ -473,6 +479,7 @@
   <script src='js/jquery.dataTables.min.js'></script>
   <script src='js/dataTables.bootstrap4.min.js'></script>
   <script src="../js/validacionIngreso.js"></script>
+  <script src="../js/exportExcel.js"></script>
 
   <script>
     $('#dataTable-1').DataTable(
@@ -515,136 +522,19 @@
     }
   </style>
 
-    <!-- Agrega los scripts de Bootstrap en tu archivo HTML -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Agrega los scripts de Bootstrap en tu archivo HTML -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 
-
-
-    <script>
-
-      document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.modal');
-        //var instances = M.Modal.init(elems, options);
-      });
-
-      // Or with jQuery
-
-      $(document).ready(function () {
-        $('.modal').modal();
-      });
-    </script>
-    <script>
-      
-    
-      app.get("/descargar_excel_residentes", function (req, res) {
-
-    // Configurar excel4node
-    // Create a new instance of a Workbook class
-    var wb = new xl.Workbook();
-    let nombre_archivo = "ingresos" + dia + mes + año + ".";
-    var ws = wb.addWorksheet(nombre_archivo);
-
-    // Crear estilos
-    var estilo_columna = wb.createStyle({
-        font: {
-            name: 'Arial',
-            color: '#000000',
-            size: 12,
-            bold: true,
-        }
-    });
-
-    var contenido_estilo = wb.createStyle({
-        font: {
-            name: 'Arial',
-            color: '#494949',
-            size: 11,
-        }
-    });
-
-
-    //Nombres de las columnas
-    ws.cell(1, 1).string("Nro").style(estilo_columna);
-    ws.cell(1, 2).string("Tipo documento").style(estilo_columna);
-    ws.cell(1, 3).string("Nro documento").style(estilo_columna);
-    ws.cell(1, 4).string("nombre").style(estilo_columna);
-    ws.cell(1, 5).string("apellido").style(estilo_columna)
-    ws.cell(1, 6).string("genero").style(estilo_columna);
-    ws.cell(1, 7).string("Apartamento visitado").style(estilo_columna);
-    ws.cell(1, 8).string("Fecha registro").style(estilo_columna);
-
-
-    const url = 'https://localhost:8081/ingresos'
-
-    fetch(url)
-        .then(res => res.json())
-        .then(function (data) {
-            let lista_ingresos = data.ingresos
-            console.log(lista_ingresos)
-            lista_ingresos.forEach((ingreso, fila) => {
-
-                celda = fila + 2;
-                ws.cell(celda, 1).string(ingreso.tipo_documento_ingreso).style(contenido_estilo);
-                ws.cell(celda, 2).string(ingreso.numero_documento_ingreso).style(contenido_estilo);
-                ws.cell(celda, 3).string(ingreso.nombre_ingreso).style(contenido_estilo);
-                ws.cell(celda, 4).string(ingreso.apellido_ingreso).style(contenido_estilo);
-                ws.cell(celda, 5).date(new Date(ingreso.fecha_nacimiento)).style(contenido_estilo);
-                ws.cell(celda, 6).string(ingreso.genero_ingreso).style(contenido_estilo);
-                ws.cell(celda, 7).string(ingreso.telefono_ingreso).style(contenido_estilo);
-                ws.cell(celda, 8).string(ingreso.correo).style(contenido_estilo);
-                ws.cell(celda, 9).string(ingreso.tipo_ingreso).style(contenido_estilo);
-                ws.cell(celda, 10).string(ingreso.residencia).style(contenido_estilo);
-                ws.cell(celda, 11).style({ ...contenido_estilo, bold: true }).string(ingreso.habita ? 'Sí' : 'No');
-                ws.cell(celda, 12).date(new Date(ingreso.fecha_nacimiento)).style(contenido_estilo);
-                ws.cell(celda, 13).date(new Date(ingreso.fecha_nacimiento)).style(contenido_estilo);
-                ws.cell(celda, 14).string(ingreso.estado).style(contenido_estilo);
-
-            })
-
-            //Ruta del archivo
-            const path_excel = path.join(__dirname, 'excel', nombre_archivo + '.xlsx');
-
-            //Escribir o guardar
-            wb.write(path_excel, function (err, stats) {
-
-                if (err) console.log(err);
-
-                else {
-
-                    // Crear función y descargar archivo
-                    function downloadFile() { res.download(path_excel); }
-                    downloadFile();
-
-                    // Borrar archivo
-                    fs.rm(path_excel, function (err) {
-                        if (err) console.log(err);
-                        else console.log("Archivo descargado y borrado del servidor correctamente");
-                    });
-                }
-            });
-
-        })
-
-
-});
-
-Despendencias para excel
-
-// Dependencias para excel
-const xl = require('excel4node');
-const fs = require('fs');
-    </script>
-
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

@@ -304,13 +304,13 @@
 
                       <div class="col ml-auto">
                         <div class="dropdown float-right">
-                          <a href="visitantes_crear"><button class="btn btn-primary float-right ml-3"
-                              type="button">{{ir_boton_crear}} </button></a>
+                          <a href="multas_crear"><button class="btn btn-primary float-right ml-3"
+                              type="button">Crear multa </button></a>
 
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Descargar</button>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="exportTableToExcel('tabla-multas', 'multasExport')">Descargar</button>
                           <div class="dropdown-menu" aria-labelledby="actionMenuButton">
-                            <a class="dropdown-item" href="#">EXCEL</a>
+                            {{!-- <a class="dropdown-item"  href="#">EXCEL</a> --}}
                           </div>
                         </div>
                       </div>
@@ -318,7 +318,7 @@
 
 
                     <!-- table -->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="tabla-multas">
                       <thead>
 
                         <tr role="row">
@@ -345,7 +345,7 @@
                           <td>10/06/2023</td>
                           <td>01/07/2023</td>
                           <td>Pendiente</td>
-                          <td><a href="#" data-toggle="modal" data-target="#modalEditar">Editar  </a><a href="#">  Eliminar</a></td>
+                          <td><a href="#" data-toggle="modal" data-target="#modalEditar"><span class="fe fe-24 fe-edit">  </a><a href="#" data-toggle="modal" data-target="#modalDetalle">     <span class="fe fe-24 fe-eye"></span></a></td>
                         </tr>
 
 
@@ -365,6 +365,149 @@
                 </div>
               </div> <!-- simple table -->
             </div> <!-- end section -->
+
+
+            <!-- Modal -->
+            <div class="modal fade pt-3" id="modalEditar" tabindex="-1" role="dialog"
+              aria-labelledby="defaultModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="defaultModalLabel">Editar Multa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="card-body">
+                      <div>
+
+                        <form action="">
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group mb-3">
+                        <label for="simpleinput">Nro Multa</label>
+                        <input type="text" id="nro_multa" value="2023112" class="form-control" readonly>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="simpleinput">Apartamento</label>
+                        <input type="text" id="apartamentoE" value="404" class="form-control" readonly>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="simpleinput">Fecha Creacion</label>
+                        <input type="date" id="fechaCE" value="2023-06-10" class="form-control" readonly>
+                      </div>
+                    </div> <!-- /.col -->
+                    <div class="col-md-6">
+                      <div class="form-group mb-3">
+                        <label for="simpleinput">Fecha limite de pago</label>
+                        <input type="date" id="simpleinput" id="fechaLE" value="" class="form-control">
+                      </div>
+                      <div class="form-group mb-3">
+                          <label for="customFile">Soportes(Pruebas)</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Eligir archivo</label>
+                          </div>
+                      </div>
+                      <div class="form-group mb-3">
+                          <label for="customFile">Voucher de pago</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Elegir archivo</label>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                          <div class="d-flex flex-column">
+                          <button type="button" class="btn mb-2 btn-primary" onclick="alertSucces()">Actualizar
+                            multa</button>
+                          <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cancelar</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    </div>
+                </div> <!-- / .card -->
+              </div>
+            </div>
+
+            {{!-- modal detalles --}}
+            <div class="modal fade pt-3" id="modalDetalle" tabindex="-1" role="dialog"
+              aria-labelledby="defaultModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="defaultModalLabel">Revision de multa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <label for="">Informacion multa</label>
+                    <div class="card-body">
+                      <div>
+
+                    <form action="#">
+                            
+                    <div class="d-flex flex-wrap justify-content-around">
+                      <div class="form-group mb-3">
+                        <label for="simpleinput">Nro Multa</label>
+                        <input type="text" value="2023112" id="nro_multa" class="form-control" readonly>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="simpleinput">Apartamento</label>
+                        <input type="text" value="404" id="apartamentoE" class="form-control" readonly>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="simpleinput">Residente</label>
+                        <input type="text" value="Angelica patiño" id="resedenteE" class="form-control" readonly>
+                      </div>
+                      
+                      <div class="form-group mb-3">
+                        <label for="simpleinput">Fecha creacion</label>
+                        <input type="text" id="simpleinput" value="2023-06-10" class="form-control" readonly>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="simpleinput">Fecha limite de pago</label>
+                        <input type="text" id="simpleinput" value="2023-07-01" class="form-control" readonly>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="simpleinput">Motivo de Multa</label>
+                        <input type="text" value="Mal uso de estacionamiento" id="apartamentoE" class="form-control" readonly>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="simpleinput">Descripcion</label>
+                        <textarea name="" id="" class="form-control" cols="30" rows="3" readonly>Se ha reportado en reiteradas ocaciones sobre el uso indebido del estacinamiento de visitantes</textarea>
+                      </div>
+                      </div>
+                      <div class="d-flex justify-content-around">
+                      <div class="form-group mb-3">
+                          <label for="customFile">Soportes(Pruebas)</label>
+                          <div class="custom-file">
+                            <label class="form-control" for=""><a href="https://intranet.promedanips.co/wp-content/uploads/2020/04/FT-05-011-TH-Llamado-de-Atencion.pdf"target="_blank">Soporte.pdf</a></label>
+                          </div>
+                      </div>
+                      <div class="form-group mb-3">
+                          <label for="customFile">Voucher de pago</label>
+                          <div class="custom-file">
+                            <label class="form-control" for=""><a href="https://www.roccograficas.com/litografia/img/Plantilla-factura.pdf"target="_blank">Voucher.pdf</a></label>
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+                          <div class="d-flex justify-content-around">
+                          <button type="button" class="btn mb-2 btn-primary" id="aprobar">Aprobar</button>
+                          <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cerrar</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div> <!-- / .card -->
+                </div>
+              </div>
+            </div>
 
 
 
@@ -395,7 +538,9 @@
   <script src="js/config.js"></script>
   <script src='js/jquery.dataTables.min.js'></script>
   <script src='js/dataTables.bootstrap4.min.js'></script>
-  <script src="../js/funciones_visitantes.js"></script>
+  <script src="js/apps.js"></script>
+  <script src="../js/multaEditar.js"></script>
+  <script src="../js/exportExcel_multas.js"></script>
 
   
   <script>
@@ -423,99 +568,7 @@
   </script>
 
 
-  <div id="modal_editar" class="modal">
-    <div class="modal-dialog modal-xl"> <!-- Agregado: modal-xl para hacerlo más grande -->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="varyModalLabel">{{ir_boton_editar}}</h5>
-          <button type="button" class="close" data-dismiss="modal" onclick="salir()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <div class="row">
-            <div class="col-md-6">
-
-
-              <div class="form-group mb-3">
-                <input id="_id" type="hidden">
-                <label for="simpleinput">Nro Multa</label>
-                <input name="" id="documento_visitante" class="form-control" readonly>
-              </div>
-              <div class="form-group mb-3">
-                <label for="documento">Nombre residente</label>
-                <input type="number" id="numero_documento_visitante" class="form-control" onchange="" readonly>
-                <div id="FB_documento"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label for="example-password">Apartamento</label>
-                <input type="text" id="nombre_visitante" class="form-control" onchange="" readonly>
-                <div id="FB_nombre"></div>
-              </div>
-              <div class="form-group mb-3">
-                <label for="example-password">Fecha de creacion</label>
-                <input type="text" id="apellido_visitante" class="form-control" onchange="" readonly>
-                <div id="FB_apellido"></div>
-              </div>
-              <div class="form-group mb-3">
-                <label for="example-password">Fecha limite</label>
-                <input type="text" id="apellido_visitante" class="form-control" onchange="" readonly>
-                <div id="FB_apellido"></div>
-              </div>
-              <div class="custom-file">
-                <label for="customFile">Evidencias</label>
-                <input type="file" class="custom-file-input" id="customFile">
-                <label class="custom-file-label" for="customFile">Elige el archivo</label>
-              </div>
-              <div class="custom-file">
-                <label for="customFile">Voucher de pago</label>
-                <input type="file" class="custom-file-input" id="customFile">
-                <label class="custom-file-label" for="customFile">Elige el archivo</label>
-              </div>
-              <div class="form-group mb-3">
-                <label for="example-password">Estado</label>
-                <input type="text" id="apellido_visitante" class="form-control" onchange="" readonly>
-                <div id="FB_apellido"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Genero</label>
-                <input name="" id="genero_visitante" class="form-control" readonly>
-                  
-              </div>
-
-            </div> <!-- /.col -->
-            <div class="col-md-6">
-
-
-              <div class="form-group mb-3">
-                <label>Acceso</label>
-                <select name="" id="permiso" class="form-control">
-                  <option value="Permitido">Permitido</option>
-                  <option value="Denegado">Denegado</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group mb-3">
-              <label>Vehiculo</label>
-                <input type="text" name="" id="vehiculo" value="N/A" class="form-control">
-                <span id="FB_vehiculo"></span>
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" id="salir"
-              onclick="salir()">Cancelar</button><br>
-            <button type="button" id="boton_actualizar" onclick="actualizar_visitante()"
-              class="btn mb-2 btn-primary">Actualizar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script>
+  
  
 
 
@@ -533,48 +586,11 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-
-    <script>
-
-      document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.modal');
-        //var instances = M.Modal.init(elems, options);
-      });
-
-      // Or with jQuery
-
-      $(document).ready(function () {
-        $('.modal').modal();
-        $('.editar-enlace').on('click', function(e) {
-  e.preventDefault(); // Prevenir comportamiento predeterminado del enlace
-
-  // Obtener la fila padre
-  var fila = $(this).closest('tr');
-
-  // Obtener los valores de las celdas de la fila
-  var tipoDocumento = fila.find('td:eq(1)').text();
-  var numeroDocumento = fila.find('td:eq(2)').text();
-  var nombre = fila.find('td:eq(3)').text();
-  var apellido = fila.find('td:eq(4)').text();
-  var genero = fila.find('td:eq(5)').text();
-
-  // Asignar los valores a los inputs del modal
-  $('#tipo_documento_visitante').val(tipoDocumento);
-  $('#numero_documento_visitante').val(numeroDocumento);
-  $('#nombre_visitante').val(nombre);
-  $('#apellido_visitante').val(apellido);
-  $('#genero_visitante').val(genero);
-
-  // Abrir el modal utilizando el atributo de Bootstrap
-  $('#modal_editar').modal('show');
-});
-      });
-    </script>
+   
 
 </body>
 

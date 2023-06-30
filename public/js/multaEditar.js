@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
   botoncito.addEventListener("click", function(){
     try{
       
-      if(fechaLE.classList.contains('border-danger')||fechaLE==""){
+      if(fechaLE.classList.contains('border-danger')||fechaLE.value.length == 0 ){
         throw new Error("Fecha no valida o campo vacio")
       }
       Swal.fire(

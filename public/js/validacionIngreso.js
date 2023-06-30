@@ -46,6 +46,6 @@ function alertDelete() {
   })
 }
 
-visitantes.forEach((visitante) => {
-  personas.innerHTML += `<option value="${visitante}">${visitante}</option>`;
-});
+// visitantes.forEach((visitante) => {
+//   personas.innerHTML += `<option value="${visitante}">${visitante}</option>`;
+// });

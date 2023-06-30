@@ -1,15 +1,31 @@
-
 const express = require('express')
 const app = express() 
-const port = 8081
+const port = 8080
 const path = require('path') 
 const hbs = require('hbs')
-app.use(express.static('public'))   
+// const XLSX = require('xlsx');
+// const fs = require('fs');
 
-app.set('views', path.join(__dirname+'/public/vistas'))
+app.use(express.static('public'))
+
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+
+// app.get('/', (req, res) => {
+//     res.sendFile(__dirname + '/');
+// });
+
+
+app.set('views', path.join(__dirname + '/public/vistas'))
 app.set('view engine', 'hbs')//Motor de p<lantillas
 
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard', {
 
+        title: 'Dashboard 📉',
+        modulo: 'Dashboard'
+    })
+})
 app.get('/propietarios', (req, res) => {
     res.render('propietarios', {
 
@@ -150,8 +166,52 @@ app.get('/espacios_crear', (req, res) => {
 
 
 
+app.get('/visitas', (req, res) => {
+    res.render('visitas', {
+
+        title: 'Visitas 👨‍👦',
+        registro: 'visitas'
+
+    })
+})
+
+
+app.get('/reservas', (req, res) => {
+    res.render('reservas', {
+        modulo: 'Reservas'
+    })
+})
+app.get('/agenda', (req, res) => {
+    res.render('agenda', {
+        modulo: 'Agenda'
+    })
+})
+app.get('/reserva_crear', (req, res) => {
+    res.render('reserva_crear', {
+        modulo: 'Reservas'
+    })
+})
+app.get('/notificaciones', (req, res) => {
+    res.render('notificacion_crear', {
+        modulo: 'notificaciones'
+    })
+})
+app.get('/vehiculos', (req, res) => {
+    res.render('vehiculos', {
+        modulo: 'Vehículos'
+    })
+})
+app.get('/vehiculos_crear', (req, res) => {
+    res.render('vehiculos_crear', {
+        modulo: 'Vehículos'
+    })
+})
+app.get('/descargar_excel_ingresos', (req, res) => {
+    res.render('descargar_excel_ingresos', {
+    })
+})
 app.listen(port, () => {
 
     console.log(`Listening to  ${port}`)
-    
+
 })

@@ -245,27 +245,24 @@
                     <div class="form-group mb-3">
                       <input id="_id" type="hidden">
                       <label for="simpleinput">Apartamento</label>
-                      <select name="" id="tipo_documento_visitante" class="form-control">
-                        <option value="">Seleccione un apartamento</option>
-                        <option value="CC">404</option>
-                        <option value="CE">405</option>
-                        <option value="">501</option>
+                      <select name="" id="apartamento" class="form-control">
+                        
                       </select>
                     </div>
                     <div class="form-group mb-3">
                       <label for="documento">Residente</label>
-                      <input type="number" id="residente" class="form-control" onchange="" required>
+                      <input type="text" id="residente" class="form-control" value=""  readonly>
                       <span id="FB_documento"></span>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Fecha de creacion</label>
-                      <input type="text" id="fechaC" class="form-control" onchange="" readonly>
+                      <input type="text" id="fechaC" class="form-control" readonly>
                       <span id="FB_nombre"></span>
                     </div>
                     <div class="form-group mb-3">
                       <label for="example-password">Fecha limite</label>
-                      <input type="text" id="fechaL" class="form-control" onchange="" required>
+                      <input type="date" id="fechaL" class="form-control" required>
                       <span id="FB_fechaL"></span>
                     </div>
 
@@ -273,26 +270,20 @@
                   <div class="col-md-6" > <!-- /.col -->
                     <div class="form-group mb-3">
                       <label>Motivo multa</label>
-                      <select name="" id="genero_visitante" class="form-control">
-                        <option value="">Seleccione un motivo</option>
-                        <option value="M">Mal uso de estacionamiento</option>
-                        <option value="otro">Otro</option>
+                      <select name="" id="motivo" class="form-control">
+                        
                       </select>
                     </div>
                     <div class="form-group mb-3">
                       <label>Descripcion</label>
-                      <select name="" id="genero_visitante" class="form-control">
-                        <option value="">Seleccione un motivo</option>
-                        <option value="1">Mal uso de estacionamiento</option>
-                        <option value="2">Otro</option>
-                      </select>
+                      <textarea name="" id="descripcion" class="form-control" cols="30" rows="4" readonly></textarea>
                     </div>
 
                     <div class="form-group mb-3">
                           <label for="customFile">Soportes(Pruebas)</label>
                           <div class="custom-file">
                             <input type="file" class="custom-file-input" id="customFile">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            <label class="custom-file-label" for="customFile">Elegir archivo</label>
                           </div>
                     </div>
                     {{!-- <div class="form-group mb-3 ">
@@ -308,7 +299,7 @@
 
                   </div>
                   <div class="card-body">
-                    <button id="boton_crear" type="button" class="btn mb-2 btn-primary btn-block"><span
+                    <button id="botonGenerar" type="button" class="btn mb-2 btn-primary btn-block"><span
                         class="fe mr-2"></span>Crear multa</button>
                     <a href="multas"><button id="regresar" type="button"
                         class="btn mb-2 btn-light btn-block"><span class="fe mr-2"></span>Regresar</button></a>
@@ -332,7 +323,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/config.js"></script>
   <script src="js/apps.js"></script>
-  <script src="../js/multasCrear.js"></script>
+  <script src="../js/multaCrear.js"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
   <script>

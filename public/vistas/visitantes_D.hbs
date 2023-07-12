@@ -23,7 +23,8 @@
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
 
-
+  {{!-- Sweet alert --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </head>
@@ -107,8 +108,13 @@
           </p>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
-
-            <li class="nav-item dropdown">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="dashboard">
+                <i class="fe fe-bar-chart fe-24"></i>
+                <span class="ml-3 item-text">Desempeño</span>
+              </a>
+            </li>
+            {{!-- <li class="nav-item dropdown">
               <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-bar-chart fe-24"></i>
                 <span class="ml-3 item-text">Desempeño</span>
@@ -119,22 +125,14 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a href="#configuracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-settings"></i>
-                <span class="ml-3 item-text">Configuración</span>
+            </li> --}}
+            <li class="nav-item w-100">
+              <a class="nav-link" href="usuariosL">
+                <i class="fe fe-24 fe-user"></i>
+                <span class="ml-3 item-text">Usuarios</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/roles"><span class="ml-1 item-text">Roles</span>
-                  </a>
-                </li>
-              </ul>
             </li>
-
-            <li class="nav-item dropdown">
+            {{!-- <li class="nav-item dropdown">
               <a href="#usuarios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-24 fe-user"></i>
                 <span class="ml-3 item-text">Usuarios</span>
@@ -145,8 +143,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
+            </li> --}}
             <li class="nav-item dropdown">
               <a href="#espacios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-home fe-24"></i>
@@ -187,54 +184,43 @@
                   <a class="nav-link pl-3" href="visitantes"><span class="ml-1 item-text">Visitantes</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Visitas</span></a>
+                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Ingresos</span></a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#pagos" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="multas">
                 <i class="fe fe-24 fe-dollar-sign"></i>
-                <span class="ml-3 item-text">Pagos</span>
+                <span class="ml-3 item-text">Multas</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="pagos">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cuentas"><span class="ml-1 item-text">cuentas de cobro</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cobros"><span class="ml-1 item-text">cobros</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="comprobantes"><span class="ml-1 item-text">comprobantes</span></a>
-                </li>
-              </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#notificaciones" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="notificaciones">
                 <i class="fe fe-24 fe-message-square"></i>
                 <span class="ml-3 item-text">Notificaciones</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="notificaciones">
+            </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="vigilantesL">
+                <i class="fe fe-24 fe-lock"></i>
+                <span class="ml-3 item-text">Vigilantes</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#configuracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <i class="fe fe-24 fe-settings"></i>
+                <span class="ml-3 item-text">Configuración</span>
+              </a>
+              <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="notificaciones"><span class="ml-1 item-text">Notificaciones</span>
+                  <a class="nav-link pl-3" href="/rolesL"><span class="ml-1 item-text">Roles</span>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#seguridad" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-lock"></i>
-                <span class="ml-3 item-text">Seguridad</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="seguridad">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="vigilantes"><span class="ml-1 item-text">Vigilantes</span>
-                  </a>
-                </li>
-              </ul>
-            </li><br>
-            <li class="nav-item dropdown">
-              <a href="/" class="dropdown-toggle nav-link">
+            <br>
+            <li class="nav-item">
+              <a href="/" id="salir" class="nav-link" id="salir">
                 <i class="fe fe-24 fe-slack"></i>
                 <span class="ml-3 item-text">Cerrar Sesión</span>
               </a>
@@ -292,9 +278,10 @@
                               type="button">{{ir_boton_crear}} </button></a>
 
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Descargar</button>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                              class="fe fe-download fe-16"></i></button>
                           <div class="dropdown-menu" aria-labelledby="actionMenuButton">
-                            <a class="dropdown-item" onclick="descargarExcel()" href="#">EXCEL</a>
+                            <a class="dropdown-item" href="descargar_excel_visitantes">Excel</a>
                           </div>
                         </div>
                       </div>
@@ -308,13 +295,17 @@
                         <tr role="row">
 
                           <th>Item</th>
-                          <th>Tipo documento</th>
-                          <th>Numero documento</th>
+                          <th>Tipo <br> documento</th>
+                          <th>Numero <br> documento</th>
                           <th>Nombre</th>
                           <th>Apellido</th>
                           <th>Genero</th>
 
-                          <th>Acceso</th>
+                          <th>Tipo <br> visitante</th>
+
+                          <th>Anfitrion</th>
+
+                          <th>Permiso</th>
 
 
 
@@ -477,91 +468,129 @@
     gtag('config', 'UA-56159088-1');
   </script>
 
-  <style>
-    .modal-dialog {
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  {{!-- Modal notificaciones --}}
 
-    .modal-content {
-      max-width: 2800px;
-      border: 1px solid black;
-    }
+  <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="defaultModalLabel">Notificaciones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group list-group-flush my-n3">
+          </div> <!-- / .list-group -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear
+            All</button>
+        </div>
+      </div>
+    </div>
+              
+  </div>
 
-    .modal-body {
-      padding: 0;
-    }
-  </style>
-  <script>
-    $('#vehiculoE').on("blur", function () {
-    console.log("llegue2");
-    const vehiculoRegex = /^(N\/A|\b[A-Za-z]{3}-\d{3}\b)$/;
-    const valorVehiculo = $('#vehiculoE').val();
-    var mensajen = $("#FB_vehiculo");
-    if (vehiculoRegex.test(valorVehiculo)) {
-      mensajen.text("");
-      $(this).addClass("border-success"); // Agregar clase de Bootstrap para input válido
-      $(this).removeClass("border-danger"); // Quitar clase de Bootstrap para input inválido
-    } else {
-      mensajen.text("El campo no cumple con el formato."); // Mostrar mensaje si es inválido
-
-      $(this).addClass("border-danger"); // Agregar clase de Bootstrap para input inválido
-      $(this).removeClass("border-success"); // Quitar clase de Bootstrap para input válido
-    }
-  });
-    $('#editForm').on('submit', function{
-      const vehiculoRegex = /^(N\/A|\b[A-Za-z]{3}-\d{3}\b)$/;
-      const valorVehiculo = $('#vehiculoE').val();
-      try{
-        if (!vehiculoRegex.test(valorVehiculo) || valorVehiculo==""){
-          throw new Error('La matricula no cumple o esta vacia');
-        }
-        Swal.fire(
-          "Exito",
-          "La actualizacion se realizo",
-          "success"
-        )
-      }catch (e) {
-        Swal.fire(
-          "Error",
-          "El campo no puede ir vacio o el formato no cumple",
-          "error"
-        )
-      }
-    })
-  </script>
-
-    <!-- Agrega los scripts de Bootstrap en tu archivo HTML -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  {{!-- Modal editar --}}
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="varyModalLabel">Editar propietario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body p-4">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+          <div class="form-group mb-3">
+            <input id="_id" type="hidden">
+            <label for="simpleinput">Tipo de Documento</label>
+            <select name="" id="tipo_documento_visitante" class="form-control">
+              <option value="">Selecione un tipo de documento</option>
+              <option value="CC">CEDULA DE CIUDADANIA</option>
+              <option value="CE">CEDULA EXTRANJERIA</option>
+            </select>
+            <div id="FB_tipo_documento"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="documento">Numero documento</label>
+            <input type="number" id="numero_documento_visitante" class="form-control" onchange="" required>
+            <div id="FB_documento"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="example-password">Nombre visitante</label>
+            <input type="text" id="nombre_visitante" class="form-control" onchange="" required>
+            <div id="FB_nombre"></div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="example-password">Apellido visitante</label>
+            <input type="text" id="apellido_visitante" class="form-control" onchange="" required>
+            <div id="FB_apellido"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Genero</label>
+            <select name="" id="genero_visitante" class="form-control">
+              <option value="">Seleccione un genero</option>
+              <option value="M">MASCULINO</option>
+              <option value="F">FEMENINO</option>
+              <option value="otro">OTRO</option>
+            </select>
+            <div id="FB_genero_visitante"></div>
+          </div>
 
 
+          <div class="form-group mb-3">
+            <label>Tipo de visitante</label>
+            <select name="" id="tipo_visitante" class="form-control">
+              <option value="OCASIONAL">Escoge una opcion</option>
+              <option value="OCASIONAL">OCASIONAL</option>
+              <option value="FRECUENTE">FRECUENTE</option>
+            </select>
+          </div>
 
-    <script>
+          <div class="form-group mb-3">
+            <label>Anfitrion</label>
+            <select name="" id="anfitrion" class="form-control">
+              <option value="null">Seleccione un anfitrion</option>
 
-      document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.modal');
-        //var instances = M.Modal.init(elems, options);
-      });
+            </select>
+          </div>
 
-      // Or with jQuery
+          <div class="form-group mb-3">
+            <label>Permiso</label>
+            <select name="" id="permiso" class="form-control">
+              <option value="NO PERMITIDO">NO PERMITIDO</option>
+              <option value="PERMITIDO">PERMITIDO</option>
+            </select>
+          </div>
 
-      $(document).ready(function () {
-        $('.modal').modal();
-      });
-    </script>
+        </div>
 
+        <div class="modal-footer d-flex justify-content-between">
+          <button onclick="actualizar_visitante()" id="boton_actualizar" type="button"
+            class="btn mb-2 btn-primary"><span class="fe mr-2"></span>Actualizar
+            visitante</button>
+          <a href="visitantes"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block">
+              <spana class="fe mr-2"></spana>Regresar
+            </button></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+    <script src="../JS/validacionCerrarSesion.js"></script>
+  {{!-- Funciones backend --}}
+  <script src="../js/funciones_visitantes.js"></script>
+  {{!-- Validaciones formulario --}}
+  <script src="../js/validaciones_visitantes.js"></script>
 
 </body>
-
-</html>

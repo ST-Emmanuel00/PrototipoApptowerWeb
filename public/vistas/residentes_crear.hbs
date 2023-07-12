@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme" disabled>
 
-  <script src="../js/validaciones_residentes.js"></script>
+  {{!-- Sweet alert --}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -94,8 +94,13 @@
           </p>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
-
-            <li class="nav-item dropdown">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="dashboard">
+                <i class="fe fe-bar-chart fe-24"></i>
+                <span class="ml-3 item-text">Desempeño</span>
+              </a>
+            </li>
+            {{!-- <li class="nav-item dropdown">
               <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-bar-chart fe-24"></i>
                 <span class="ml-3 item-text">Desempeño</span>
@@ -106,22 +111,14 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a href="#configuracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-settings"></i>
-                <span class="ml-3 item-text">Configuración</span>
+            </li> --}}
+            <li class="nav-item w-100">
+              <a class="nav-link" href="usuariosL">
+                <i class="fe fe-24 fe-user"></i>
+                <span class="ml-3 item-text">Usuarios</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/roles"><span class="ml-1 item-text">Roles</span>
-                  </a>
-                </li>
-              </ul>
             </li>
-
-            <li class="nav-item dropdown">
+            {{!-- <li class="nav-item dropdown">
               <a href="#usuarios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-24 fe-user"></i>
                 <span class="ml-3 item-text">Usuarios</span>
@@ -132,8 +129,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
+            </li> --}}
             <li class="nav-item dropdown">
               <a href="#espacios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-home fe-24"></i>
@@ -174,54 +170,43 @@
                   <a class="nav-link pl-3" href="visitantes"><span class="ml-1 item-text">Visitantes</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Visitas</span></a>
+                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Ingresos</span></a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#pagos" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="multas">
                 <i class="fe fe-24 fe-dollar-sign"></i>
-                <span class="ml-3 item-text">Pagos</span>
+                <span class="ml-3 item-text">Multas</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="pagos">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cuentas"><span class="ml-1 item-text">cuentas de cobro</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cobros"><span class="ml-1 item-text">cobros</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="comprobantes"><span class="ml-1 item-text">comprobantes</span></a>
-                </li>
-              </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#notificaciones" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="notificaciones">
                 <i class="fe fe-24 fe-message-square"></i>
                 <span class="ml-3 item-text">Notificaciones</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="notificaciones">
+            </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="vigilantesL">
+                <i class="fe fe-24 fe-lock"></i>
+                <span class="ml-3 item-text">Vigilantes</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#configuracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <i class="fe fe-24 fe-settings"></i>
+                <span class="ml-3 item-text">Configuración</span>
+              </a>
+              <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="notificaciones"><span class="ml-1 item-text">Notificaciones</span>
+                  <a class="nav-link pl-3" href="/rolesL"><span class="ml-1 item-text">Roles</span>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#seguridad" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-lock"></i>
-                <span class="ml-3 item-text">Seguridad</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="seguridad">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="vigilantes"><span class="ml-1 item-text">Vigilantes</span>
-                  </a>
-                </li>
-              </ul>
-            </li><br>
-            <li class="nav-item dropdown">
-              <a href="/" class="dropdown-toggle nav-link">
+            <br>
+            <li class="nav-item">
+              <a href="/" class="nav-link" id="salir">
                 <i class="fe fe-24 fe-slack"></i>
                 <span class="ml-3 item-text">Cerrar Sesión</span>
               </a>
@@ -249,8 +234,7 @@
                     {{!-- <h3>Datos personales</h3> --}}
                     <div class="form-group mb-3">
                       <label for="simpleinput">Tipo de Documento</label>
-                      <select name="" id="tipo_documento_residente" class="form-control"
-                        onchange="validacion_tipo_documento_residente()">
+                      <select name="" id="tipo_documento_residente" class="form-control">
                         <option value="">Selecione un tipo de documento</option>
                         <option value="CC">CEDULA DE CIUDADANIA</option>
                         <option value="CE">CEDULA EXTRANJERIA</option>
@@ -260,36 +244,31 @@
 
                     <div class="form-group mb-3">
                       <label for="documento">Numero documento</label>
-                      <input type="number" id="numero_documento_residente" class="form-control"
-                        onchange="validacion_numero_documento_residente()" required>
+                      <input type="number" id="numero_documento_residente" class="form-control" required>
                       <div id="FB_documento"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Nombre Residentes</label>
-                      <input type="text" id="nombre_residente" class="form-control"
-                        onchange="validacion_nombre_residente()" required>
+                      <input type="text" id="nombre_residente" class="form-control" required>
                       <div id="FB_nombre"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Apellido Residentes</label>
-                      <input type="text" id="apellido_residente" class="form-control"
-                        onchange="validacion_apellido_residente()" required>
+                      <input type="text" id="apellido_residente" class="form-control" required>
                       <div id="FB_apellido"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Fecha nacimiento</label>
-                      <input type="date" id="fecha_nacimiento" class="form-control"
-                        onchange="validacion_fecha_nacimiento()" required>
+                      <input type="date" id="fecha_nacimiento" class="form-control" required>
                       <div id="FB_fecha_nacimiento"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label>Genero</label>
-                      <select name="" id="genero_residente" class="form-control"
-                        onchange="validacion_genero_residente()">
+                      <select name="" id="genero_residente" class="form-control">
                         <option value="">Seleccione un genero</option>
                         <option value="M">MASCULINO</option>
                         <option value="F">FEMENINO</option>
@@ -300,14 +279,13 @@
 
                     <div class="form-group mb-3">
                       <label>Telefono</label>
-                      <input type="text" id="telefono_residente" class="form-control"
-                        onchange="validacion_telefono_residente()">
+                      <input type="text" id="telefono_residente" class="form-control">
                       <div id="FB_telefono"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label>Correo</label>
-                      <input type="email" id="correo" class="form-control" onchange="validacion_correo()" required>
+                      <input type="email" id="correo" class="form-control" required>
                       <div id="FB_correo"></div>
                     </div>
 
@@ -327,7 +305,7 @@
 
                     <div class="form-group mb-3">
                       <label for="simpleinput">Tipo residente</label>
-                      <select name="" id="tipo_residente" class="form-control" onchange="validacion_tipo_residente()">
+                      <select name="" id="tipo_residente" class="form-control">
                         <option value="">Seleccione un tipo de residente</option>
                         <option value="ARRENDATARIO">ARRENDATARIO</option>
                         <option value="PROPIETARIO">PROPIETARIO</option>
@@ -337,9 +315,9 @@
 
                     <div class="form-group mb-3">
                       <label>Habita</label>
-                      <select name="" id="habita" class="form-control">
-                        <option value="">Selecione un estado</option>
-                        <option value="true">SI</option>
+                      <select id="habita" class="form-control">
+                        <option value="">Seleccione un estado</option>
+                        <option value="true" selected>SI</option>
                         <option value="false">NO</option>
                       </select>
                     </div>
@@ -354,13 +332,13 @@
 
                     <div class="form-group mb-3">
                       <label>Fecha inicio</label>
-                      <input type="date" id="fecha_inicio" class="form-control" onchange="validacion_fecha_inicio()">
+                      <input type="date" id="fecha_inicio" class="form-control">
                       <div id="FB_fecha_inicio"></div>
                     </div>
 
                     <div id="div_fecha_fin" class="form-group mb-3">
                       <label>Fecha fin</label>
-                      <input type="date" id="fecha_fin" class="form-control" onchange="">
+                      <input type="date" id="fecha_fin" class="form-control">
                       <div id="FB_fecha_fin"></div>
                     </div>
 
@@ -386,6 +364,35 @@
     </main> <!-- main -->
   </div> <!-- .wrapper -->
 
+  {{!-- Modal notificaciones --}}
+
+  <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="defaultModalLabel">Notificaciones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group list-group-flush my-n3">
+          </div> <!-- / .list-group -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear
+            All</button>
+        </div>
+      </div>
+    </div>
+              
+  </div>
+
+
+  {{!-- Validaciones formulario --}}
+  <script src="../js/validaciones_residentes.js"></script>
+  {{!-- Funciones backend --}}
   <script src="../js/funciones_residentes.js"></script>
 
   <script src="js/jquery.min.js"></script>
@@ -409,6 +416,10 @@
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
   </script>
+
+
 </body>
+
+
 
 </html>

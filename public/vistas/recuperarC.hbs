@@ -1,0 +1,67 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="../css/styleRecuperar.css">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="light">
+    <section class="inicio">
+        <div class="login">
+            <form id="formulario">
+                <h2 class="tit">Recuperar Contraseña</h2>
+                  
+                <div class="descripcion">
+                    <p>Señor(a) usuario(a), para restablecer su contraseña se enviará un código de verificación al correo que usted proporcione.</p>
+                </div> 
+    
+                <div class="caja" id="cajaCorreo">
+                    <span class="icono"><ion-icon name="person-outline"></ion-icon></span>
+                    <input type="email" name="correo" id="correo"  autocomplete="off">
+                    <label>Correo</label>
+
+                </div>
+                
+                <div class="caja" id="cajaCodigo" style="display: none;">
+                    <span class="icono"><ion-icon name="person-outline"></ion-icon></span>
+                    <input type="number" name="codigo" id="codigo"  autocomplete="off">
+                    <label>Código de verificación</label>
+                </div>
+                
+                <button type="button" name="continuar"  class="continuar" id="continuar" onclick="mostrarCampoCodigo()">Continuar</button>
+                <button type="button" class="continuar" name="enviar" id="enviar" style="display: none;">Enviar</button> </form>
+        </div>
+    </section>
+
+    <script>
+        function mostrarCampoCodigo() {
+            document.getElementById("cajaCorreo").style.display = "none";
+            document.getElementById("cajaCodigo").style.display = "block";
+            document.getElementById("continuar").style.display = "none";
+            document.getElementById("enviar").style.display = "block";
+        }
+    </script>
+</body>
+
+
+
+    <script src="../js/scriptRecuperar.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+</body>
+ <script src="js/jquery.min.js"></script>
+
+
+
+</html>
+</body>
+
+</html>

@@ -23,7 +23,8 @@
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
 
-
+  {{!-- Sweet alert --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </head>
@@ -80,167 +81,167 @@
 
 
     <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
-      <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
-        <i class="fe fe-x"><span class="sr-only"></span></i>
-      </a>
-      <nav class="vertnav navbar navbar-light">
-        <!-- nav bar -->
-        <div class="w-100 mb-4 d-flex">
-          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/">
-            <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
-              <g>
-                <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
-                <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
-                <polygon class="st0" points="78,33 15,33 24,15 87,15 	" />
-              </g>
-            </svg>
-          </a>
-        </div>
+            <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
+                <i class="fe fe-x"><span class="sr-only"></span></i>
+            </a>
+            <nav class="vertnav navbar navbar-light">
+                <!-- nav bar -->
+                <div class="w-100 mb-4 d-flex">
+                    <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/">
+                        <svg version="1.1" id="logo" class="navbar-brand-img brand-sm"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                            y="0px" viewBox="0 0 120 120" xml:space="preserve">
+                            <g>
+                                <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
+                                <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
+                                <polygon class="st0" points="78,33 15,33 24,15 87,15 	" />
+                            </g>
+                        </svg>
+                    </a>
+                </div>
 
 
 
-        <ul class="navbar-nav flex-fill w-100 mb-2">
+                <ul class="navbar-nav flex-fill w-100 mb-2">
 
-          <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Procesos</span>
-          </p>
+                    <p class="text-muted nav-heading mt-4 mb-1">
+                        <span>Procesos</span>
+                    </p>
 
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-
-            <li class="nav-item dropdown">
-              <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-bar-chart fe-24"></i>
-                <span class="ml-3 item-text">Desempeño</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/dashboard"><span class="ml-1 item-text">Dashboard</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a href="#configuracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-settings"></i>
-                <span class="ml-3 item-text">Configuración</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/roles"><span class="ml-1 item-text">Roles</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a href="#usuarios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-user"></i>
-                <span class="ml-3 item-text">Usuarios</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="usuarios">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/usuarios"><span class="ml-1 item-text">Usuarios</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a href="#espacios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-home fe-24"></i>
-                <span class="ml-3 item-text">Espacios</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="espacios">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/espacios"><span class="ml-1 item-text">Espacios</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="propietarios"><span class="ml-1 item-text">Propietarios</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="residentes"><span class="ml-1 item-text">Residentes</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#reservas" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-clipboard fe-24"></i>
-                <span class="ml-3 item-text">Reservas</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="reservas">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="reservas"><span class="ml-1 item-text">Reservas</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="agenda"><span class="ml-1 item-text">Agenda </span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="vehiculos"><span class="ml-1 item-text">Vehiculos</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="visitantes"><span class="ml-1 item-text">Visitantes</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Visitas</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#pagos" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-dollar-sign"></i>
-                <span class="ml-3 item-text">Pagos</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="pagos">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cuentas"><span class="ml-1 item-text">cuentas de cobro</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cobros"><span class="ml-1 item-text">cobros</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="comprobantes"><span class="ml-1 item-text">comprobantes</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#notificaciones" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-message-square"></i>
-                <span class="ml-3 item-text">Notificaciones</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="notificaciones">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="notificaciones"><span class="ml-1 item-text">Notificaciones</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#seguridad" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-lock"></i>
-                <span class="ml-3 item-text">Seguridad</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="seguridad">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="vigilantes"><span class="ml-1 item-text">Vigilantes</span>
-                  </a>
-                </li>
-              </ul>
-            </li><br>
-            <li class="nav-item dropdown">
-              <a href="/" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-slack"></i>
-                <span class="ml-3 item-text">Cerrar Sesión</span>
-              </a>
-            </li>
-          </ul>
-    </aside>
+                    <ul class="navbar-nav flex-fill w-100 mb-2">
+                        <li class="nav-item w-100">
+                            <a class="nav-link" href="dashboard">
+                                <i class="fe fe-bar-chart fe-24"></i>
+                                <span class="ml-3 item-text">Desempeño</span>
+                            </a>
+                        </li>
+                        {{!-- <li class="nav-item dropdown">
+                            <a href="#dashboard" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle nav-link">
+                                <i class="fe fe-bar-chart fe-24"></i>
+                                <span class="ml-3 item-text">Desempeño</span>
+                            </a>
+                            <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="/dashboard"><span
+                                            class="ml-1 item-text">Dashboard</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li> --}}
+                        <li class="nav-item w-100">
+                            <a class="nav-link" href="usuariosL">
+                                <i class="fe fe-24 fe-user"></i>
+                                <span class="ml-3 item-text">Usuarios</span>
+                            </a>
+                        </li>
+                        {{!-- <li class="nav-item dropdown">
+                            <a href="#usuarios" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle nav-link">
+                                <i class="fe fe-24 fe-user"></i>
+                                <span class="ml-3 item-text">Usuarios</span>
+                            </a>
+                            <ul class="collapse list-unstyled pl-4 w-100" id="usuarios">
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="/usuarios"><span
+                                            class="ml-1 item-text">Usuarios</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li> --}}
+                        <li class="nav-item dropdown">
+                            <a href="#espacios" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle nav-link">
+                                <i class="fe fe-home fe-24"></i>
+                                <span class="ml-3 item-text">Espacios</span>
+                            </a>
+                            <ul class="collapse list-unstyled pl-4 w-100" id="espacios">
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="/espacios"><span
+                                            class="ml-1 item-text">Espacios</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="propietarios"><span
+                                            class="ml-1 item-text">Propietarios</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="residentes"><span
+                                            class="ml-1 item-text">Residentes</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#reservas" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle nav-link">
+                                <i class="fe fe-clipboard fe-24"></i>
+                                <span class="ml-3 item-text">Reservas</span>
+                            </a>
+                            <ul class="collapse list-unstyled pl-4 w-100" id="reservas">
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="reservas"><span
+                                            class="ml-1 item-text">Reservas</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="agenda"><span class="ml-1 item-text">Agenda </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="vehiculos"><span
+                                            class="ml-1 item-text">Vehiculos</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="visitantes"><span
+                                            class="ml-1 item-text">Visitantes</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="visitas"><span
+                                            class="ml-1 item-text">Ingresos</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a class="nav-link" href="multas">
+                                <i class="fe fe-24 fe-dollar-sign"></i>
+                                <span class="ml-3 item-text">Multas</span>
+                            </a>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a class="nav-link" href="notificaciones">
+                                <i class="fe fe-24 fe-message-square"></i>
+                                <span class="ml-3 item-text">Notificaciones</span>
+                            </a>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a class="nav-link" href="vigilantesL">
+                                <i class="fe fe-24 fe-lock"></i>
+                                <span class="ml-3 item-text">Vigilantes</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#configuracion" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle nav-link">
+                                <i class="fe fe-24 fe-settings"></i>
+                                <span class="ml-3 item-text">Configuración</span>
+                            </a>
+                            <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
+                                <li class="nav-item">
+                                    <a class="nav-link pl-3" href="/rolesL"><span class="ml-1 item-text">Roles</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <br>
+                        <li class="nav-item">
+                            <a href="/" class="nav-link" id="salir">
+                                <i class="fe fe-24 fe-slack"></i>
+                                <span class="ml-3 item-text">Cerrar Sesión</span>
+                            </a>
+                        </li>
+                    </ul>
+        </aside>
 
 
 
@@ -292,9 +293,10 @@
                               type="button">{{ir_boton_crear}} </button></a>
 
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Descargar</button>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                              class="fe fe-download fe-16"></i></button>
                           <div class="dropdown-menu" aria-labelledby="actionMenuButton">
-                            <a class="dropdown-item" href="#">EXCEL</a>
+                            <a class="dropdown-item" href="descargar_excel_propietarios">Excel</a>
                           </div>
                         </div>
                       </div>
@@ -308,11 +310,11 @@
                         <tr role="row">
 
                           <th>Item</th>
-                          <th>Tipo documento</th>
-                          <th>Numero documento</th>
+                          <th>Tipo <br> documento</th>
+                          <th>Numero<br> documento</th>
                           <th>Nombre</th>
                           <th>Apellido</th>
-                          <th>Fecha nacimiento</th>
+                          <th>Fecha<br> nacimiento</th>
                           <th>Genero</th>
                           <th>Telefono</th>
 
@@ -348,22 +350,6 @@
                 </div>
               </div> <!-- simple table -->
             </div> <!-- end section -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </main> <!-- main -->
   </div> <!-- .wrapper -->
   <script src="../js/funciones_propietarios.js"></script>
@@ -401,170 +387,142 @@
     gtag('config', 'UA-56159088-1');
   </script>
 
-  <style>
-    .modal-dialog {
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  {{!-- Modal notificaciones --}}
 
-    .modal-content {
-      max-width: 2800px;
-      border: 1px solid black;
-    }
-
-    .modal-body {
-      padding: 25px
-    }
-  </style>
-  <div id="modal_editar" class="modal">
-    <div class="modal-dialog modal-xl"> <!-- Agregado: modal-xl para hacerlo más grande -->
+  <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="varyModalLabel">{{ir_boton_editar}}</h5>
-          <button type="button" class="close" data-dismiss="modal" onclick="salir()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <h5 class="modal-title" id="defaultModalLabel">Notificaciones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">
-
-          <div class="row">
-            <div class="col-md-6">
-
-
-              <div class="form-group mb-3">
-                <input id="_id" type="hidden">
-                <label for="simpleinput">Tipo de Documento</label>
-                <select name="" id="tipo_documento_propietario" class="form-control">
-                  <option value="">Selecione un tipo de documento</option>
-                  <option value="CC">Cedula ciudadania</option>
-                  <option value="CE">Cedula extranjeria</option>
-                </select>
-              </div>
-              <div class="form-group mb-3">
-                <label for="documento">Numero documento</label>
-                <input type="number" id="numero_documento_propietario" class="form-control" onchange="" required>
-                <div id="FB_documento"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label for="example-password">Nombre propietario</label>
-                <input type="text" id="nombre_propietario" class="form-control" onchange="" required>
-                <div id="FB_nombre"></div>
-              </div>
-              <div class="form-group mb-3">
-                <label for="example-password">Apellido propietario</label>
-                <input type="text" id="apellido_propietario" class="form-control" onchange="" required>
-                <div id="FB_apellido"></div>
-              </div>
-              <div class="form-group mb-3">
-                <label for="example-password">Fecha nacimiento</label>
-                <input type="date" id="fecha_nacimiento" class="form-control" onchange="" required>
-                <div id="FB_edad"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Genero</label>
-                <select name="" id="genero_propietario" class="form-control">
-                  <option value="">Seleccione un genero</option>
-                  <option value="M">Masculino</option>
-                  <option value="F">Femenio</option>
-                  <option value="otro">Otro</option>
-                </select>
-              </div>
-
-
-            </div> <!-- /.col -->
-
-
-            <div class="col-md-6">
-              <div class="form-group mb-3">
-                <label>Correo</label>
-                <input type="email" id="correo" class="form-control" onchange="" required>
-                <div id="FB_correo"></div>
-              </div>
-              <div class="form-group mb-3">
-                <label>Telefono</label>
-                <input type="text" id="telefono_propietario" class="form-control" onchange="">
-                <div id="FB_telefono"></div>
-              </div>
-
-
-
-
-              <div class="form-group mb-3">
-                <label for="simpleinput">Propiedad</label>
-                <select name="" id="propiedad" class="form-control">
-                  <option value="null">Selecciona propiedad</option>
-                  {{!-- Aqui va codigo para listar espacios --}}
-                </select>
-              </div>
-
-
-              <div class="form-group mb-3">
-                <label>Estado</label>
-                <select name="" id="estado" class="form-control">
-                  <option value="ACTIVO">ACTIVO</option>
-                  <option value="INACTIVO">INACTIVO</option>
-                </select>
-              </div>
-
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" id="salir"
-              onclick="salir()">Cancelar</button><br>
-            <button type="button" id="boton_actualizar" onclick="actualizar_propietario()"
-              class="btn mb-2 btn-primary">Actualizar</button>
-          </div>
+          <div class="list-group list-group-flush my-n3">
+          </div> <!-- / .list-group -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear
+            All</button>
         </div>
       </div>
     </div>
+              
+  </div>
+
+  {{!-- Modal editar --}}
 
 
+  <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="varyModalLabel">Editar propietario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body p-4">
+
+          <div class="form-group mb-3">
+            <input id="_id" type="hidden">
+            <label for="simpleinput">Tipo de Documento</label>
+            <select name="" id="tipo_documento_propietario" class="form-control">
+              <option value="">Selecione un tipo de documento</option>
+              <option value="CC">CEDULA DE CIUDADANIA</option>
+              <option value="CE">CEDULA EXTRANJERIA</option>
+            </select>
+            <div id="FB_tipo_documento"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="documento">Numero documento</label>
+            <input type="number" id="numero_documento_propietario" class="form-control" required>
+            <div id="FB_documento"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="example-password">Nombre propietarios</label>
+            <input type="text" id="nombre_propietario" class="form-control" required>
+            <div id="FB_nombre"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="example-password">Apellido propietarios</label>
+            <input type="text" id="apellido_propietario" class="form-control" required>
+            <div id="FB_apellido"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="example-password">Fecha nacimiento</label>
+            <input type="date" id="fecha_nacimiento" class="form-control" required>
+            <div id="FB_fecha_nacimiento"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Genero</label>
+            <select name="" id="genero_propietario" class="form-control">
+              <option value="">Seleccione un genero</option>
+              <option value="M">MASCULINO</option>
+              <option value="F">FEMENINO</option>
+              <option value="otro">OTRO</option>
+            </select>
+            <div id="FB_genero_propietario"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Telefono</label>
+            <input type="text" id="telefono_propietario" class="form-control">
+            <div id="FB_telefono"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Correo</label>
+            <input type="email" id="correo" class="form-control" required>
+            <div id="FB_correo"></div>
+          </div>
 
 
+          <div class="form-group mb-3">
+            <label for="simpleinput">Propiedad</label>
+            <select name="" id="propiedad" class="form-control">
+              <option value="null">Selecciona propiedad</option>
+              {{!-- Aqui va codigo para listar espacios --}}
+            </select>
+          </div>
 
+          <div class="form-group mb-3">
+            <label>Estado</label>
+            <select name="" id="estado" class="form-control">
+              <option value="ACTIVO">ACTIVO</option>
+              <option value="INACTIVO">INACTIVO</option>
+            </select>
+          </div>
 
-    <script>
+        </div>
 
-      const salir = () => {
+        <div class="modal-footer d-flex justify-content-between">
+          <button onclick="actualizar_propietario()" id="boton_actualizar" type="button"
+            class="btn mb-2 btn-primary"><span class="fe mr-2"></span>Actualizar
+            propietario</button>
+          <a href="propietarios"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block">
+              <spana class="fe mr-2"></spana>Regresar
+            </button></a>
+        </div>
 
-        window.location.href = 'propietarios'
+      </div>
+    </div>
+  </div>
+      <script src="../JS/validacionCerrarSesion.js"></script>
 
-      }
-    </script>
+  {{!-- Funciones backend --}}
+  <script src="../js/funciones_propietarios.js"></script>
+  {{!-- Validaciones formulario --}}
+  <script src="../js/validaciones_propietarios.js"></script>
 
-    <!-- Agrega los scripts de Bootstrap en tu archivo HTML -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-
-    <script>
-
-      document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.modal');
-        //var instances = M.Modal.init(elems, options);
-      });
-
-      // Or with jQuery
-
-      $(document).ready(function () {
-        $('.modal').modal();
-      });
-    </script>
-
-    <script src="../js/funciones_propietarios.js"></script>
 
 </body>
 

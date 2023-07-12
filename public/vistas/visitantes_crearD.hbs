@@ -242,26 +242,25 @@
                       <label for="simpleinput">Tipo de Documento</label>
                       <select name="" id="tipo_documento_visitante" class="form-control">
                         <option value="">Selecione un tipo de documento</option>
-                        <option value="CC">CC</option>
-                        <option value="CE">CE</option>
-                        <option value="">TI</option>
+                        <option value="CC">Cedula ciudadania</option>
+                        <option value="CE">Cedula extranjeria</option>
                       </select>
                     </div>
                     <div class="form-group mb-3">
                       <label for="documento">Numero documento</label>
-                      <input type="number" id="documento_visitante" class="form-control" onchange="" required>
-                      <span id="FB_documento"></span>
+                      <input type="number" id="numero_documento_visitante" class="form-control" onchange="" required>
+                      <div id="FB_documento"></div>
                     </div>
 
                     <div class="form-group mb-3">
                       <label for="example-password">Nombre visitante</label>
                       <input type="text" id="nombre_visitante" class="form-control" onchange="" required>
-                      <span id="FB_nombre"></span>
+                      <div id="FB_nombre"></div>
                     </div>
                     <div class="form-group mb-3">
                       <label for="example-password">Apellido visitante</label>
                       <input type="text" id="apellido_visitante" class="form-control" onchange="" required>
-                      <span id="FB_apellido"></span>
+                      <div id="FB_apellido"></div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -274,44 +273,42 @@
                       </select>
                     </div>
 
-                  </div>
-                  <div class="col-md-6" > <!-- /.col -->
+
+                  </div> <!-- /.col -->
+
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label>Tipo de visitante</label>
+                      <select name="" id="tipo_visitante" class="form-control">
+                        <option value="OCASIONAL">Escoge una opcion</option>
+                        <option value="OCASIONAL">OCASIONAL</option>
+                        <option value="FRECUENTE">FRECUENTE</option>
+                      </select>
+                    </div>
 
                     <div class="form-group mb-3">
-                      <label>Fecha de nacimiento</label>
-                      <input type="date" name="" id="fechaN" class="form-control">
-                      <span id="FB_fecha"></span>
+                      <label>Anfitrion</label>
+                      <select name="" id="anfitrion" class="form-control">
+                        <option value="null">Seleccione un anfitrion</option>
 
+                      </select>
                     </div>
+
                     <div class="form-group mb-3">
-                      <label>Vehiculo</label>
-                      <input type="text" name="" id="vehiculo" value="N/A" class="form-control">
-                      <span id="FB_vehiculo"></span>
-
-                    </div>
-                    <div class="form-group mb-3">
-                      <label>Telefono</label>
-                      <input type="text" name="" id="telefono" class="form-control">
-                      <span id="FB_telefono"></span>
-
-                    </div>
-                    
-
-                    {{!-- <div class="form-group mb-3 ">
                       <label>Permiso</label>
                       <select name="" id="permiso" class="form-control">
                         <option value="NO PERMITIDO">NO PERMITIDO</option>
                         <option value="PERMITIDO">PERMITIDO</option>
                       </select>
-                    </div> --}}
+                    </div>
 
 
                   </div>
 
-                  </div>
+
                   <div class="card-body">
                     <button id="boton_crear" type="button" class="btn mb-2 btn-primary btn-block"><span
-                        class="fe mr-2"></span>{{boton_crear}}</button>
+                        class="fe mr-2"></span>{{boton_crear}} </button>
                     <a href="{{datagrid}}"><button id="regresar" type="button"
                         class="btn mb-2 btn-light btn-block"><span class="fe mr-2"></span>Regresar</button></a>
                   </div>
@@ -320,8 +317,8 @@
   </div> <!-- .wrapper -->
 
 
-  <script src="../js/ER_validacion.js"></script>
-  
+  <script src="../js/validaciones_residentes.js"></script>
+  <script src="../js/funciones_visitantes.js"></script>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -331,10 +328,8 @@
   <script src='js/daterangepicker.js'></script>
   <script src='js/jquery.stickOnScroll.js'></script>
   <script src="js/tinycolor-min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/config.js"></script>
   <script src="js/apps.js"></script>
-  <script src="../js/funciones_visitantes.js"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
   <script>
@@ -347,5 +342,3 @@
     gtag('config', 'UA-56159088-1');
   </script>
 </body>
-
-</html>

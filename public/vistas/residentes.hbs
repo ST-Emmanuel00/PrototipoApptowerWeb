@@ -23,6 +23,12 @@
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
 
+  {{!-- Sweet alert --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
 
 
 
@@ -108,8 +114,13 @@
           </p>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
-
-            <li class="nav-item dropdown">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="dashboard">
+                <i class="fe fe-bar-chart fe-24"></i>
+                <span class="ml-3 item-text">Desempeño</span>
+              </a>
+            </li>
+            {{!-- <li class="nav-item dropdown">
               <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-bar-chart fe-24"></i>
                 <span class="ml-3 item-text">Desempeño</span>
@@ -120,22 +131,14 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a href="#configuracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-settings"></i>
-                <span class="ml-3 item-text">Configuración</span>
+            </li> --}}
+            <li class="nav-item w-100">
+              <a class="nav-link" href="usuariosL">
+                <i class="fe fe-24 fe-user"></i>
+                <span class="ml-3 item-text">Usuarios</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/roles"><span class="ml-1 item-text">Roles</span>
-                  </a>
-                </li>
-              </ul>
             </li>
-
-            <li class="nav-item dropdown">
+            {{!-- <li class="nav-item dropdown">
               <a href="#usuarios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-24 fe-user"></i>
                 <span class="ml-3 item-text">Usuarios</span>
@@ -146,8 +149,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
+            </li> --}}
             <li class="nav-item dropdown">
               <a href="#espacios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-home fe-24"></i>
@@ -188,54 +190,43 @@
                   <a class="nav-link pl-3" href="visitantes"><span class="ml-1 item-text">Visitantes</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Visitas</span></a>
+                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Ingresos</span></a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#pagos" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="multas">
                 <i class="fe fe-24 fe-dollar-sign"></i>
-                <span class="ml-3 item-text">Pagos</span>
+                <span class="ml-3 item-text">Multas</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="pagos">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cuentas"><span class="ml-1 item-text">cuentas de cobro</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cobros"><span class="ml-1 item-text">cobros</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="comprobantes"><span class="ml-1 item-text">comprobantes</span></a>
-                </li>
-              </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#notificaciones" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="notificaciones">
                 <i class="fe fe-24 fe-message-square"></i>
                 <span class="ml-3 item-text">Notificaciones</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="notificaciones">
+            </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="vigilantesL">
+                <i class="fe fe-24 fe-lock"></i>
+                <span class="ml-3 item-text">Vigilantes</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#configuracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <i class="fe fe-24 fe-settings"></i>
+                <span class="ml-3 item-text">Configuración</span>
+              </a>
+              <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="notificaciones"><span class="ml-1 item-text">Notificaciones</span>
+                  <a class="nav-link pl-3" href="/rolesL"><span class="ml-1 item-text">Roles</span>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#seguridad" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-lock"></i>
-                <span class="ml-3 item-text">Seguridad</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="seguridad">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="vigilantes"><span class="ml-1 item-text">Vigilantes</span>
-                  </a>
-                </li>
-              </ul>
-            </li><br>
-            <li class="nav-item dropdown">
-              <a href="/" class="dropdown-toggle nav-link">
+            <br>
+            <li class="nav-item">
+              <a href="/" id="salir" class="nav-link" >
                 <i class="fe fe-24 fe-slack"></i>
                 <span class="ml-3 item-text">Cerrar Sesión</span>
               </a>
@@ -275,14 +266,7 @@
                           </div>
                         </form>
 
-
-
-
-
-
-
                       </div>
-
 
                       <div class="col ml-auto">
                         <div class="dropdown float-right">
@@ -290,9 +274,11 @@
                               type="button">{{ir_boton_crear}} </button></a>
 
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Descargar</button>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                              class="fe fe-download fe-16"></i>
+                          </button>
                           <div class="dropdown-menu" aria-labelledby="actionMenuButton">
-                            <a class="dropdown-item" href="#">EXCEL</a>
+                            <a class="dropdown-item" href="descargar_excel_residentes">Excel</a>
                           </div>
                         </div>
                       </div>
@@ -306,11 +292,11 @@
                         <tr role="row">
 
                           <th>Item</th>
-                          <th>Tipo documento</th>
-                          <th>Numero documento</th>
+                          <th>Tipo <br> documento</th>
+                          <th>Numero <br>documento</th>
                           <th>Nombre</th>
                           <th>Apellido</th>
-                          <th>Fecha nacimiento</th>
+                          <th>Fecha<br> nacimiento</th>
                           <th>Genero</th>
                           <th>Telefono</th>
 
@@ -318,15 +304,15 @@
 
 
 
-                          <th>Tipo de residente</th>
+                          <th>Tipo de<br> residente</th>
 
 
                           <th>Residencia</th>
                           <th>Habita</th>
 
 
-                          <th>Fecha inicio</th>
-                          <th>Fecha salida</th>
+                          <th>Fecha<br> inicio</th>
+                          <th>Fecha<br> salida</th>
 
                           <th>Estado</th>
 
@@ -360,12 +346,7 @@
 
     </main> <!-- main -->
   </div> <!-- .wrapper -->
-
-
-
-
-
-  <script src="../js/funciones_residentes.js"></script>
+  <script src="../JS/validacionCerrarSesion.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/moment.min.js"></script>
@@ -377,7 +358,9 @@
   <script src="js/config.js"></script>
   <script src='js/jquery.dataTables.min.js'></script>
   <script src='js/dataTables.bootstrap4.min.js'></script>
+
   <script>
+
     $('#dataTable-1').DataTable(
       {
         autoWidth: true,
@@ -400,153 +383,163 @@
     gtag('config', 'UA-56159088-1');
   </script>
 
+  {{!-- Modal notificaciones --}}
 
-
-  <style>
-    .modal-dialog {
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-content {
-      max-width: 2800px;
-      border: 1px solid black;
-    }
-
-    .modal-body {
-      padding: 25px
-    }
-  </style>
-  <div id="modal_editar" class="modal">
-    <div class="modal-dialog modal-xl"> <!-- Agregado: modal-xl para hacerlo más grande -->
+  <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="varyModalLabel">{{ir_boton_editar}}</h5>
-          <button type="button" class="close" data-dismiss="modal" onclick="salir()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <h5 class="modal-title" id="defaultModalLabel">Notificaciones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">
-
-          <div class="row">
-            <div class="col-md-6">
-
-
-              <div class="form-group mb-3">
-                <input id="_id" type="hidden">
-                <label for="simpleinput">Tipo de Documento</label>
-                <select name="" id="tipo_documento_residente" class="form-control">
-                  <option value="">Selecione un tipo de documento</option>
-                  <option value="CC">Cedula ciudadania</option>
-                  <option value="CE">Cedula extranjeria</option>
-                </select>
-              </div>
-
-              <div class="form-group mb-3">
-                <label for="documento">Numero documento</label>
-                <input type="number" id="numero_documento_residente" class="form-control" onchange="" required>
-                <div id="FB_documento"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label for="example-password">Nombre Residentes</label>
-                <input type="text" id="nombre_residente" class="form-control" onchange="" required>
-                <div id="FB_nombre"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label for="example-password">Apellido Residentes</label>
-                <input type="text" id="apellido_residente" class="form-control" onchange="" required>
-                <div id="FB_apellido"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label for="example-password">Fecha nacimiento</label>
-                <input type="date" id="fecha_nacimiento" class="form-control" onchange="" required>
-                <div id="FB_edad"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Genero</label>
-                <select name="" id="genero_residente" class="form-control">
-                  <option value="">Seleccione un genero</option>
-                  <option value="M">Masculino</option>
-                  <option value="F">Femenio</option>
-                  <option value="otro">Otro</option>
-                </select>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Telefono</label>
-                <input type="text" id="telefono_residente" class="form-control" onchange="">
-                <div id="FB_telefono"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Correo</label>
-                <input type="email" id="correo" class="form-control" onchange="" required>
-                <div id="FB_correo"></div>
-              </div>
-            </div>
-            <div class="col-md-6">
-
-              <div class="form-group mb-3">
-                <label for="simpleinput">Tipo residente</label>
-
-                <select name="" id="tipo_residente" class="form-control">
-                  <option value="">Seleccione un tipo de residente</option>
-                  <option value="ARRENDATARIO">Arrendatario</option>
-                  <option value="PROPIETARIO">Propietario</option>
-                </select>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Habita</label>
-                <select name="" id="habita" class="form-control">
-                  <option value="true">Si</option>
-                  <option value="false">No</option>
-                </select>
-              </div>
-
-              <div class="form-group mb-3">
-                <label for="simpleinput">Resiodencia (Espacio)</label>
-                <select name="" id="residencia" class="form-control">
-                  <option value="null">Selecciona propiedad</option>
-                  {{!-- Aqui va codigo para listar espacios --}}
-                </select>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Fecha inicio</label>
-                <input type="date" id="fecha_inicio" class="form-control" onchange="">
-                <div id="FB_fecha_inicio"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Fecha fin</label>
-                <input type="date" id="fecha_fin" class="form-control" onchange="">
-                <div id="FB_fecha_fin"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Estado</label>
-                <select name="" id="estado" class="form-control">
-                  <option value="ACTIVO">ACTIVO</option>
-                  <option value="INACTIVO">INACTIVO</option>
-                </select>
-              </div>
-            </div>
-
-          </div>
-
+          <div class="list-group list-group-flush my-n3">
+          </div> <!-- / .list-group -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" id="salir"
-            onclick="salir()">Cancelar</button><br>
-          <button type="button" id="boton_actualizar" onclick="actualizar_residente()"
-            class="btn mb-2 btn-primary">Actualizar</button>
+          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear
+            All</button>
+        </div>
+      </div>
+    </div>
+              
+  </div>
+
+
+
+  {{!-- Modal editar --}}
+
+
+  <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="varyModalLabel">Nueva Reserva</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body p-4">
+
+          <div class="form-group mb-3">
+            <input id="_id" type="hidden">
+            <label for="simpleinput">Tipo de Documento</label>
+            <select name="" id="tipo_documento_residente" class="form-control">
+              <option value="">Selecione un tipo de documento</option>
+              <option value="CC">Cedula ciudadania</option>
+              <option value="CE">Cedula extranjeria</option>
+            </select>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="documento">Numero documento</label>
+            <input type="number" id="numero_documento_residente" class="form-control"
+              onchange="validacion_numero_documento_residente()" required>
+            <div id="FB_documento"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="example-password">Nombre Residentes</label>
+            <input type="text" id="nombre_residente" class="form-control" onchange="validacion_nombre_residente()"
+              required>
+            <div id="FB_nombre"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="example-password">Apellido Residentes</label>
+            <input type="text" id="apellido_residente" class="form-control" onchange="validacion_apellido_residente()"
+              required>
+            <div id="FB_apellido"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="example-password">Fecha nacimiento</label>
+            <input type="date" id="fecha_nacimiento" class="form-control" onchange="validacion_fecha_nacimiento()"
+              required>
+            <div id="FB_fecha_nacimiento"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Genero</label>
+            <select name="" id="genero_residente" onclick="validacion_genero_residente()" class="form-control">
+              <option value="">Seleccione un genero</option>
+              <option value="M">MASCULINO</option>
+              <option value="F">FEMENINO</option>
+              <option value="otro">Otro</option>
+            </select>
+            <div id="FB_genero_residente"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Telefono</label>
+            <input type="text" id="telefono_residente" class="form-control" onchange="validacion_telefono_residente()">
+            <div id="FB_telefono"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Correo</label>
+            <input type="email" id="correo" class="form-control" onchange="validacion_correo()" required>
+            <div id="FB_correo"></div>
+          </div>
+
+
+          <div class="form-group mb-3">
+            <label for="simpleinput">Tipo residente</label>
+            <select name="" id="tipo_residente" class="form-control" onchange="validacion_tipo_residente()">
+              <option value="">Seleccione un tipo de residente</option>
+              <option value="ARRENDATARIO">ARRENDATARIO</option>
+              <option value="PROPIETARIO">PROPIETARIO</option>
+            </select>
+            <div id="FB_tipo_residente"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Habita</label>
+            <select name="" id="habita" class="form-control">
+              <option value="true">Si</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="simpleinput">Resiodencia (Espacio)</label>
+            <select name="" id="residencia" class="form-control">
+              <option value="null">Selecciona propiedad</option>
+              {{!-- Aqui va codigo para listar espacios --}}
+            </select>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Fecha inicio</label>
+            <input type="date" id="fecha_inicio" class="form-control" onchange="validacion_fecha_inicio()">
+            <div id="FB_fecha_inicio"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Fecha fin</label>
+            <input type="date" id="fecha_fin" class="form-control" onchange="validacion_fecha_fin()">
+            <div id="FB_fecha_fin"></div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Estado</label>
+            <select name="" id="estado" class="form-control">
+              <option value="ACTIVO">ACTIVO</option>
+              <option value="INACTIVO">INACTIVO</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <button onclick="actualizar_residente()" id="boton_actualizar" type="button"
+            class="btn mb-2 btn-primary"><span class="fe mr-2"></span>Actualizar
+            residente</button>
+          <a href="residentes"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block">
+              <spana class="fe mr-2"></spana>Regresar
+            </button></a>
         </div>
       </div>
     </div>
@@ -554,45 +547,9 @@
 
 
 
-
-
-
-  <script>
-
-    const salir = () => {
-
-      window.location.href = 'residentes'
-
-    }
-  </script>
-
-  <!-- Agrega los scripts de Bootstrap en tu archivo HTML -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-
-  <script>
-
-    document.addEventListener('DOMContentLoaded', function () {
-      var elems = document.querySelectorAll('.modal');
-      //var instances = M.Modal.init(elems, options);
-    });
-
-    // Or with jQuery
-
-    $(document).ready(function () {
-      $('.modal').modal();
-    });
-  </script>
-
+  {{!-- Validaciones formulario --}}
+  <script src="../js/validaciones_residentes.js"></script>
+  {{!-- Funciones backend --}}
   <script src="../js/funciones_residentes.js"></script>
 
 

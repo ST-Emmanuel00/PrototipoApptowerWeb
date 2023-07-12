@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+   <link rel="stylesheet" href="../css/styleRegistro.css">
+    
+    <title>Registrate</title>
+
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+</head>
+
+
+<body class="light">
+    <section class="inicio">
+        <div class="fregistro">
+            <div id="formulario">
+                <h2 class="tit">Registrate</h2>
+                <div class="campo-grupo">
+                    <div class="campo">
+                        <span class="icono"><ion-icon name="person-outline"></ion-icon></span>
+                        
+                        <input type="text" name="nombre" id="nombre" autocomplete="off" >
+                        <label class="elevate">Nombre</label>
+                    </div>
+                    <div class="campo">
+                        <span class="icono"><ion-icon name="person-outline"></ion-icon></span>
+                        
+                        <input type="text" name="apellido" id="apellido" autocomplete="off">
+                        <label>Apellido</label>
+                    </div>
+                </div>
+                <div class="campo-grupo">
+                    <div class="campo">
+                        
+                        <select name="" class="opcion" id="tipoDocumento" autocomplete="off">
+                            <option value="CC">CC</option>
+                            <option value="CE">CE</option>
+                        </select>
+                        
+                        
+                    </div>
+                    <div class="campo">
+                        <span class="icono"><ion-icon name="person-outline"></ion-icon></span>
+                        
+                       
+                        <input type="number" name="documento" id="documento" autocomplete="off" >
+                        <label class="elevate">Documento</label>
+                    </div>
+                </div>
+               
+                <div class="campo-grupo">
+                    <div class="campo">
+                        <span class="icono"><ion-icon name="call-outline"></ion-icon></ion-icon></span>
+                        
+                        <input type="number" name="telefono" id="telefono" autocomplete="off" >
+                        <label>Teléfono</label>
+                    </div>
+                    <div class="campo">
+                        <span class="icono"><ion-icon name="mail-outline"></ion-icon></ion-icon></span>
+                    <input type="email" name="correo" id="correo" autocomplete="off">
+                        <label>Correo</label>
+                    </div>
+                </div>
+                <div class="campo-grupo">
+                    <div class="campo">
+                        <span class="icono"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                        <input type="password" name="contrasena" id="password" >
+                        <label>Contraseña</label>
+                    </div>
+                    <div class="campo">
+                        <span class="icono"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                        <input type="password" name="Cpassword" id="confirmarPassword" >
+                        <label>Confirmar Contraseña</label>
+                    </div>
+                </div><br>
+                     <button type="button"  id="btnRegistrar">Registrar</button>
+                     <div class="registro">
+                        <div class="">
+                            <p>¿Ya te encuentras registrado? <a href="/">Iniciar Sesión</a></p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="../js/funcionesUsuarios.js"></script>
+</body>
+
+</html>

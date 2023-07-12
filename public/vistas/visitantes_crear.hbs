@@ -21,6 +21,11 @@
   <!-- App CSS -->
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme" disabled>
+
+  {{!-- Sweet alert --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 </head>
 
 <body class="vertical  light  ">
@@ -87,8 +92,13 @@
           </p>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
-
-            <li class="nav-item dropdown">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="dashboard">
+                <i class="fe fe-bar-chart fe-24"></i>
+                <span class="ml-3 item-text">Desempeño</span>
+              </a>
+            </li>
+            {{!-- <li class="nav-item dropdown">
               <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-bar-chart fe-24"></i>
                 <span class="ml-3 item-text">Desempeño</span>
@@ -99,22 +109,14 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a href="#configuracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-settings"></i>
-                <span class="ml-3 item-text">Configuración</span>
+            </li> --}}
+            <li class="nav-item w-100">
+              <a class="nav-link" href="usuariosL">
+                <i class="fe fe-24 fe-user"></i>
+                <span class="ml-3 item-text">Usuarios</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/roles"><span class="ml-1 item-text">Roles</span>
-                  </a>
-                </li>
-              </ul>
             </li>
-
-            <li class="nav-item dropdown">
+            {{!-- <li class="nav-item dropdown">
               <a href="#usuarios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-24 fe-user"></i>
                 <span class="ml-3 item-text">Usuarios</span>
@@ -125,8 +127,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
+            </li> --}}
             <li class="nav-item dropdown">
               <a href="#espacios" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-home fe-24"></i>
@@ -167,54 +168,43 @@
                   <a class="nav-link pl-3" href="visitantes"><span class="ml-1 item-text">Visitantes</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Visitas</span></a>
+                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Ingresos</span></a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#pagos" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="multas">
                 <i class="fe fe-24 fe-dollar-sign"></i>
-                <span class="ml-3 item-text">Pagos</span>
+                <span class="ml-3 item-text">Multas</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="pagos">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cuentas"><span class="ml-1 item-text">cuentas de cobro</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="cobros"><span class="ml-1 item-text">cobros</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="comprobantes"><span class="ml-1 item-text">comprobantes</span></a>
-                </li>
-              </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#notificaciones" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="notificaciones">
                 <i class="fe fe-24 fe-message-square"></i>
                 <span class="ml-3 item-text">Notificaciones</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="notificaciones">
+            </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="vigilantesL">
+                <i class="fe fe-24 fe-lock"></i>
+                <span class="ml-3 item-text">Vigilantes</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#configuracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <i class="fe fe-24 fe-settings"></i>
+                <span class="ml-3 item-text">Configuración</span>
+              </a>
+              <ul class="collapse list-unstyled pl-4 w-100" id="configuracion">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="notificaciones"><span class="ml-1 item-text">Notificaciones</span>
+                  <a class="nav-link pl-3" href="/rolesL"><span class="ml-1 item-text">Roles</span>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#seguridad" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-24 fe-lock"></i>
-                <span class="ml-3 item-text">Seguridad</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="seguridad">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="vigilantes"><span class="ml-1 item-text">Vigilantes</span>
-                  </a>
-                </li>
-              </ul>
-            </li><br>
-            <li class="nav-item dropdown">
-              <a href="/" class="dropdown-toggle nav-link">
+            <br>
+            <li class="nav-item">
+              <a href="/" id="salir" class="nav-link" id="salir">
                 <i class="fe fe-24 fe-slack"></i>
                 <span class="ml-3 item-text">Cerrar Sesión</span>
               </a>
@@ -237,15 +227,18 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
+
                     <div class="form-group mb-3">
                       <input id="_id" type="hidden">
                       <label for="simpleinput">Tipo de Documento</label>
                       <select name="" id="tipo_documento_visitante" class="form-control">
                         <option value="">Selecione un tipo de documento</option>
-                        <option value="CC">Cedula ciudadania</option>
-                        <option value="CE">Cedula extranjeria</option>
+                        <option value="CC">CEDULA DE CIUDADANIA</option>
+                        <option value="CE">CEDULA EXTRANJERIA</option>
                       </select>
+                      <div id="FB_tipo_documento"></div>
                     </div>
+
                     <div class="form-group mb-3">
                       <label for="documento">Numero documento</label>
                       <input type="number" id="numero_documento_visitante" class="form-control" onchange="" required>
@@ -267,10 +260,11 @@
                       <label>Genero</label>
                       <select name="" id="genero_visitante" class="form-control">
                         <option value="">Seleccione un genero</option>
-                        <option value="M">Masculino</option>
-                        <option value="F">Femenio</option>
-                        <option value="otro">Otro</option>
+                        <option value="M">MASCULINO</option>
+                        <option value="F">FEMENINO</option>
+                        <option value="otro">OTRO</option>
                       </select>
+                      <div id="FB_genero_visitante"></div>
                     </div>
 
 
@@ -302,9 +296,7 @@
                       </select>
                     </div>
 
-
                   </div>
-
 
                   <div class="card-body">
                     <button id="boton_crear" type="button" class="btn mb-2 btn-primary btn-block"><span
@@ -316,9 +308,37 @@
     </main> <!-- main -->
   </div> <!-- .wrapper -->
 
+  {{!-- Modal notificaciones --}}
 
-  <script src="../js/validaciones_residentes.js"></script>
+  <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="defaultModalLabel">Notificaciones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group list-group-flush my-n3">
+          </div> <!-- / .list-group -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear
+            All</button>
+        </div>
+      </div>
+    </div>
+              
+  </div>
+    <script src="../JS/validacionCerrarSesion.js"></script>
+
+  {{!-- Funciones backend --}}
   <script src="../js/funciones_visitantes.js"></script>
+  {{!-- Validaciones formulario --}}
+  <script src="../js/validaciones_visitantes.js"></script>
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -342,3 +362,5 @@
     gtag('config', 'UA-56159088-1');
   </script>
 </body>
+
+</html>

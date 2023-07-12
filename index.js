@@ -142,14 +142,6 @@ app.get('/espacios', (req, res) => {
         ir_boton_crear: 'Crear espacio'
     })
 })
-app.get('/multas', (req, res) => {
-    res.render('multas', {
-
-        title: 'Multas 🏤',
-        modulo: 'Multas',
-        ir_boton_crear: 'Crear espacio'
-    })
-})
 app.get('/espacios_crear', (req, res) => {
     res.render('espacios_crear', {
 

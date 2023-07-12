@@ -315,16 +315,6 @@
 
 
                       <tbody id="contenido_visitantes">
-                        <tr>
-                          <td>1</td>
-                          <td>CC</td>
-                          <td>12345678</td>
-                          <td>Geraldin</td>
-                          <td>Gomez</td>
-                          <td>F</td>
-                          <td>Permitido</td>
-                          <td><a href="#" data-toggle="modal" data-target="#modalEditar">Editar</a></td>
-                        </tr>
 
 
 
@@ -346,90 +336,22 @@
 
 
 
-                      <!-- Modal -->
-          <div class="modal fade pt-3" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="defaultModalLabel">Editar Visitante</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                  <div class="modal-body">
-                  <div class="card-body">
-                    <div>
-                      <form id="formEdit">
-                        
-                        <div class="row">
-            <div class="col-md-6">
 
 
-              <div class="form-group mb-3">
-                <input id="_id" type="hidden">
-                <label for="simpleinput">Tipo de Documento</label>
-                <input name="" value="CC" id="documento_visitante" class="form-control" readonly>
-              </div>
-              <div class="form-group mb-3">
-                <label for="documento">Numero documento</label>
-                <input type="number" id="numero_documento_visitante" value="12345678" class="form-control" onchange="" readonly>
-                <div id="FB_documento"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label for="example-password">Nombre visitante</label>
-                <input type="text" id="nombre_visitante" value="Geraldin" class="form-control" onchange="" readonly>
-                <div id="FB_nombre"></div>
-              </div>
-              <div class="form-group mb-3">
-                <label for="example-password">Apellido visitante</label>
-                <input type="text" id="apellido_visitante" value="Gomez" class="form-control" onchange="" readonly>
-                <div id="FB_apellido"></div>
-              </div>
-
-              <div class="form-group mb-3">
-                <label>Genero</label>
-                <input name="" id="genero_visitante" value="F" class="form-control" readonly>
-                  
-              </div>
-
-            </div> <!-- /.col -->
-            <div class="col-md-6">
 
 
-              <div class="form-group mb-3">
-                <label>Acceso</label>
-                <select name="" id="permiso" class="form-control">
-                  <option value="Permitido">Permitido</option>
-                  <option value="Denegado">Denegado</option>
-                </select>
-              </div>
-              <div class="form-group mb-3">
-              <label>Vehiculo</label>
-                <input type="text" name="" id="vehiculoE" value="N/A" class="form-control">
-                <span id="FB_vehiculo"></span>
-              </div>
-            </div>
-            
 
-          </div>
-                          <button type="button" id="boton_editar" class="btn mb-2 btn-primary">Editar visitante</button>
-                          <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cancelar</button>
-                      </form>
-                    </div>
-                  </div>
-                </div> <!-- / .card -->            
-              </div>
-            </div>
-          </div>
-                
-                      
-                  
-                  
+
+
+
+
+
+
 
 
     </main> <!-- main -->
   </div> <!-- .wrapper -->
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -440,11 +362,8 @@
   <script src='js/jquery.stickOnScroll.js'></script>
   <script src="js/tinycolor-min.js"></script>
   <script src="js/config.js"></script>
-  <script src="js/apps.js"></script>
   <script src='js/jquery.dataTables.min.js'></script>
   <script src='js/dataTables.bootstrap4.min.js'></script>
-  <script src="/js/validacionIngreso.js"></script>
-
   <script>
     $('#dataTable-1').DataTable(
       {
@@ -594,3 +513,5 @@
   <script src="../js/validaciones_visitantes.js"></script>
 
 </body>
+
+</html>

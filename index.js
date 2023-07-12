@@ -90,16 +90,6 @@ app.get('/multas_crear', (req, res) => {
         
     })
 })
-app.get('/visitantesD', (req, res) => {
-    res.render('visitantes_D', {
-
-        title: 'Visitantes 👩🏼‍🤝‍🧑🏾',
-        modulo: 'Visitantes',
-        ir_boton_crear: 'Crear visitante',
-        ir_boton_editar: 'Editar visitante'
-        
-    })
-})
 
 app.get('/visitantes_crear', (req, res) => {
     res.render('visitantes_crear', {

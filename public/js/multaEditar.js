@@ -1,3 +1,10 @@
+function abrirFile() {
+  console.log("entre a la funcion");
+  var subir_btn = document.getElementById("customFile");
+  subir_btn.click();
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
   console.log("holi");
   var fechaLE = document.getElementById("fechaLE");
@@ -21,10 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  botoncito.addEventListener("click", function(){
-    try{
-      
-      if(fechaLE.classList.contains('border-danger')||fechaLE.value.length == 0 ){
+  botoncito.addEventListener("click", function () {
+    try {
+
+      if (fechaLE.classList.contains('border-danger') || fechaLE.value.length == 0) {
         throw new Error("Fecha no valida o campo vacio")
       }
       Swal.fire(
@@ -33,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         'success'
 
       )
-    }catch(e){
+    } catch (e) {
       Swal.fire(
         'Error',
         e.message,
@@ -41,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
       )
     }
   })
-    
+
 
   aprobarbtn.addEventListener("click", function (e) {
     Swal.fire({

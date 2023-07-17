@@ -184,7 +184,7 @@
                   <a class="nav-link pl-3" href="visitantes"><span class="ml-1 item-text">Visitantes</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="visitas"><span class="ml-1 item-text">Ingresos</span></a>
+                  <a class="nav-link pl-3" href="ingresos"><span class="ml-1 item-text">Ingresos</span></a>
                 </li>
               </ul>
             </li>
@@ -289,7 +289,7 @@
 
 
                     <!-- table -->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style="display: block; overflow-x: auto">
                       <thead>
 
                         <tr role="row">
@@ -299,13 +299,16 @@
                           <th>Numero <br> documento</th>
                           <th>Nombre</th>
                           <th>Apellido</th>
+                          <th>Edad</th>
+                          <th>Telefono</th>
                           <th>Genero</th>
 
                           <th>Tipo <br> visitante</th>
 
-                          <th>Anfitrion</th>
+                          <th>Vehiculo</th>
 
                           <th>Permiso</th>
+                          <th>Ultimo Ingreso</th>
 
 
 
@@ -415,12 +418,89 @@
   {{!-- Modal editar --}}
 
 
+
+  <!-- Modal ingresos-->
+  <div class="modal fade pt-3" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="defaultModalLabel">Crear Ingreso</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card-body">
+            <div>
+              <div class="pb-2">
+                <a href="visitantes_crear"><button class="btn btn-primary float-right ml-3" type="button"
+                    data-toggle="modal" style="width: 100%; margin-bottom: 1rem;">Agregar
+                    visitante</button></a>
+              </div>
+              <form id="createFrom">
+
+                <div class="form-group mb-3">
+                  <label for="simpleinput">Documento visitante</label>
+                  <select name="" id="visitante" class="form-control">
+                    <option class="form-control" value="null" selected disabled hidden>Selecione documento
+                    </option>
+                    <option value="">1212343546</option>
+                    <option value="">1234534213</option>
+                  </select>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="simpleinput">Nombre de Visitante</label>
+                  <input type="text" id="nombreVisitante" class="form-control" readonly>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="simpleinput">Torre a visitar</label>
+                  <select name="torre" id="torre" class="form-control">
+                    <option value="null" selected disabled hidden>SELECCIONE TORRE</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+                </div>
+                <div class="form-group mb-3">
+                  <label>Fecha ingreso</label>
+                  <input type="date" id="fechaI" class="form-control" readonly>
+                  <div id="FB_fecha_inicio"></div>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="simpleinput">Espacio de Vehiculo</label>
+                  <select name="" id="espacio" class="form-control">
+                    <option value="null" selected disabled hidden>SELECCIONE ESPACIO DE VEHICULO</option>
+                    <option value="S303">N/A</option>
+                    <option value="S303">S303</option>
+                    <option value="S305">S305</option>
+                    <option value="S604">S404</option>
+                  </select>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="simpleinput">Anfitrion</label>
+                  <input type="text" id="anfitrion" class="form-control" value="">
+                </div>
+                <button type="button" class="btn mb-2 btn-primary" onclick="alertSucces()">Crear
+                  Ingreso</button>
+                <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div> <!-- / .card -->
+      </div>
+    </div>
+  </div>
+  {{!-- Fin modal ingresos --}}
+
+
   <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="varyModalLabel">Editar propietario</h5>
+          <h5 class="modal-title" id="varyModalLabel">Editar Visitante</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -431,7 +511,7 @@
             <input id="_id" type="hidden">
             <label for="simpleinput">Tipo de Documento</label>
             <select name="" id="tipo_documento_visitante" class="form-control">
-              <option value="">Selecione un tipo de documento</option>
+              <option value="" disabled hidden>Selecione un tipo de documento</option>
               <option value="CC">CEDULA DE CIUDADANIA</option>
               <option value="CE">CEDULA EXTRANJERIA</option>
             </select>
@@ -456,36 +536,17 @@
           </div>
 
           <div class="form-group mb-3">
-            <label>Genero</label>
-            <select name="" id="genero_visitante" class="form-control">
-              <option value="">Seleccione un genero</option>
-              <option value="M">MASCULINO</option>
-              <option value="F">FEMENINO</option>
-              <option value="otro">OTRO</option>
-            </select>
-            <div id="FB_genero_visitante"></div>
-          </div>
-
-
-          <div class="form-group mb-3">
-            <label>Tipo de visitante</label>
-            <select name="" id="tipo_visitante" class="form-control">
-              <option value="OCASIONAL">Escoge una opcion</option>
-              <option value="OCASIONAL">OCASIONAL</option>
-              <option value="FRECUENTE">FRECUENTE</option>
-            </select>
+            <label>Telefono</label>
+            <input type="text" class="form-control">
           </div>
 
           <div class="form-group mb-3">
-            <label>Anfitrion</label>
-            <select name="" id="anfitrion" class="form-control">
-              <option value="null">Seleccione un anfitrion</option>
-
-            </select>
+            <label>Placa del Vehiculo</label>
+            <input type="text" class="form-control" value="N/A">
           </div>
 
           <div class="form-group mb-3">
-            <label>Permiso</label>
+            <label>Acceso</label>
             <select name="" id="permiso" class="form-control">
               <option value="NO PERMITIDO">NO PERMITIDO</option>
               <option value="PERMITIDO">PERMITIDO</option>
@@ -498,15 +559,15 @@
           <button onclick="actualizar_visitante()" id="boton_actualizar" type="button"
             class="btn mb-2 btn-primary"><span class="fe mr-2"></span>Actualizar
             visitante</button>
-          <a href="visitantes"><button id="regresar" type="button" class="btn mb-2 btn-light btn-block">
-              <spana class="fe mr-2"></spana>Regresar
+          <a href="visitantes"><button id="cancelar" type="button" class="btn mb-2 btn-light btn-block">
+              <spana class="fe mr-2"></spana>Cancelar
             </button></a>
         </div>
 
       </div>
     </div>
   </div>
-    <script src="../JS/validacionCerrarSesion.js"></script>
+  <script src="../JS/validacionCerrarSesion.js"></script>
   {{!-- Funciones backend --}}
   <script src="../js/funciones_visitantes.js"></script>
   {{!-- Validaciones formulario --}}

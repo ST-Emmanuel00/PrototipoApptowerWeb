@@ -1,5 +1,5 @@
 const url = 'https://apptower-bk.onrender.com/api/visitantes'
-
+let fechaTemporal = new Date();
 const listar_visitantes = async () => {
 
   console.log('Si estas dentro visitantes')
@@ -25,36 +25,30 @@ const listar_visitantes = async () => {
 
           mensaje += `<tr>
 
-        
+
                 <td>${item + 1}</td>
                 <td>${visitante.tipo_documento_visitante}</td>
                 <td>${visitante.numero_documento_visitante}</td>
                 <td>${visitante.nombre_visitante}</td>
                 <td>${visitante.apellido_visitante}</td>
+                <td>${18 + item}</td>
+                <td>${3206685816 + item}</td>
                 <td>${visitante.genero_visitante}</td>
                 <td>${visitante.tipo_visitante}</td>
-                <td>${visitante.anfitrion}</td>                
-
-
+                <td>N/A</td>
                 <td><span class="badge ${resaltato}">${visitante.permiso}</span></td>
+                <td>${fechaTemporal.getDate() + "/" + fechaTemporal.getMonth() + "/"
+            + fechaTemporal.getFullYear() + " - " + fechaTemporal.getHours() + ":"
+            + fechaTemporal.getMinutes() + ":" + fechaTemporal.getSeconds()}</td>
 
-                <td>
+                <td>                  
+                  <a href="#" data-toggle="modal" data-target="#eventModal" 
+                  onclick='editar_visitantes(${JSON.stringify(visitante)})'>
+                    <span class="fe fe-24 fe-edit">
+                  </a>
 
-                    <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenuButton" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false"><i class = "fe fe-more-vertical fe-24"></i>
-                    </button>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="actionMenuButton">
-
-                      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#eventModal"
-                      onclick="">rRegistrar ingreso</button>
-
-                      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#eventModal"
-                      onclick='editar_visitantes(${JSON.stringify(visitante)})'>Editar visitante</button>
-                      <a onclick="eliminar_visitante('${visitante._id}')" class="dropdown-item" href="#">Eliminar visitante</a>
-
-                    </div>
-
+                  <a href="#" data-toggle="modal" data-target="#modalCrear">
+                  <span class="fe fe-24 fe-log-in"></span></a>
                 </td>
 
               </tr>`

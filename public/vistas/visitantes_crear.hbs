@@ -255,6 +255,13 @@
                       <input type="text" id="apellido_visitante" class="form-control" onchange="" required>
                       <div id="FB_apellido"></div>
                     </div>
+                  </div> <!-- /.col -->
+
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label>Fecha de Nacimiento</label>
+                      <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento">
+                    </div>
 
                     <div class="form-group mb-3">
                       <label>Genero</label>
@@ -267,33 +274,14 @@
                       <div id="FB_genero_visitante"></div>
                     </div>
 
-
-                  </div> <!-- /.col -->
-
-                  <div class="col-md-6">
                     <div class="form-group mb-3">
-                      <label>Tipo de visitante</label>
-                      <select name="" id="tipo_visitante" class="form-control">
-                        <option value="OCASIONAL">Escoge una opcion</option>
-                        <option value="OCASIONAL">OCASIONAL</option>
-                        <option value="FRECUENTE">FRECUENTE</option>
-                      </select>
+                      <label>Telefono</label>
+                      <input type="text" class="form-control">
                     </div>
 
                     <div class="form-group mb-3">
-                      <label>Anfitrion</label>
-                      <select name="" id="anfitrion" class="form-control">
-                        <option value="null">Seleccione un anfitrion</option>
-
-                      </select>
-                    </div>
-
-                    <div class="form-group mb-3">
-                      <label>Permiso</label>
-                      <select name="" id="permiso" class="form-control">
-                        <option value="NO PERMITIDO">NO PERMITIDO</option>
-                        <option value="PERMITIDO">PERMITIDO</option>
-                      </select>
+                      <label>Placa de Vehiculo</label>
+                      <input type="text" class="form-control">
                     </div>
 
                   </div>
@@ -332,7 +320,7 @@
     </div>
               
   </div>
-    <script src="../JS/validacionCerrarSesion.js"></script>
+  <script src="../JS/validacionCerrarSesion.js"></script>
 
   {{!-- Funciones backend --}}
   <script src="../js/funciones_visitantes.js"></script>

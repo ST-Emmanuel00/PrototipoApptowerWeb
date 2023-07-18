@@ -1,15 +1,15 @@
-const tipo_documento_visitante = document.querySelector('#tipo_documento_visitante')
-const numero_documento = document.querySelector('#numero_documento_visitante')
-const nombre_visitante = document.querySelector('#nombre_visitante')
-const apellido_visitante = document.querySelector('#apellido_visitante')
-const genero_visitante = document.querySelector('#genero_visitante')
+// const tipo_documento_visitante = document.querySelector('#tipo_documento_visitante')
+// const numero_documento = document.querySelector('#numero_documento_visitante')
+// const nombre_visitante = document.querySelector('#nombre_visitante')
+// const apellido_visitante = document.querySelector('#apellido_visitante')
+// const genero_visitante = document.querySelector('#genero_visitante')
 
 
-tipo_documento_visitante.addEventListener('input', validacion_tipo_documento_visitante)
-numero_documento.addEventListener('input', validacion_numero_documento_visitante)
-nombre_visitante.addEventListener('input', validacion_nombre_visitante)
-apellido_visitante.addEventListener('input', validacion_apellido_visitante)
-genero_visitante.addEventListener('input', validacion_genero_visitante)
+// tipo_documento_visitante.addEventListener('input', validacion_tipo_documento_visitante)
+// numero_documento.addEventListener('input', validacion_numero_documento_visitante)
+// nombre_visitante.addEventListener('input', validacion_nombre_visitante)
+// apellido_visitante.addEventListener('input', validacion_apellido_visitante)
+// genero_visitante.addEventListener('input', validacion_genero_visitante)
 
 
 // const boton_crear = document.getElementById('#boton_crear').addEventListener('change', ()=> {
@@ -193,6 +193,7 @@ function validacion_nombre_visitante() {
 }
 
 function validacion_apellido_visitante() {
+    
 
     try {
 

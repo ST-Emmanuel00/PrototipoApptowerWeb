@@ -277,12 +277,10 @@
                           <a href="visitantes_crear"><button class="btn btn-primary float-right ml-3"
                               type="button">{{ir_boton_crear}} </button></a>
 
-                          <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                              class="fe fe-download fe-16"></i></button>
-                          <div class="dropdown-menu" aria-labelledby="actionMenuButton">
-                            <a class="dropdown-item" href="descargar_excel_visitantes">Excel</a>
-                          </div>
+                          <button class="btn btn-secondary" type="button" id="actionMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"
+                            onclick="exportTableToExcel('tabla-multas', 'multasExport')">
+                            Descargar Excel</button>
                         </div>
                       </div>
                     </div>
@@ -419,80 +417,85 @@
 
 
 
-  <!-- Modal ingresos-->
-  <div class="modal fade pt-3" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="defaultModalLabel">Crear Ingreso</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="card-body">
-            <div>
-              <div class="pb-2">
-                <a href="visitantes_crear"><button class="btn btn-primary float-right ml-3" type="button"
-                    data-toggle="modal" style="width: 100%; margin-bottom: 1rem;">Agregar
-                    visitante</button></a>
-              </div>
-              <form id="createFrom">
+  <!-- Modal crear -->
+            <div class="modal fade pt-3" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="defaultModalLabel">Crear Ingreso</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="card-body">
+                      <div>
+                        <form id="createFrom">
 
-                <div class="form-group mb-3">
-                  <label for="simpleinput">Documento visitante</label>
-                  <select name="" id="visitante" class="form-control">
-                    <option class="form-control" value="null" selected disabled hidden>Selecione documento
-                    </option>
-                    <option value="">1212343546</option>
-                    <option value="">1234534213</option>
-                  </select>
+                          <div class="form-group mb-3">
+                            <label for="simpleinput">Documento visitante</label>
+                            <select name="" id="docuVisitante" class="form-control">
+                              <option class="form-control" value="null" selected disabled hidden>Selecione documento
+                              </option>
+                              <option value="1">1212343546</option>
+                              <option value="2">1234534213</option>
+                            </select>
+                          </div>
+                          <div class="form-group mb-3">
+                            <label for="simpleinput">Nombre de Visitante</label>
+                            <input type="text" id="nombreVisitante" class="form-control" readonly>
+                          </div>
+                          <div class="form-group mb-3">
+                            <label for="simpleinput">Torre a visitar</label>
+                            <select name="torre" id="torre" class="form-control">
+                              <option value="null" selected disabled hidden>SELECCIONE TORRE</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                            </select>
+                          </div>
+                          <div class="form-group mb-3">
+                            <label>Fecha ingreso</label>
+                            <input type="date" id="fechaI" class="form-control" readonly>
+                            <div id="FB_fecha_inicio"></div>
+                          </div>
+                          <div class="form-group mb-3">
+                            <label for="simpleinput">Apartamento a visitar</label>
+                            <select name="" id="espacio" class="form-control">
+                              <option value="null" selected disabled hidden>Seleccione un apartamento</option>
+                              <option value="S303">401</option>
+                              <option value="S303">402</option>
+                              <option value="S305">403</option>
+                              <option value="S604">506</option>
+                            </select>
+                          </div>
+                          <div class="form-group mb-3">
+                            <label for="simpleinput">Espacio de Vehiculo</label>
+                            <select name="" id="espaciovehiculo" class="form-control">
+                              <option value="null" selected disabled hidden>SELECCIONE ESPACIO DE VEHICULO</option>
+                              <option value="N/A">N/A</option>
+                              <option value="S303">S303</option>
+                              <option value="S305">S305</option>
+                              <option value="S604">S404</option>
+                            </select>
+                          </div>
+                          <div class="form-group mb-3">
+                            <label for="simpleinput">Anfitrion</label>
+                            <input type="text" id="Anfitrion" class="form-control">
+                          </div>
+                          <button type="button" class="btn mb-2 btn-primary" onclick="alertSucces()">Crear
+                            Ingreso</button>
+                          <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div> <!-- / .card -->
                 </div>
-                <div class="form-group mb-3">
-                  <label for="simpleinput">Nombre de Visitante</label>
-                  <input type="text" id="nombreVisitante" class="form-control" readonly>
-                </div>
-                <div class="form-group mb-3">
-                  <label for="simpleinput">Torre a visitar</label>
-                  <select name="torre" id="torre" class="form-control">
-                    <option value="null" selected disabled hidden>SELECCIONE TORRE</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select>
-                </div>
-                <div class="form-group mb-3">
-                  <label>Fecha ingreso</label>
-                  <input type="date" id="fechaI" class="form-control" readonly>
-                  <div id="FB_fecha_inicio"></div>
-                </div>
-                <div class="form-group mb-3">
-                  <label for="simpleinput">Espacio de Vehiculo</label>
-                  <select name="" id="espacio" class="form-control">
-                    <option value="null" selected disabled hidden>SELECCIONE ESPACIO DE VEHICULO</option>
-                    <option value="S303">N/A</option>
-                    <option value="S303">S303</option>
-                    <option value="S305">S305</option>
-                    <option value="S604">S404</option>
-                  </select>
-                </div>
-                <div class="form-group mb-3">
-                  <label for="simpleinput">Anfitrion</label>
-                  <input type="text" id="anfitrion" class="form-control" value="">
-                </div>
-                <button type="button" class="btn mb-2 btn-primary" onclick="alertSucces()">Crear
-                  Ingreso</button>
-                <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cancelar</button>
-              </form>
+              </div>
             </div>
-          </div>
-        </div> <!-- / .card -->
-      </div>
-    </div>
-  </div>
-  {{!-- Fin modal ingresos --}}
+            <!-- Fin modal crear -->
 
 
   <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel"
@@ -510,39 +513,35 @@
           <div class="form-group mb-3">
             <input id="_id" type="hidden">
             <label for="simpleinput">Tipo de Documento</label>
-            <select name="" id="tipo_documento_visitante" class="form-control">
-              <option value="" disabled hidden>Selecione un tipo de documento</option>
-              <option value="CC">CEDULA DE CIUDADANIA</option>
-              <option value="CE">CEDULA EXTRANJERIA</option>
-            </select>
+            <input type="text" name="" id="tipo_documento_visitante" class="form-control" readonly>
             <div id="FB_tipo_documento"></div>
           </div>
 
           <div class="form-group mb-3">
             <label for="documento">Numero documento</label>
-            <input type="number" id="numero_documento_visitante" class="form-control" onchange="" required>
+            <input type="number" id="numero_documento_visitante" class="form-control" onchange="" readonly>
             <div id="FB_documento"></div>
           </div>
 
           <div class="form-group mb-3">
             <label for="example-password">Nombre visitante</label>
-            <input type="text" id="nombre_visitante" class="form-control" onchange="" required>
+            <input type="text" id="nombre_visitante" class="form-control" onchange="" readonly>
             <div id="FB_nombre"></div>
           </div>
           <div class="form-group mb-3">
             <label for="example-password">Apellido visitante</label>
-            <input type="text" id="apellido_visitante" class="form-control" onchange="" required>
+            <input type="text" id="apellido_visitante" class="form-control" onchange="" readonly>
             <div id="FB_apellido"></div>
           </div>
 
-          <div class="form-group mb-3">
+          <div class="form-group mb-3" id="telefonoEditar">
             <label>Telefono</label>
-            <input type="text" class="form-control">
+            <input type="text" id="telefono" class="form-control">
           </div>
 
           <div class="form-group mb-3">
             <label>Placa del Vehiculo</label>
-            <input type="text" class="form-control" value="N/A">
+            <input type="text" class="form-control" id="placa" value="N/A">
           </div>
 
           <div class="form-group mb-3">
@@ -572,6 +571,7 @@
   <script src="../js/funciones_visitantes.js"></script>
   {{!-- Validaciones formulario --}}
   <script src="../js/validaciones_visitantes.js"></script>
+  <script src="../js/validacionIngreso.js"></script>
 
 </body>
 

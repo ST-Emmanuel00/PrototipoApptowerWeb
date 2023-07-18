@@ -29,24 +29,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   botoncito.addEventListener("click", function () {
-    try {
-
-      if (fechaLE.classList.contains('border-danger') || fechaLE.value.length == 0) {
-        throw new Error("Fecha no valida o campo vacio")
+    Swal.fire({
+      title: "Aprobar",
+      text: "¿Estas seguro de aprobar el registro?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          "Aprobado",
+          "El pago de la multa ha sido verificado con exito",
+          "success"
+        );
       }
-      Swal.fire(
-        'Proceso exitoso',
-        'Cambios guardados',
-        'success'
-
-      )
-    } catch (e) {
-      Swal.fire(
-        'Error',
-        e.message,
-        'error'
-      )
-    }
+    });
   })
 
 

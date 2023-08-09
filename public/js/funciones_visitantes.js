@@ -40,8 +40,7 @@ const listar_visitantes = async () => {
                 <td>${18 + item}</td>
                 <td>${3206685816 + item}</td>
                 <td>${visitante.genero_visitante}</td>
-                <td>${visitante.tipo_visitante}</td>
-                <td>N/A</td>
+                
                 <td><span class="badge ${resaltato}">${visitante.permiso}</span></td>
                 <td>${fechaTemporal.getDate() + "/" + fechaTemporal.getMonth() + "/"
             + fechaTemporal.getFullYear() + " - " + fechaTemporal.getHours() + ":"
@@ -101,7 +100,7 @@ const actualizar_visitante = async () => {
 
   console.log('lo intentaste bro')
   const telefono = document.querySelector('#telefono')
-  const placa = document.querySelector('#placa')
+  // const placa = document.querySelector('#placa')
 
   // let visitante = {
   //   _id: document.getElementById('_id').value,
@@ -121,18 +120,13 @@ const actualizar_visitante = async () => {
   
 
   try {
-    if (telefono.value === '' || placa.value === '') {
+    if (telefono.value === '') {
 
       throw 'No puede haber campos vacíos';
 
     } else if (!ER_telefono.test(telefono.value)) {
 
       throw 'El telefono de visitante no es válido';
-
-
-    } else if (!ER_placa.test(placa.value)) {
-
-      throw 'La placa no es válido';
 
 
     } else {
@@ -207,12 +201,12 @@ const editar_visitantes = (visitantes) => {
   document.getElementById('numero_documento_visitante').value = visitantes.numero_documento_visitante
   document.getElementById('nombre_visitante').value = visitantes.nombre_visitante
   document.getElementById('apellido_visitante').value = visitantes.apellido_visitante
-  document.getElementById('genero_visitante').value = visitantes.genero_visitante
-  document.getElementById('tipo_visitante').value = visitantes.tipo_visitante
-  document.getElementById('anfitrion').value = visitantes.anfitrion
+  // document.getElementById('genero_visitante').value = visitantes.genero_visitante
+  // document.getElementById('tipo_visitante').value = visitantes.tipo_visitante
+  // document.getElementById('anfitrion').value = visitantes.anfitrion
   document.querySelector('#permiso').value = visitantes.permiso
 
-  document.getElementById('estado').value = visitantes.estado
+  // document.getElementById('estado').value = visitantes.estado
 
 }
 
@@ -286,24 +280,24 @@ const apellido_visitante = document.querySelector('#apellido_visitante')
 const fechaNacimiento = document.querySelector('#fechaNacimiento')
 const genero_visitante = document.querySelector('#genero_visitante')
 const telefonoC = document.querySelector('#telefonoC')
-const placaC = document.querySelector('#placaC')
+// const placaC = document.querySelector('#placaC')
 
 //Validadores campo a campo
 
-if (placaC) {
-  placaC.addEventListener("blur", function () {
-    console.log("ingresa")
+// if (placaC) {
+//   placaC.addEventListener("blur", function () {
+//     console.log("ingresa")
     
 
-    if (!ER_placa.test(placaC.value)) {
-      placaC.classList.remove("border-success");
-      placaC.classList.add("border-danger");
-    } else {
-      placaC.classList.remove("border-danger");
-      placaC.classList.add("border-success");
-    }
-  });
-}
+//     if (!ER_placa.test(placaC.value)) {
+//       placaC.classList.remove("border-success");
+//       placaC.classList.add("border-danger");
+//     } else {
+//       placaC.classList.remove("border-danger");
+//       placaC.classList.add("border-success");
+//     }
+//   });
+// }
 if (telefonoC) {
   telefonoC.addEventListener("blur", function () {
     console.log("ingresa")
@@ -438,12 +432,9 @@ const registrar_visitante = () => {
       throw 'El numero de telefono no es válido';
 
 
-    } else if (!ER_placa.test(placaC.value)) {
-
-      throw 'La placa no es válida';
-
-
-    } else {
+    } else if (fechaNacimiento >= Date()){
+      throw 'Fecha de nacimiento invalida';
+    }else {
 
     //   fetch(url, {
     //     method: 'POST',
@@ -514,17 +505,21 @@ const registrar_visitante = () => {
 listar_visitantes()
 
 
-if (document.querySelectorAll('#boton_crear')){
-const boton_crear = document.querySelector('#boton_crear').addEventListener('click', () => {
+const boton_crear = document.querySelector('#boton_crear');
 
-  registrar_visitante()
-
-})
+if (boton_crear) {
+  boton_crear.addEventListener('click', () => {
+    registrar_visitante();
+  });
 }
 
-// const boton_actualizar = document.querySelector('boton_actualizar').addEventListener('click', () => {
+// const boton_actualizar = document.querySelector('boton_actualizar');
+// if(boton_actualizar)
+// {boton_actualizar.addEventListener('click', () => {
 
 //   actualizar_visitante();
 
-// })
+// });
+// }
+
 

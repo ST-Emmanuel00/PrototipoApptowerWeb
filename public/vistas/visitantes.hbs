@@ -301,9 +301,9 @@
                           <th>Telefono</th>
                           <th>Genero</th>
 
-                          <th>Tipo <br> visitante</th>
+                          {{!-- <th>Tipo <br> visitante</th> --}}
 
-                          <th>Vehiculo</th>
+                          {{!-- <th>Vehiculo</th> --}}
 
                           <th>Permiso</th>
                           <th>Ultimo Ingreso</th>
@@ -456,11 +456,7 @@
                               <option value="4">4</option>
                             </select>
                           </div>
-                          <div class="form-group mb-3">
-                            <label>Fecha ingreso</label>
-                            <input type="date" id="fechaI" class="form-control" readonly>
-                            <div id="FB_fecha_inicio"></div>
-                          </div>
+                          
                           <div class="form-group mb-3">
                             <label for="simpleinput">Apartamento a visitar</label>
                             <select name="" id="espacio" class="form-control">
@@ -471,6 +467,7 @@
                               <option value="S604">506</option>
                             </select>
                           </div>
+                          
                           <div class="form-group mb-3">
                             <label for="simpleinput">Espacio de Vehiculo</label>
                             <select name="" id="espaciovehiculo" class="form-control">
@@ -482,7 +479,12 @@
                             </select>
                           </div>
                           <div class="form-group mb-3">
-                            <label for="simpleinput">Anfitrion</label>
+                            <label>Fecha ingreso</label>
+                            <input type="date" id="fechaI" class="form-control" readonly>
+                            <div id="FB_fecha_inicio"></div>
+                          </div>
+                          <div class="form-group mb-3">
+                            <label for="simpleinput">Autoriza el acceso</label>
                             <input type="text" id="Anfitrion" class="form-control">
                           </div>
                           <button type="button" class="btn mb-2 btn-primary" onclick="alertSucces()">Crear
@@ -539,10 +541,10 @@
             <input type="text" id="telefono" class="form-control">
           </div>
 
-          <div class="form-group mb-3">
+          {{!-- <div class="form-group mb-3">
             <label>Placa del Vehiculo</label>
             <input type="text" class="form-control" id="placa" value="N/A">
-          </div>
+          </div> --}}
 
           <div class="form-group mb-3">
             <label>Acceso</label>
